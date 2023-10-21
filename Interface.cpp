@@ -5,7 +5,9 @@
 #include "Interface.h"
 
 #include <iostream>
+#include <string>
 #include <sstream>
+#include <fstream>
 
 Interface::Interface(Habitacao* habitacao): habitacao(habitacao) {
     cout << "Sistema de Controlo de Habitaçao Iniciado" << endl;
@@ -103,6 +105,36 @@ bool Interface::comandos(const string& comando){
     //processador de regras
     if(primeiro == "rnova"){
         comandoRnova(iss);
+        return true;
+    }
+
+    if(primeiro == "pmuda"){
+        comandoPmuda(iss);
+        return true;
+    }
+
+    if(primeiro == "rlista"){
+        comandoRlista(iss);
+        return true;
+    }
+
+    if(primeiro == "rrem"){
+        comandoRrem(iss);
+        return true;
+    }
+
+    if(primeiro == "asoc"){
+        comandoAsoc(iss);
+        return true;
+    }
+
+    if(primeiro == "ades"){
+        comandoAdes(iss);
+        return true;
+    }
+
+    if(primeiro == "acom"){
+        comandoAcom(iss);
         return true;
     }
 
@@ -303,46 +335,165 @@ void Interface::comandoRnova(istringstream &iss) {
 
     int idZona, idProcRegra, idSensor;
     string regra;
+    vector<int> params;
 
     iss >> idZona >> idProcRegra >> regra >> idSensor;
 
-    
+    int aux;
+    while(iss >> aux){
+        params.push_back(aux);
+    }
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: rnova <IDzona> <ID proc. regras> <regra> <IDsensor> [param1] [param2]" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando RNOVA em execucao" << endl;
 
 }
 
 void Interface::comandoPmuda(istringstream &iss) {
 
+    int idZona, idProcRegra;
+    string novoComando;
+    iss >> idZona >> idProcRegra >> novoComando;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: pmuda <IDzona> <ID proc. regras> <novo comando>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando PMUDA em execucao" << endl;
 }
 
 void Interface::comandoRlista(istringstream &iss) {
 
+    int idZona, idProcRegra;
+    iss >> idZona >> idProcRegra;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: rlista <IDzona> <ID proc. regras>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando RLISTA em execucao" << endl;
 }
 
 void Interface::comandoRrem(istringstream &iss) {
 
+    int idZona, idProcRegra, idRegra;
+    iss >> idZona >> idProcRegra >> idRegra;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: rrem <IDzona> <ID proc. regras> <ID regra>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando RREM em execucao" << endl;
 }
 
 void Interface::comandoAsoc(istringstream &iss) {
+
+    int idZona, idProcRegra, idAparelho;
+    iss >> idZona >> idProcRegra >> idAparelho;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: asoc <IDzona> <ID proc. regras> <ID aparelho>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ASOC em execucao" << endl;
 
 }
 
 void Interface::comandoAdes(istringstream &iss) {
 
+    int idZona, idProcRegra, idAparelho;
+    iss >> idZona >> idProcRegra >> idAparelho;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: ades <IDzona> <ID proc. regras> <ID aparelho>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ADES em execucao" << endl;
+
 }
 
 void Interface::comandoAcom(istringstream &iss) {
+
+    int idZona, idAparelho;
+    string comando;
+    iss >> idZona >> idAparelho >> comando;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: acom <IDzona> <ID aparelho> <comando>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ACOM em execucao" << endl;
 
 }
 
 void Interface::comandoPsalva(istringstream &iss) {
 
+    int idZona, idProcRegra;
+    string nome;
+    iss >> idZona >> idProcRegra >> nome;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: acom <IDzona> <ID proc. regra> <nome>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando PSALVA em execucao" << endl;
 }
 
 void Interface::comandoPrepoe(istringstream &iss) {
 
+    string nome;
+    iss >> nome;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: prepoe <nome>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando PREPOE em execucao" << endl;
 }
 
 void Interface::comandoPrem(istringstream &iss) {
+
+    string nome;
+    iss >> nome;
+
+    // TODO verificar se parametros existem
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: prem <nome>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando PREM em execucao" << endl;
 
 }
 
@@ -351,6 +502,30 @@ void Interface::comandoPlista() {
 }
 
 void Interface::comandoExec(istringstream &iss) {
+
+    string nomeFicheiro;
+    iss >> nomeFicheiro;
+
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: exec <nome_ficheiro>" << endl;
+        return;
+    }
+
+    //abrir ficheiro
+    ifstream ficheiro(nomeFicheiro);
+    if(ficheiro.is_open()){
+        if(ficheiro.good()){
+
+            string comando;
+            string primeiro;
+            while(getline(ficheiro, comando)){
+                comandos(comando);
+            }
+        }
+    }else{
+        cout << "[ ERRO ] Ficheiro nao encontrado" << endl;
+        return;
+    }
 
 }
 

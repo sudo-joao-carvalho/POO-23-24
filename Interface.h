@@ -14,6 +14,8 @@ using namespace std;
 class Interface {
 private:
     Habitacao* habitacao;
+    //conjunto de habitaçoes --> como nao existe nenhum numero default de habitaçoes a interface nao vai começar com nenhuma habitaçao no construtor
+    //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
 
 public:
     Interface(Habitacao* habitacao);
@@ -39,7 +41,7 @@ public:
     void comandoCnovo(istringstream& iss);
     void comandoCrem(istringstream& iss);
 
-    //processador de regras --> verificar depois na funcao comandos se estamos nessa fase de introduzir regras
+    //processador de regras --> TODO verificar depois na funcao comandos se estamos nessa fase de introduzir regras
     void comandoRnova(istringstream& iss);
     void comandoPmuda(istringstream& iss);
     void comandoRlista(istringstream& iss);

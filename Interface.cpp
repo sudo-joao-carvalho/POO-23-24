@@ -20,7 +20,7 @@ void Interface::menu() {
         cout << "Insira um comando: " << endl;
         getline(cin, linha);
 
-        if(comandos(linha) == false){
+        if(!comandos(linha)){
             cout << "[ ERRO ] Comando nao existe." << endl;
             break;
         }
@@ -35,60 +35,278 @@ bool Interface::comandos(const string& comando){
     istringstream iss(comando);
     iss >> primeiro;
 
-    //if(primeiro == "")
+    // TODO adaptar para as fases
+
+    //tempo
+    if(primeiro == "prox"){
+        comandoProx();
+        return true;
+    }
+
+    if(primeiro == "avanca"){
+        comandoAvanca(iss);
+        return true;
+    }
+
+    //gerir habitacao e zonas
+    if(primeiro == "hnova"){
+        comandoHnova(iss);
+        return true;
+    }
+
+    if(primeiro == "hrem"){
+        comandoHrem();
+        return true;
+    }
+
+    if(primeiro == "znova"){
+        comandoZnova(iss);
+        return true;
+    }
+
+    if(primeiro == "zrem"){
+        comandoZrem(iss);
+        return true;
+    }
+
+    if(primeiro == "zlista"){
+        comandoZlista();
+        return true;
+    }
+
+    //gerir zonas e o seu conteudo
+    if(primeiro == "zcomp"){
+        comandoZcomp(iss);
+        return true;
+    }
+
+    if(primeiro == "zprops"){
+        comandoZprops(iss);
+        return true;
+    }
+
+    if(primeiro == "pmod"){
+        comandoPmod(iss);
+        return true;
+    }
+
+    if(primeiro == "cnovo"){
+        comandoCnovo(iss);
+        return true;
+    }
+
+    if(primeiro == "crem"){
+        comandoCrem(iss);
+        return true;
+    }
+
+    //processador de regras
+    if(primeiro == "rnova"){
+        comandoRnova(iss);
+        return true;
+    }
+
+    //salvar/recuperar processador de regras
+    if(primeiro == "psalva"){
+        comandoPsalva(iss);
+        return true;
+    }
+
+    if(primeiro == "prepoe"){
+        comandoPrepoe(iss);
+        return true;
+    }
+
+    if(primeiro == "prem"){
+        comandoPrem(iss);
+        return true;
+    }
+
+    if(primeiro == "plista"){
+        comandoPlista();
+        return true;
+    }
+
+    //gerais
+    if(primeiro == "exec"){
+        comandoExec(iss);
+        return true;
+    }
+
+    if(primeiro == "sair"){
+        comandoSair();
+        return true;
+    }
 
     return false;
 }
 
 void Interface::comandoProx() {
-
+    cout << "Comando PROX em execucao" << endl;
 }
 
 void Interface::comandoAvanca(istringstream &iss) {
+
+    int passos;
+    iss >> passos;
+
+    // TODO AVANCAR
+    cout << "Avancou " << passos << " passos" << endl;
 
 }
 
 void Interface::comandoHnova(istringstream &iss) {
 
+    int nLinhas, nColunas;
+    iss >> nLinhas >> nColunas;
+
+    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira um numero de linhas e colunas valido: hnova <num_linhas> <num_colunas>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando HNOVA em execucao" << endl;
+
 }
 
 void Interface::comandoHrem() {
-
+    cout << "Comando HREM em execucao" << endl;
 }
 
 void Interface::comandoZnova(istringstream &iss) {
 
+    int linha, coluna;
+    iss >> linha >> coluna;
+
+    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira uma linha e uma coluna correta: znova <linhas> <coluna>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ZNOVA em execucao" << endl;
 }
 
 void Interface::comandoZrem(istringstream &iss) {
 
+    int idZona;
+    iss >> idZona;
+
+    // TODO verificar se o id da zona existe
+    if(cin.fail()){
+        cout << "[ ERRO ] Insira um id de zona existente: zrem <IDzona>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ZREM em execucao" << endl;
+
 }
 
 void Interface::comandoZlista() {
-
+    cout << "Comando ZLISTA em execucao" << endl;
 }
 
 void Interface::comandoZcomp(istringstream &iss) {
 
+    int idZona;
+    iss >> idZona;
+
+    // TODO verificar se o id da zona existe
+    if(cin.fail()){
+        cout << "[ ERRO ] Insira um id de zona existente: zcomp <IDzona>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ZCOMP em execucao" << endl;
 }
 
 void Interface::comandoZprops(istringstream &iss) {
 
+    int idZona;
+    iss >> idZona;
+
+    // TODO verificar se o id da zona existe
+    if(cin.fail()){
+        cout << "[ ERRO ] Insira um id de zona existente: zprops <IDzona>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando ZPROPS em execucao" << endl;
 }
 
 void Interface::comandoPmod(istringstream &iss) {
+
+    int idZona;
+    iss >> idZona;
+    string nome;
+    iss >> nome;
+    int valor;
+    iss >> valor;
+
+    // TODO verificar argumentos
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: pmod <IDzona> <nome> <valor>" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando PMOD em execucao" << endl;
 
 }
 
 void Interface::comandoCnovo(istringstream &iss) {
 
+    int idZona;
+    iss >> idZona;
+    char instrumento;
+    iss >> instrumento;
+    string tipoOuComando;
+    iss >> tipoOuComando;
+
+    // TODO verificar argumentos
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: cnovo <IDzona> < s | p | a > < tipo | comando >" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando CNOVO em execucao" << endl;
 }
 
 void Interface::comandoCrem(istringstream &iss) {
 
+    int idZona;
+    iss >> idZona;
+    char instrumento;
+    iss >> instrumento;
+    int idComponente;
+    iss >> idComponente;
+
+    // TODO verificar argumentos
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira os argumentos corretos: crem <IDzona> < s | p | a > < IDcomponente >" << endl;
+        return;
+    }
+
+    // TODO fazer o que o comando pede
+    cout << "Comando CREM em execucao" << endl;
+
 }
 
 void Interface::comandoRnova(istringstream &iss) {
+
+    int idZona, idProcRegra, idSensor;
+    string regra;
+
+    iss >> idZona >> idProcRegra >> regra >> idSensor;
+
+    
 
 }
 
@@ -129,7 +347,7 @@ void Interface::comandoPrem(istringstream &iss) {
 }
 
 void Interface::comandoPlista() {
-
+    cout << "Comando PLISTA em execuçao" << endl;
 }
 
 void Interface::comandoExec(istringstream &iss) {
@@ -137,5 +355,5 @@ void Interface::comandoExec(istringstream &iss) {
 }
 
 void Interface::comandoSair() {
-
+    cout << "Desligando Sistema..." << endl;
 }

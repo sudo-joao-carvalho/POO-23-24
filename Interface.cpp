@@ -24,7 +24,9 @@ void Interface::menu() {
 
         if(!comandos(linha)){
             cout << "[ ERRO ] Comando nao existe." << endl;
-            break;
+            cout << "Insira um comando: " << endl;
+            getline(cin, linha);
+            //break;
         }
 
     }while(linha != "sair");

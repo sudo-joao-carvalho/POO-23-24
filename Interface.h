@@ -7,7 +7,9 @@
 
 #include <string>
 
-class Habitacao;
+#include "Habitacao.h"
+
+//class Habitacao;
 
 using namespace std;
 
@@ -16,9 +18,9 @@ private:
     Habitacao* habitacao;
     //conjunto de habitaçoes --> como nao existe nenhum numero default de habitaçoes a interface nao vai começar com nenhuma habitaçao no construtor
     //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
-
 public:
-    Interface(Habitacao* habitacao);
+    Interface();
+    ~Interface();
 
     void menu();
     bool comandos(const string& comando);
@@ -61,8 +63,6 @@ public:
     //gerais
     void comandoExec(istringstream& iss); //ficheiro
     void comandoSair();
-
-
 
 };
 

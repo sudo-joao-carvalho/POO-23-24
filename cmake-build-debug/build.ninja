@@ -76,8 +76,32 @@ build CMakeFiles/POO_23_24.dir/Propriedades.cpp.o: CXX_COMPILER__POO_23_24_Debug
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
 
-build CMakeFiles/POO_23_24.dir/Aparelhos.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Aparelhos.cpp || cmake_object_order_depends_target_POO_23_24
-  DEP_FILE = CMakeFiles/POO_23_24.dir/Aparelhos.cpp.o.d
+build CMakeFiles/POO_23_24.dir/Aparelho.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Aparelho.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Aparelho.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
+build CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Aquecedor.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
+build CMakeFiles/POO_23_24.dir/Aspersor.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Aspersor.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Aspersor.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
+build CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Refrigerador.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
+build CMakeFiles/POO_23_24.dir/Lampada.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Lampada.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Lampada.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
@@ -90,7 +114,7 @@ build CMakeFiles/POO_23_24.dir/Aparelhos.cpp.o: CXX_COMPILER__POO_23_24_Debug /U
 #############################################
 # Link the executable POO_23_24
 
-build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zonas.cpp.o CMakeFiles/POO_23_24.dir/Propriedades.cpp.o CMakeFiles/POO_23_24.dir/Aparelhos.cpp.o
+build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zonas.cpp.o CMakeFiles/POO_23_24.dir/Propriedades.cpp.o CMakeFiles/POO_23_24.dir/Aparelho.cpp.o CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o CMakeFiles/POO_23_24.dir/Aspersor.cpp.o CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o CMakeFiles/POO_23_24.dir/Lampada.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   POST_BUILD = :

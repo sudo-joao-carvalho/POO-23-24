@@ -9,8 +9,12 @@
 #include <sstream>
 #include <fstream>
 
-Interface::Interface(Habitacao* habitacao): habitacao(habitacao) {
+Interface::Interface() {
     cout << "Sistema de Controlo de Habitaçao Iniciado" << endl;
+}
+
+Interface::~Interface(){
+    delete habitacao;
 }
 
 void Interface::menu() {
@@ -26,7 +30,6 @@ void Interface::menu() {
             cout << "[ ERRO ] Comando nao existe." << endl;
             cout << "Insira um comando: " << endl;
             getline(cin, linha);
-            //break;
         }
 
     }while(linha != "sair");
@@ -194,15 +197,31 @@ void Interface::comandoHnova(istringstream &iss) {
     int nLinhas, nColunas;
     iss >> nLinhas >> nColunas;
 
-    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
-    if(iss.fail()){
-        cout << "[ ERRO ] Insira um numero de linhas e colunas valido: hnova <num_linhas> <num_colunas>" << endl;
+    if(nLinhas < 2 || nLinhas > 4){
+        cout << "[ ERRO ] Numero de linhas tem que estar compreendido entre 2 e 4" << endl;
         return;
     }
 
-    // TODO fazer o que o comando pede
-    cout << "Comando HNOVA em execucao" << endl;
+    if(nColunas < 2 || nColunas > 4){
+        cout << "[ ERRO ] Numero de colunas tem que estar compreendido entre 2 e 4" << endl;
+        return;
+    }
 
+    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
+    if(iss.fail()){
+        cout << "[ ERRO ] Insira argumentos validos: hnova <num_linhas> <num_colunas>" << endl;
+        return;
+    }
+
+    // Cria habitacao
+    if(habitacao != nullptr) // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
+        delete habitacao;
+    else
+        this->habitacao = new Habitacao(nLinhas, nColunas);
+
+    if(this->habitacao != nullptr){
+        cout << "[ HNOVA ] Comando executado com sucesso" << endl;
+    }
 }
 
 void Interface::comandoHrem() {
@@ -216,7 +235,7 @@ void Interface::comandoZnova(istringstream &iss) {
 
     // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
     if(iss.fail()){
-        cout << "[ ERRO ] Insira uma linha e uma coluna correta: znova <linhas> <coluna>" << endl;
+        cout << "[ ERRO ] Insira argumentos validos: znova <linhas> <coluna>" << endl;
         return;
     }
 

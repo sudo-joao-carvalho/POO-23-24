@@ -1,18 +1,15 @@
 #include <iostream>
 
 #include "Interface.h"
-#include "Habitacao.h"
 
 using namespace std;
 
 int main() {
 
-    Habitacao* habitacao = new Habitacao();
-    Interface* interface = new Interface(habitacao);
+    Interface* interface = new Interface();
 
     interface->menu();
 
-    delete habitacao;
     delete interface;
 
     return 0;

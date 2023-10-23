@@ -8,6 +8,7 @@ int Aparelho::idAparelho = 0;
 
 Aparelho::Aparelho() {
     idAparelho++;
+    id = idAparelho;
 }
 
-int Aparelho::getIdAparelho() const {return idAparelho;}
+int Aparelho::getId() const {return id;}

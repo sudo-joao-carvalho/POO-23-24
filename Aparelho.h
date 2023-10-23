@@ -17,13 +17,13 @@ public:
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;
-    virtual bool liga() = 0;
-    virtual bool desliga() = 0;
-    int getIdAparelho() const;
+    virtual bool liga() = 0; // TODO implementar em cada classe derivada
+    virtual bool desliga() = 0; // TODO implementar em cada classe derivada
+    int getId() const;
 
 private:
     static int idAparelho;
-
+    int id;
 
 };
 

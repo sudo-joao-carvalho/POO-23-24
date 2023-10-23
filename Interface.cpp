@@ -216,8 +216,8 @@ void Interface::comandoHnova(istringstream &iss) {
     // Cria habitacao
     if(habitacao != nullptr) // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
         delete habitacao;
-    else
-        this->habitacao = new Habitacao(nLinhas, nColunas);
+
+    this->habitacao = new Habitacao(nLinhas, nColunas);
 
     if(this->habitacao != nullptr){
         cout << "[ HNOVA ] Comando executado com sucesso" << endl;

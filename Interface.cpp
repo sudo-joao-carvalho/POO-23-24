@@ -10,6 +10,7 @@
 #include <fstream>
 
 Interface::Interface() {
+    habitacao = nullptr;
     cout << "Sistema de Controlo de Habitaçao Iniciado" << endl;
 }
 
@@ -217,15 +218,17 @@ void Interface::comandoHnova(istringstream &iss) {
     if(habitacao != nullptr) // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
         delete habitacao;
 
-    this->habitacao = new Habitacao(nLinhas, nColunas);
+    habitacao = new Habitacao(nLinhas, nColunas);
 
-    if(this->habitacao != nullptr){
-        cout << "[ HNOVA ] Comando executado com sucesso" << endl;
+    if(habitacao != nullptr){
+        cout << "[ HNOVA ] Habitacao criada com sucesso" << endl;
     }
 }
 
 void Interface::comandoHrem() {
+
     cout << "Comando HREM em execucao" << endl;
+    delete habitacao; // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
 }
 
 void Interface::comandoZnova(istringstream &iss) {
@@ -235,12 +238,28 @@ void Interface::comandoZnova(istringstream &iss) {
 
     // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
     if(iss.fail()){
-        cout << "[ ERRO ] Insira argumentos validos: znova <linhas> <coluna>" << endl;
+        cout << "[ ERRO ] Insira argumentos validos: znova <linha> <coluna>" << endl;
         return;
     }
 
     // TODO fazer o que o comando pede
     cout << "Comando ZNOVA em execucao" << endl;
+
+    //cria zona e adiciona ao vector de zonas
+    if(linha >= 1 && linha <= habitacao->getMaxLinha()){
+        if(coluna >= 1 && coluna <= habitacao->getMaxColuna()){
+
+            for(Zona* zona: habitacao->getZonas()){
+                if(zona->getPosicao()[0] == coluna && zona->getPosicao()[1] == linha){
+                    cout << "[ ERRO ] Ja existe uma zona nessa posicao" << endl;
+                    return;
+                }
+            }
+
+            habitacao->adicionaZona(new Zona(coluna, linha));
+            cout << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << endl;
+        }
+    }
 }
 
 void Interface::comandoZrem(istringstream &iss) {
@@ -249,7 +268,7 @@ void Interface::comandoZrem(istringstream &iss) {
     iss >> idZona;
 
     // TODO verificar se o id da zona existe
-    if(cin.fail()){
+    if(iss.fail()){
         cout << "[ ERRO ] Insira um id de zona existente: zrem <IDzona>" << endl;
         return;
     }
@@ -261,6 +280,8 @@ void Interface::comandoZrem(istringstream &iss) {
 
 void Interface::comandoZlista() {
     cout << "Comando ZLISTA em execucao" << endl;
+
+    cout << habitacao->listaZonas();
 }
 
 void Interface::comandoZcomp(istringstream &iss) {
@@ -269,7 +290,7 @@ void Interface::comandoZcomp(istringstream &iss) {
     iss >> idZona;
 
     // TODO verificar se o id da zona existe
-    if(cin.fail()){
+    if(iss.fail()){
         cout << "[ ERRO ] Insira um id de zona existente: zcomp <IDzona>" << endl;
         return;
     }
@@ -284,7 +305,7 @@ void Interface::comandoZprops(istringstream &iss) {
     iss >> idZona;
 
     // TODO verificar se o id da zona existe
-    if(cin.fail()){
+    if(iss.fail()){
         cout << "[ ERRO ] Insira um id de zona existente: zprops <IDzona>" << endl;
         return;
     }

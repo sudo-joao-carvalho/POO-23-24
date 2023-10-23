@@ -155,12 +155,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Zonas.cpp",
+			"path" : "Zona.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Zonas.h",
+			"path" : "Zona.h",
 			"sourceGroupIndex" : 1
 		},
 		{

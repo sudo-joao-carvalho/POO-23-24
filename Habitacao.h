@@ -5,7 +5,7 @@
 #ifndef POO_23_24_HABITACAO_H
 #define POO_23_24_HABITACAO_H
 
-#include "Zonas.h"
+#include "Zona.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,14 +15,19 @@ using namespace std;
 class Habitacao {
 private:
     int maxLinha, maxColuna;// é preciso receber estes valores pelo comando
+    vector<Zona*> zonas;
 
 public:
     Habitacao(int nLinhas, int nColunas);
     ~Habitacao();
 
     void criaHabitacao();
-
-
+    void adicionaZona(Zona* novaZona);
+    //getters
+    int getMaxLinha() const;
+    int getMaxColuna() const;
+    vector <Zona*> getZonas();
+    string listaZonas() const;
 };
 
 

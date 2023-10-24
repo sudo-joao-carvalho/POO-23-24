@@ -227,7 +227,7 @@ void Interface::comandoHnova(istringstream &iss) {
 
 void Interface::comandoHrem() {
 
-    cout << "Comando HREM em execucao" << endl;
+    cout << "[ LOG ] Comando HREM em execucao" << endl;
     delete habitacao; // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
 }
 
@@ -243,7 +243,7 @@ void Interface::comandoZnova(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ZNOVA em execucao" << endl;
+    cout << "[ LOG ] Comando ZNOVA em execucao" << endl;
 
     //cria zona e adiciona ao vector de zonas
     if(linha >= 1 && linha <= habitacao->getMaxLinha()){
@@ -259,7 +259,10 @@ void Interface::comandoZnova(istringstream &iss) {
             habitacao->adicionaZona(new Zona(coluna, linha));
             cout << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << endl;
         }
-    }
+    }else
+        cout << "[ ERRO ] Insira uma linha e coluna correta: " << endl
+             << "linha < 1 , " << habitacao->getMaxLinha() << " >" << endl
+             << "coluna < 1 , " << habitacao->getMaxColuna() << " >" << endl;
 }
 
 void Interface::comandoZrem(istringstream &iss) {
@@ -274,13 +277,15 @@ void Interface::comandoZrem(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ZREM em execucao" << endl;
+    cout << "[ LOG ] Comando ZREM em execucao" << endl;
 
 }
 
 void Interface::comandoZlista() {
     cout << "Comando ZLISTA em execucao" << endl;
 
+    if(habitacao->getZonas().empty())
+        cout << "[ LOG ] Nao existe nenhuma zona" << endl;
     cout << habitacao->listaZonas();
 }
 

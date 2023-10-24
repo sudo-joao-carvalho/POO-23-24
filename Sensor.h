@@ -25,9 +25,13 @@ public:
     Tipo getTipo() const override {
         return TIPO_SENSOR;
     }
+
+
+
 private:
     static int idSensor;
     int id;
+
 
 };
 

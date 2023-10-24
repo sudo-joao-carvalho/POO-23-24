@@ -1,0 +1,3 @@
+C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/CMakeFiles/POO_23_24.dir
+C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir

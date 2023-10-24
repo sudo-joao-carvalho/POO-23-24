@@ -6,6 +6,11 @@
 #define POO_23_24_HABITACAO_H
 
 #include "Zona.h"
+#include "Aquecedor.h"
+#include "Aspersor.h"
+#include "Refrigerador.h"
+#include "Lampada.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,6 +29,11 @@ public:
     void criaHabitacao();
     void adicionaZona(Zona* novaZona);
     bool removeZonaById(const int& id);
+
+    void adicionaEquipamentoAZona(const int& idZona, const char& abreviaturaEquipamento, const char& tipoEquipamento);
+
+    //overload para processador que recebe comando
+    void adicionaEquipamentoAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
 
     //getters
     int getMaxLinha() const;

@@ -11,6 +11,7 @@
 #include <vector>
 #include <array>
 
+#include "Equipamento.h"
  using namespace std;
 
 class Zona {
@@ -20,6 +21,8 @@ private:
     int posX;
     int posY;
 
+    vector<Equipamento*> equipamentos;
+
 public:
 
     Zona() = default;
@@ -27,9 +30,12 @@ public:
     ~Zona();
     //Zona& operator=(const Zona* original);
 
+    void adicionaEquipamento(Equipamento* novoEquipamento);
+
     //getters
     int getId() const;
     array<int, 2> getPosicao() const;
+    vector<Equipamento*> getEquipamentos() const;
     string zonaAsString() const;
 };
 

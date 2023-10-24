@@ -5,11 +5,12 @@
 #ifndef POO_23_24_APARELHO_H
 #define POO_23_24_APARELHO_H
 
+#include "Equipamento.h"
 #include <string>
 
 using namespace std;
 
-class Aparelho {
+class Aparelho: public Equipamento {
 
 public:
 
@@ -20,6 +21,10 @@ public:
     virtual bool liga() = 0; // TODO implementar em cada classe derivada
     virtual bool desliga() = 0; // TODO implementar em cada classe derivada
     int getId() const;
+
+    Tipo getTipo() const override {
+        return TIPO_APARELHO;
+    }
 
 private:
     static int idAparelho;

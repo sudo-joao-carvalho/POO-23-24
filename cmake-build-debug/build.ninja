@@ -106,6 +106,18 @@ build CMakeFiles/POO_23_24.dir/Lampada.cpp.o: CXX_COMPILER__POO_23_24_Debug /Use
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
 
+build CMakeFiles/POO_23_24.dir/Equipamento.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Equipamento.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Equipamento.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
+build CMakeFiles/POO_23_24.dir/Sensor.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Sensor.cpp || cmake_object_order_depends_target_POO_23_24
+  DEP_FILE = CMakeFiles/POO_23_24.dir/Sensor.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/POO_23_24.dir
+  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target POO_23_24
@@ -114,7 +126,7 @@ build CMakeFiles/POO_23_24.dir/Lampada.cpp.o: CXX_COMPILER__POO_23_24_Debug /Use
 #############################################
 # Link the executable POO_23_24
 
-build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zona.cpp.o CMakeFiles/POO_23_24.dir/Propriedades.cpp.o CMakeFiles/POO_23_24.dir/Aparelho.cpp.o CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o CMakeFiles/POO_23_24.dir/Aspersor.cpp.o CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o CMakeFiles/POO_23_24.dir/Lampada.cpp.o
+build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zona.cpp.o CMakeFiles/POO_23_24.dir/Propriedades.cpp.o CMakeFiles/POO_23_24.dir/Aparelho.cpp.o CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o CMakeFiles/POO_23_24.dir/Aspersor.cpp.o CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o CMakeFiles/POO_23_24.dir/Lampada.cpp.o CMakeFiles/POO_23_24.dir/Equipamento.cpp.o CMakeFiles/POO_23_24.dir/Sensor.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   POST_BUILD = :

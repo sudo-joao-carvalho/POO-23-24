@@ -302,11 +302,11 @@ void Interface::comandoZrem(istringstream &iss) {
 }
 
 void Interface::comandoZlista() {
-    cout << "Comando ZLISTA em execucao" << endl;
 
     if(habitacao->getZonas().empty())
         cout << "[ LOG ] Nao existe nenhuma zona" << endl;
-    cout << habitacao->listaZonas();
+    cout << "[ ZLISTA ]" << endl << habitacao->listaZonas();
+
 }
 
 void Interface::comandoZcomp(istringstream &iss) {
@@ -365,8 +365,15 @@ void Interface::comandoCnovo(istringstream &iss) {
     iss >> idZona;
     char instrumento;
     iss >> instrumento;
-    string tipoOuComando;
-    iss >> tipoOuComando;
+    string comando;
+    char tipo;
+
+    if(instrumento == 'p'){
+        iss >> comando;
+    }else{
+        iss >> tipo;
+    }
+
 
     // TODO verificar argumentos
     if(iss.fail()){
@@ -375,7 +382,14 @@ void Interface::comandoCnovo(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando CNOVO em execucao" << endl;
+    //cout << "Comando CNOVO em execucao" << endl;
+    cout << "[ CNOVO ] Equipamento adicionado com sucesso" << endl;
+    if(instrumento == 'p'){
+        habitacao->adicionaEquipamentoAZona(idZona, instrumento, comando);
+    }else{
+        habitacao->adicionaEquipamentoAZona(idZona, instrumento, tipo);
+    }
+
 }
 
 void Interface::comandoCrem(istringstream &iss) {

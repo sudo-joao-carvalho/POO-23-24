@@ -15,7 +15,8 @@ Interface::Interface() {
 }
 
 Interface::~Interface(){
-    delete habitacao;
+    if(habitacao != nullptr)
+        delete habitacao;
 }
 
 void Interface::menu() {
@@ -228,7 +229,16 @@ void Interface::comandoHnova(istringstream &iss) {
 void Interface::comandoHrem() {
 
     cout << "[ LOG ] Comando HREM em execucao" << endl;
-    delete habitacao; // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
+
+    // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
+    if (habitacao != nullptr) {
+        delete habitacao;
+        habitacao = nullptr; // Define o ponteiro como nullptr após a desalocação
+        cout << "Habitação removida com sucesso" << endl;
+    } else {
+        cout << "Não há habitação para remover" << endl;
+    }
+
 }
 
 void Interface::comandoZnova(istringstream &iss) {

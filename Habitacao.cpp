@@ -8,11 +8,14 @@ Habitacao::Habitacao(int nLinhas, int nColunas): maxLinha(nLinhas), maxColuna(nC
 }
 
 Habitacao::~Habitacao(){
-    // TODO quando uma habitacao é criada e ja existe uma a habitacao que existia tem que ser destruida tao bem como tudo o que la existia
 
-    for(Zona* aux: zonas){
+    /*for(Zona* aux: zonas){
         delete aux;
-    }
+    }*/
+
+    if(!zonas.empty())
+        for(int i = 0; i < zonas.size(); i++)
+            delete zonas[i];
 
     cout << "Habitacao destruida" << endl;
 }

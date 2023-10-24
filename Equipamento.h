@@ -5,6 +5,10 @@
 #ifndef POO_23_24_EQUIPAMENTO_H
 #define POO_23_24_EQUIPAMENTO_H
 
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 class Equipamento {
 
@@ -19,6 +23,8 @@ public:
     virtual Tipo getTipo() const {
         return TIPO_BASE;
     }
+
+    virtual string getEquipamentoAsString() const = 0;
 
 };
 

@@ -75,3 +75,30 @@ string Zona::zonaAsString() const {
 
     return oss.str();
 }
+
+string Zona::getEquipamentosAsString() const {
+
+    ostringstream oss;
+
+    for(Equipamento* equip: equipamentos){
+        switch (equip->getTipo()) {
+            case Equipamento::TIPO_SENSOR:
+                oss << "Zona: " << id << endl
+                    << "Tipo: s" << equip->getEquipamentoAsString() << endl;
+                break;
+            case Equipamento::TIPO_PROCESSADOR:
+                oss << "Zona: " << id << endl
+                    << "Tipo: p" << equip->getEquipamentoAsString() << endl;
+                break;
+            case Equipamento::TIPO_APARELHO:
+                oss << "Zona: " << id << endl
+                    << "Tipo: a" << equip->getEquipamentoAsString() << endl;
+                break;
+            default:
+                break;
+        }
+    }
+
+    return oss.str();
+
+}

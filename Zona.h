@@ -36,7 +36,9 @@ public:
     int getId() const;
     array<int, 2> getPosicao() const;
     vector<Equipamento*> getEquipamentos() const;
+
     string zonaAsString() const;
+    string getEquipamentosAsString() const;
 };
 
 

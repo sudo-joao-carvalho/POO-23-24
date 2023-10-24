@@ -12,3 +12,14 @@ Aparelho::Aparelho() {
 }
 
 int Aparelho::getId() const {return id;}
+
+string Aparelho::getEquipamentoAsString() const {
+
+    ostringstream oss;
+
+    oss << endl << "ID: " << id << endl
+        << "Nome: " << this->getNome() << endl
+        << "Estado: " << "COMPLETAR" <<endl;
+
+    return oss.str();
+}

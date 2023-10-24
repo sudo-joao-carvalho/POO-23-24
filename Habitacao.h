@@ -40,6 +40,7 @@ public:
     int getMaxColuna() const;
     vector <Zona*> getZonas();
     string listaZonas() const;
+    string listaEquipamentoZona(const int& id) const;
 };
 
 

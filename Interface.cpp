@@ -322,6 +322,7 @@ void Interface::comandoZcomp(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     cout << "Comando ZCOMP em execucao" << endl;
+    cout << habitacao->listaEquipamentoZona(idZona) << endl;
 }
 
 void Interface::comandoZprops(istringstream &iss) {

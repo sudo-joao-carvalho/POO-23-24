@@ -168,6 +168,20 @@ string Habitacao::listaZonas() const {
     return oss.str();
 }
 
+string Habitacao::listaEquipamentoZona(const int& id) const {
+
+    //cout << "a";
+
+    ostringstream oss;
+
+    for(Zona* zona: zonas){
+        if(zona->getId() == id)
+            oss << zona->getEquipamentosAsString();
+    }
+
+    return oss.str();
+}
+
 
 /*
    string auxzo, auxed, auxtr, auxcont;

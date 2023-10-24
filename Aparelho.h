@@ -20,7 +20,9 @@ public:
     virtual char getAbreviacao() const = 0;
     virtual bool liga() = 0; // TODO implementar em cada classe derivada
     virtual bool desliga() = 0; // TODO implementar em cada classe derivada
+
     int getId() const;
+    string getEquipamentoAsString() const override;
 
     Tipo getTipo() const override {
         return TIPO_APARELHO;

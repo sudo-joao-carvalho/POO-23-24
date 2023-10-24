@@ -20,6 +20,8 @@ public:
     virtual char getAbreviacao() const = 0;
     int getId() const;
 
+    string getEquipamentoAsString() const override;
+
     Tipo getTipo() const override {
         return TIPO_SENSOR;
     }

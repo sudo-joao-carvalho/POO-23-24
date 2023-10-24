@@ -17,6 +17,17 @@ Zona::~Zona(){
     cout << "Zona " << id << " destruida" << endl;
 }
 
+/*Zona& Zona::operator=(const Zona* original) {
+
+    //Prevenir auto-atribuicao
+    if(this == original)
+        return *this;
+
+    // TODO quando existirem mais atributos na classe zona, deletar o que estiver em memoria dinamica e atribuir corretamente a nova zona
+
+    return *this;
+}*/
+
 
 //getters
 int Zona::getId() const {return id;}

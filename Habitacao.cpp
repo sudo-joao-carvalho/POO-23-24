@@ -9,10 +9,6 @@ Habitacao::Habitacao(int nLinhas, int nColunas): maxLinha(nLinhas), maxColuna(nC
 
 Habitacao::~Habitacao(){
 
-    /*for(Zona* aux: zonas){
-        delete aux;
-    }*/
-
     if(!zonas.empty())
         for(int i = 0; i < zonas.size(); i++)
             delete zonas[i];
@@ -66,7 +62,17 @@ string Habitacao::listaZonas() const {
     return oss.str();
 }
 
+bool Habitacao::removeZonaById(const int &id) {
 
+    for (auto it = zonas.begin(); it != zonas.end(); ++it) {
+        if ((*it)->getId() == id) {
+            zonas.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+}
 
 
 /*

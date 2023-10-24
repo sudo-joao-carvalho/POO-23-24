@@ -282,12 +282,22 @@ void Interface::comandoZrem(istringstream &iss) {
 
     // TODO verificar se o id da zona existe
     if(iss.fail()){
-        cout << "[ ERRO ] Insira um id de zona existente: zrem <IDzona>" << endl;
+        cout << "[ ERRO ] Insira um id de zona: zrem <IDzona>" << endl;
         return;
     }
 
     // TODO fazer o que o comando pede
     cout << "[ LOG ] Comando ZREM em execucao" << endl;
+
+    if(habitacao->getZonas().empty()) {
+        cout << "[ ERRO ] Nao existem zonas a eliminar" << endl;
+        return;
+    }
+
+    if(habitacao->removeZonaById(idZona))
+        cout << "[ ZREM ] Zona com id " << idZona << " removida com sucesso" << endl;
+    else
+        cout << "[ ERRO ] Não existe nenhuma zona com o id " << idZona << endl;
 
 }
 
@@ -583,6 +593,8 @@ void Interface::comandoExec(istringstream &iss) {
         cout << "[ ERRO ] Ficheiro nao encontrado" << endl;
         return;
     }
+
+    ficheiro.close();
 
 }
 

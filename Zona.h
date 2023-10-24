@@ -22,8 +22,10 @@ private:
 
 public:
 
+    Zona() = default;
     Zona(const int& posX, const int& posY);
     ~Zona();
+    //Zona& operator=(const Zona* original);
 
     //getters
     int getId() const;

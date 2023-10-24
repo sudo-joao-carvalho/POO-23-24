@@ -23,6 +23,8 @@ public:
 
     void criaHabitacao();
     void adicionaZona(Zona* novaZona);
+    bool removeZonaById(const int& id);
+
     //getters
     int getMaxLinha() const;
     int getMaxColuna() const;

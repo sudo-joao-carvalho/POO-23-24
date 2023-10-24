@@ -24,6 +24,9 @@ public:
         return TIPO_BASE;
     }
 
+
+
+
     virtual string getEquipamentoAsString() const = 0;
 
 };

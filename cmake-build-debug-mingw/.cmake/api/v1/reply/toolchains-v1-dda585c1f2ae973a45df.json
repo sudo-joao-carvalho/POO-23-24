@@ -1,0 +1,131 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include",
+						"D:/MINGQ/include",
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include-fixed"
+					],
+					"linkDirectories" : 
+					[
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0",
+						"D:/MINGQ/lib/gcc",
+						"D:/MINGQ/mingw32/lib",
+						"D:/MINGQ/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"mingw32",
+						"gcc",
+						"moldname",
+						"mingwex",
+						"advapi32",
+						"shell32",
+						"user32",
+						"kernel32",
+						"mingw32",
+						"gcc",
+						"moldname",
+						"mingwex"
+					]
+				},
+				"path" : "D:/MINGQ/bin/gcc.exe",
+				"version" : "6.3.0"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include/c++",
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include/c++/backward",
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include",
+						"D:/MINGQ/include",
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0/include-fixed"
+					],
+					"linkDirectories" : 
+					[
+						"D:/MINGQ/lib/gcc/mingw32/6.3.0",
+						"D:/MINGQ/lib/gcc",
+						"D:/MINGQ/mingw32/lib",
+						"D:/MINGQ/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"stdc++",
+						"mingw32",
+						"gcc_s",
+						"gcc",
+						"moldname",
+						"mingwex",
+						"advapi32",
+						"shell32",
+						"user32",
+						"kernel32",
+						"mingw32",
+						"gcc_s",
+						"gcc",
+						"moldname",
+						"mingwex"
+					]
+				},
+				"path" : "D:/MINGQ/bin/c++.exe",
+				"version" : "6.3.0"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"implicit" : {},
+				"path" : "D:/MINGQ/bin/windres.exe"
+			},
+			"language" : "RC",
+			"sourceFileExtensions" : 
+			[
+				"rc",
+				"RC"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

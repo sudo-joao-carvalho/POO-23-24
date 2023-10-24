@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="POO_23_24"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="POO_23_24">
+				<Option output="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/POO_23_24.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 POO_23_24"/>
+					<CompileFile command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="POO_23_24/fast">
+				<Option output="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/POO_23_24.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="d:\mingq\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 POO_23_24/fast"/>
+					<CompileFile command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/MINGQ/bin/mingw32-make.exe -f &quot;C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aparelho.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aparelho.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aquecedor.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aquecedor.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aspersor.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Aspersor.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Equipamento.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Equipamento.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Habitacao.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Habitacao.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Interface.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Interface.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Lampada.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Lampada.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Propriedades.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Propriedades.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Refrigerador.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Refrigerador.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Sensor.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Sensor.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorFumo.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorFumo.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorHumidade.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorHumidade.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorLuz.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorLuz.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorRadiacao.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorRadiacao.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorSom.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorSom.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorTemperatura.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorTemperatura.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorVibracao.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/SensorVibracao.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Zona.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/Zona.h">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/main.cpp">
+			<Option target="POO_23_24"/>
+		</Unit>
+		<Unit filename="C:/Users/henri/Desktop/UNI/Githubrepos/POO-23-24/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

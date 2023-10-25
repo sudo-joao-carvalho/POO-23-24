@@ -20,7 +20,7 @@ public:
     SensorTemperatura();
     string getNome() const override;
     char getAbreviacao() const override;
-    Tipo getTipo() const override;
+    //Tipo getTipo() const override;
 
 };
 

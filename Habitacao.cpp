@@ -9,8 +9,8 @@ Habitacao::Habitacao(int nLinhas, int nColunas): maxLinha(nLinhas), maxColuna(nC
 
 Habitacao::~Habitacao(){
 
-    for(int i = 0; i < zonas.size(); i++)
-        delete zonas[i];
+    for(auto & zona : zonas)
+        delete zona;
 
     cout << "Habitacao destruida" << endl;
 }
@@ -54,85 +54,70 @@ bool Habitacao::removeZonaById(const int &id) {
 }
 
 
-Aparelho* Habitacao::adicionaAparelhoAZona(const int &idZona, const char& tipoEquipamento) {
-
-    Aparelho* adicionado;
+int Habitacao::adicionaAparelhoAZona(const int &idZona, const char& tipoEquipamento) {
 
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
 
             //aparelho
             if(tipoEquipamento == 'a'){ //aquecedor
-                adicionado = zona->adicionaAparelho(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaAparelho(tipoEquipamento)->getId();
             }
 
             if(tipoEquipamento == 's'){ //aspersor
-                adicionado = zona->adicionaAparelho(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaAparelho(tipoEquipamento)->getId();
             }
 
             if(tipoEquipamento == 'r'){ //refrigerador
-                adicionado = zona->adicionaAparelho(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaAparelho(tipoEquipamento)->getId();
             }
 
             if(tipoEquipamento == 'l'){ //lampada
-                adicionado = zona->adicionaAparelho(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaAparelho(tipoEquipamento)->getId();
             }
 
         }
     }
 
-    return nullptr;
+    return -1;
 }
 
-Sensor* Habitacao::adicionaSensorAZona(const int &idZona, const char &tipoEquipamento) {
-
-    Sensor* adicionado;
+int Habitacao::adicionaSensorAZona(const int &idZona, const char &tipoEquipamento) {
 
     for(Zona* zona: zonas) {
         if (zona->getId() == idZona) {
             //sensor
             if (tipoEquipamento == 't') { //temperatura
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'v') { //movimento
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'm') { //luminosidade
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'd') { //radiacao
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'h') { //humidade
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'o') { //som
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
 
             if (tipoEquipamento == 'f') { //fumo
-                adicionado = zona->adicionaSensor(tipoEquipamento);
-                return adicionado;
+                return zona->adicionaSensor(tipoEquipamento)->getId();
             }
         }
     }
 
-    return nullptr;
+    return -1;
 
 }
 
@@ -195,8 +180,6 @@ string Habitacao::listaZonas() const {
 }
 
 string Habitacao::listaEquipamentoZona(const int& id) const {
-
-    cout << "a";
 
     ostringstream oss;
 

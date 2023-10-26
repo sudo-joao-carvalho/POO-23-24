@@ -1,8 +1,15 @@
 hnova 2 2
 znova 1 1
 znova 1 2
-zlista
-cnovo 1 a l
-cnovo 2 a s
+cnovo 1 a a
 zlista
 zcomp 1
+zcomp 2
+hrem
+hnova 2 2
+znova 1 1
+znova 1 2
+cnovo 1 a a
+zlista
+zcomp 1
+zcomp 2

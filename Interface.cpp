@@ -321,7 +321,7 @@ void Interface::comandoZcomp(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    //cout << endl << "[ ZCOMP ]" << endl;
+    cout << endl << "[ ZCOMP ]" << endl;
     //cout << "1";
     cout << habitacao->listaEquipamentoZona(idZona) << endl;
     //cout << "2";
@@ -361,6 +361,15 @@ void Interface::comandoPmod(istringstream &iss) {
     cout << "Comando PMOD em execucao" << endl;
 
 }
+/*
+hnova 2 2
+znova 1 1
+znova 1 2
+zlista
+cnovo 1 a l
+cnovo 2 a s
+zlista
+zcomp 1*/
 
 void Interface::comandoCnovo(istringstream &iss) {
 
@@ -390,13 +399,11 @@ void Interface::comandoCnovo(istringstream &iss) {
     if(equipamento == 'p'){
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
-        Aparelho* aux = habitacao->adicionaAparelhoAZona(idZona, tipo);
-        cout << aux->getNome() << " id: " << aux->getId() << " adicionado com sucesso" << endl;
-        delete aux;
+        int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
+        cout << "Aparelho id: " << id << " adicionado com sucesso" << endl;
     }else if(equipamento == 's'){
-        Sensor* aux = habitacao->adicionaSensorAZona(idZona, tipo);
-        cout << aux->getNome() << " id: " << aux->getId() << " adicionado com sucesso" << endl;
-        delete aux;
+        int id = habitacao->adicionaSensorAZona(idZona, tipo);
+        cout << "Sensor id: " << id << " adicionado com sucesso" << endl;
     }
 
 }

@@ -15,14 +15,15 @@ Zona::Zona(const int& posX, const int& posY) {
 
 Zona::~Zona(){
 
-    /*for(int i = 0; i < aparelhos.size(); i++){
-        delete aparelhos[i];
+    for(auto & aparelho : aparelhos){
+        delete aparelho;
     }
-    for(int i = 0; i < sensores.size(); i++){
-        delete sensores[i];
-    }*/
 
+    for(auto & sensore : sensores){
+        delete sensore;
+    }
 
+    cout << "Zona destruida" << endl;
 }
 
 /*Zona& Zona::operator=(const Zona* original) {

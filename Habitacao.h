@@ -26,8 +26,8 @@ public:
     void adicionaZona(Zona* novaZona);
     bool removeZonaById(const int& id);
 
-    Aparelho* adicionaAparelhoAZona(const int& idZona, const char& tipoEquipamento);
-    Sensor* adicionaSensorAZona(const int& idZona, const char& tipoEquipamento);
+    int adicionaAparelhoAZona(const int& idZona, const char& tipoEquipamento);
+    int adicionaSensorAZona(const int& idZona, const char& tipoEquipamento);
     //overload para processador que recebe comando
     //Processador* adicionaProcessadorAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
 

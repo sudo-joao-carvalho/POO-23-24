@@ -11,6 +11,10 @@ Aparelho::Aparelho(){
     id = idAparelho;
 }
 
+Aparelho::~Aparelho() {
+    idAparelho = 0;
+}
+
 int Aparelho::getId() const {return id;}
 
 string Aparelho::getEquipamentoAsString() const {

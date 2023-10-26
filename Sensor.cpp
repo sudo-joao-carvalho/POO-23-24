@@ -11,6 +11,10 @@ Sensor::Sensor() {
     id = idSensor;
 }
 
+Sensor::~Sensor() {
+    idSensor = 0;
+}
+
 int Sensor::getId() const {return id;}
 
 string Sensor::getEquipamentoAsString() const {
@@ -22,10 +26,6 @@ string Sensor::getEquipamentoAsString() const {
         << "Estado: " << "COMPLETAR" <<endl;
 
     return oss.str();
-}
-
-Sensor::~Sensor() {
-
 }
 
 // TODO Barracas fazer as classes derivadas do sensor -> tipo as classes derivadas do aparelho

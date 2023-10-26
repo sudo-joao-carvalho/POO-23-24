@@ -19,9 +19,11 @@ Zona::~Zona(){
         delete aparelho;
     }
 
-    for(auto & sensore : sensores){
-        delete sensore;
+    for(auto & sensor : sensores){
+        delete sensor;
     }
+
+    idZona = 0;
 
     cout << "Zona destruida" << endl;
 }

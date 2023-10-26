@@ -15,7 +15,7 @@ class Aparelho: public Equipamento {
 public:
 
     Aparelho();
-    virtual ~Aparelho() = default;
+    virtual ~Aparelho();
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;

@@ -24,6 +24,8 @@ void Interface::menu() {
     string linha;
 
     do{
+        cout << "\t\tNumero de instantes: " << "0" << endl;
+
         cout << "[ COMANDOS ]" << endl;
         cout << "Insira um comando: " << endl;
         getline(cin, linha);
@@ -208,7 +210,7 @@ void Interface::comandoHnova(istringstream &iss) {
         cout << "[ ERRO ] Numero de colunas tem que estar compreendido entre 2 e 4" << endl;
         return;
     }
-    
+
     if(iss.fail()){
         cout << "[ ERRO ] Insira argumentos validos: hnova <num_linhas> <num_colunas>" << endl;
         return;

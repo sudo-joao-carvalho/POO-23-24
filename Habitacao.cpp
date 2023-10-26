@@ -43,10 +43,21 @@ void Habitacao::adicionaZona(Zona* novaZona) {
 
 bool Habitacao::removeZonaById(const int &id) {
 
-    for (auto it = zonas.begin(); it != zonas.end(); ++it) {
+    /*for (auto it = zonas.begin(); it != zonas.end(); ++it) {
         if ((*it)->getId() == id) {
+            //delete *it;
             zonas.erase(it);
             return true;
+        }
+    }*/
+
+    for(auto it = zonas.begin(); it != zonas.end();){
+        if ((*it)->getId() == id) {
+            delete *it; // Libere a memória alocada
+            it = zonas.erase(it); // Remova o elemento do vetor
+            return true;
+        } else {
+            ++it; // Avance para o próximo elemento
         }
     }
 
@@ -119,6 +130,19 @@ int Habitacao::adicionaSensorAZona(const int &idZona, const char &tipoEquipament
 
     return -1;
 
+}
+
+bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento){ //Modificar aqui para dar return do objeto eliminado
+
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            if(zona->removeEquipamento(tipoEquipamento, idEquipamento))
+                return true;
+            else return false;
+        }
+    }
+
+    return false;
 }
 
 //TODO fazer quando a classe processador estiver construida

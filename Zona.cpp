@@ -105,6 +105,39 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
     return nullptr;
 }
 
+bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamento) {
+
+    if(tipoEquipamento == 'a'){
+        for(auto it = aparelhos.begin(); it != aparelhos.end();){
+            if ((*it)->getId() == idEquipamento) {
+                delete *it; // Libere a memória alocada
+                it = aparelhos.erase(it); // Remova o elemento do vetor
+                return true;
+            } else {
+                ++it; // Avance para o próximo elemento
+            }
+        }
+    }
+
+    if(tipoEquipamento == 's'){
+        for(auto it = sensores.begin(); it != sensores.end();){
+            if ((*it)->getId() == idEquipamento) {
+                delete *it; // Libere a memória alocada
+                it = sensores.erase(it); // Remova o elemento do vetor
+                return true;
+            } else {
+                ++it; // Avance para o próximo elemento
+            }
+        }
+    }
+
+    if(tipoEquipamento == 'p'){
+
+    }
+
+    return false;
+}
+
 
 //getters
 int Zona::getId() const {return id;}

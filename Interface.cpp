@@ -208,8 +208,7 @@ void Interface::comandoHnova(istringstream &iss) {
         cout << "[ ERRO ] Numero de colunas tem que estar compreendido entre 2 e 4" << endl;
         return;
     }
-
-    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
+    
     if(iss.fail()){
         cout << "[ ERRO ] Insira argumentos validos: hnova <num_linhas> <num_colunas>" << endl;
         return;
@@ -252,9 +251,6 @@ void Interface::comandoZnova(istringstream &iss) {
         return;
     }
 
-    // TODO fazer o que o comando pede
-    cout << "[ LOG ] Comando ZNOVA em execucao" << endl;
-
     //cria zona e adiciona ao vector de zonas
     if(linha >= 1 && linha <= habitacao->getMaxLinha()){
         if(coluna >= 1 && coluna <= habitacao->getMaxColuna()){
@@ -280,14 +276,10 @@ void Interface::comandoZrem(istringstream &iss) {
     int idZona;
     iss >> idZona;
 
-    // TODO verificar se o id da zona existe
     if(iss.fail()){
         cout << "[ ERRO ] Insira um id de zona: zrem <IDzona>" << endl;
         return;
     }
-
-    // TODO fazer o que o comando pede
-    cout << "[ LOG ] Comando ZREM em execucao" << endl;
 
     if(habitacao->getZonas().empty()) {
         cout << "[ ERRO ] Nao existem zonas a eliminar" << endl;
@@ -314,17 +306,13 @@ void Interface::comandoZcomp(istringstream &iss) {
     int idZona;
     iss >> idZona;
 
-    // TODO verificar se o id da zona existe
     if(iss.fail()){
         cout << "[ ERRO ] Insira um id de zona existente: zcomp <IDzona>" << endl;
         return;
     }
 
-    // TODO fazer o que o comando pede
     cout << endl << "[ ZCOMP ]" << endl;
-    //cout << "1";
     cout << habitacao->listaEquipamentoZona(idZona) << endl;
-    //cout << "2";
 }
 
 void Interface::comandoZprops(istringstream &iss) {
@@ -361,15 +349,6 @@ void Interface::comandoPmod(istringstream &iss) {
     cout << "Comando PMOD em execucao" << endl;
 
 }
-/*
-hnova 2 2
-znova 1 1
-znova 1 2
-zlista
-cnovo 1 a l
-cnovo 2 a s
-zlista
-zcomp 1*/
 
 void Interface::comandoCnovo(istringstream &iss) {
 
@@ -386,16 +365,11 @@ void Interface::comandoCnovo(istringstream &iss) {
         iss >> tipo;
     }
 
-
-    // TODO verificar argumentos
     if(iss.fail()){
         cout << "[ ERRO ] Insira os argumentos corretos: cnovo <IDzona> < s | p | a > < tipo | comando >" << endl;
         return;
     }
 
-    // TODO fazer o que o comando pede
-    //cout << "Comando CNOVO em execucao" << endl;
-    //cout << "[ CNOVO ] Equipamento adicionado com sucesso" << endl;
     if(equipamento == 'p'){
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
@@ -412,20 +386,20 @@ void Interface::comandoCrem(istringstream &iss) {
 
     int idZona;
     iss >> idZona;
-    char instrumento;
-    iss >> instrumento;
+    char equipamento;
+    iss >> equipamento;
     int idComponente;
     iss >> idComponente;
 
-    // TODO verificar argumentos
     if(iss.fail()){
         cout << "[ ERRO ] Insira os argumentos corretos: crem <IDzona> < s | p | a > < IDcomponente >" << endl;
         return;
     }
 
-    // TODO fazer o que o comando pede
-    cout << "Comando CREM em execucao" << endl;
-
+    cout << "[ CREM ]" << endl;
+    if(habitacao->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
+        cout << "Equipamento removido com sucesso" << endl;
+    else cout << "[ ERRO ] Equipamento nao foi removido com sucesso" << endl;
 }
 
 void Interface::comandoRnova(istringstream &iss) {

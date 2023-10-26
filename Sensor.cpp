@@ -27,5 +27,3 @@ string Sensor::getEquipamentoAsString() const {
 
     return oss.str();
 }
-
-// TODO Barracas fazer as classes derivadas do sensor -> tipo as classes derivadas do aparelho

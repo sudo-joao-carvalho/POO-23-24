@@ -1,0 +1,9 @@
+hnova 2 2
+znova 1 1
+znova 1 2
+znova 2 1
+znova 2 2
+zrem 3
+zrem 2
+zrem 4
+zrem 1

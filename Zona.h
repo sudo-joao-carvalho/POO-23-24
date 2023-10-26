@@ -55,6 +55,8 @@ public:
     Aparelho* adicionaAparelho(const char& tipoDerivado);
     Sensor* adicionaSensor(const char& tipoDerivado);
 
+    bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
+
     //getters
     int getId() const;
     array<int, 2> getPosicao() const;

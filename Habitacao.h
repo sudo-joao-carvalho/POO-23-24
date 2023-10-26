@@ -31,6 +31,8 @@ public:
     //overload para processador que recebe comando
     //Processador* adicionaProcessadorAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
 
+    bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
+
     //getters
     int getMaxLinha() const;
     int getMaxColuna() const;

@@ -15,18 +15,13 @@ class Sensor: public Equipamento {
 public:
 
     Sensor();
+    virtual ~Sensor();
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;
     int getId() const;
 
     string getEquipamentoAsString() const override;
-
-    Tipo getTipo() const override {
-        return TIPO_SENSOR;
-    }
-
-
 
 private:
     static int idSensor;

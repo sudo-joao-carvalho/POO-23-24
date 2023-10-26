@@ -15,6 +15,7 @@ class Aparelho: public Equipamento {
 public:
 
     Aparelho();
+    virtual ~Aparelho() = default;
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;
@@ -23,10 +24,6 @@ public:
 
     int getId() const;
     string getEquipamentoAsString() const override;
-
-    Tipo getTipo() const override {
-        return TIPO_APARELHO;
-    }
 
 private:
     static int idAparelho;

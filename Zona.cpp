@@ -15,9 +15,13 @@ Zona::Zona(const int& posX, const int& posY) {
 
 Zona::~Zona(){
 
-    for(int i = 0; i < equipamentos.size(); i++){
-        delete equipamentos[i];
+    /*for(int i = 0; i < aparelhos.size(); i++){
+        delete aparelhos[i];
     }
+    for(int i = 0; i < sensores.size(); i++){
+        delete sensores[i];
+    }*/
+
 
 }
 
@@ -32,8 +36,70 @@ Zona::~Zona(){
     return *this;
 }*/
 
-void Zona::adicionaEquipamento(Equipamento* novoEquipamento) {
-    equipamentos.push_back(novoEquipamento);
+Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
+
+    if(tipoDerivado == 'a'){ //aquecedor
+        aparelhos.push_back(new Aquecedor());
+        return aparelhos.back();
+    }
+
+    if(tipoDerivado == 's'){ //aspersor
+        aparelhos.push_back(new Aspersor());
+        return aparelhos.back();
+    }
+
+    if(tipoDerivado == 'r'){ //refrigerador
+        aparelhos.push_back(new Refrigerador());\
+        return aparelhos.back();
+    }
+
+
+    if(tipoDerivado == 'l'){ //lampada
+        aparelhos.push_back(new Lampada());
+        return aparelhos.back();
+    }
+
+    return nullptr;
+}
+
+Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
+
+    if(tipoDerivado == 't'){ //temperatura
+        sensores.push_back(new SensorTemperatura());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'v'){ //movimento
+        sensores.push_back(new SensorMovimento());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'm'){ //luminosidade
+        sensores.push_back(new SensorLuminosidade());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'd'){ //radiacao
+        sensores.push_back(new SensorRadiacao());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'h'){ //humidade
+        sensores.push_back(new SensorHumidade());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'o'){ //som
+        sensores.push_back(new SensorSom());
+        return sensores.back();
+    }
+
+    if(tipoDerivado == 'f'){ //fumo
+        sensores.push_back(new SensorFumo());
+        return sensores.back();
+    }
+
+    return nullptr;
 }
 
 
@@ -42,36 +108,16 @@ int Zona::getId() const {return id;}
 
 array<int, 2> Zona::getPosicao() const {return {this->posX, this->posY};}
 
-vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}
+/*vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}*/
 
 string Zona::zonaAsString() const {
-
-    int numSensores = 0;
-    int numProcessadores = 0;
-    int numAparelhos = 0;
-
-    for(Equipamento* equip: equipamentos){
-        switch (equip->getTipo()) {
-            case Equipamento::TIPO_SENSOR:
-                numSensores++;
-                break;
-            case Equipamento::TIPO_PROCESSADOR:
-                numProcessadores++;
-                break;
-            case Equipamento::TIPO_APARELHO:
-                numAparelhos++;
-                break;
-            default:
-                break;
-        }
-    }
 
     ostringstream oss;
 
     oss << endl << "Zona: " << id << endl
-        << "Numero de Sensores: " << numSensores << endl
-        << "Numero de Processadores: " << numProcessadores << endl
-        << "Numero de Aparelhos: " << numAparelhos << endl << endl;
+        << "Numero de Sensores: " << sensores.size() << endl
+        << "Numero de Processadores: " << "0"/*processadores.size()*/ << endl
+        << "Numero de Aparelhos: " << aparelhos.size() << endl << endl;
 
     return oss.str();
 }
@@ -80,23 +126,22 @@ string Zona::getEquipamentosAsString() const {
 
     ostringstream oss;
 
-    for(Equipamento* equip: equipamentos){
-        switch (equip->getTipo()) {
-            case Equipamento::TIPO_SENSOR:
-                oss << "Zona: " << id << endl
-                    << "Tipo: s" << equip->getEquipamentoAsString() << endl;
-                break;
-            case Equipamento::TIPO_PROCESSADOR:
-                oss << "Zona: " << id << endl
-                    << "Tipo: p" << equip->getEquipamentoAsString() << endl;
-                break;
-            case Equipamento::TIPO_APARELHO:
-                oss << "Zona: " << id << endl
-                    << "Tipo: a" << equip->getEquipamentoAsString() << endl;
-                break;
-            default:
-                break;
-        }
+    for(Aparelho* a: aparelhos){
+        oss << "Zona: " << id << endl
+            << "Tipo: a" << a->getEquipamentoAsString() << endl;
+        break;
+    }
+
+    /*for(Processador* s: processadores){
+        oss << "Zona: " << id << endl
+            << "Tipo: p" << p->getEquipamentoAsString() << endl;
+        break;
+    }*/
+
+    for(Sensor* s: sensores){
+        oss << "Zona: " << id << endl
+            << "Tipo: s" << s->getEquipamentoAsString() << endl;
+        break;
     }
 
     return oss.str();

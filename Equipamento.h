@@ -13,20 +13,6 @@ using namespace std;
 class Equipamento {
 
 public:
-    enum Tipo {
-        TIPO_BASE,
-        TIPO_SENSOR,
-        TIPO_PROCESSADOR,
-        TIPO_APARELHO
-    };
-
-    virtual Tipo getTipo() const {
-        return TIPO_BASE;
-    }
-
-
-
-
     virtual string getEquipamentoAsString() const = 0;
 
 };

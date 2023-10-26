@@ -6,5 +6,3 @@ cnovo 1 a l
 cnovo 2 a s
 zlista
 zcomp 1
-zcomp 2
-zcomp 3

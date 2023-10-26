@@ -321,8 +321,10 @@ void Interface::comandoZcomp(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ZCOMP em execucao" << endl;
+    //cout << endl << "[ ZCOMP ]" << endl;
+    //cout << "1";
     cout << habitacao->listaEquipamentoZona(idZona) << endl;
+    //cout << "2";
 }
 
 void Interface::comandoZprops(istringstream &iss) {
@@ -364,12 +366,12 @@ void Interface::comandoCnovo(istringstream &iss) {
 
     int idZona;
     iss >> idZona;
-    char instrumento;
-    iss >> instrumento;
+    char equipamento;
+    iss >> equipamento;
     string comando;
     char tipo;
 
-    if(instrumento == 'p'){
+    if(equipamento == 'p'){
         iss >> comando;
     }else{
         iss >> tipo;
@@ -384,11 +386,17 @@ void Interface::comandoCnovo(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     //cout << "Comando CNOVO em execucao" << endl;
-    cout << "[ CNOVO ] Equipamento adicionado com sucesso" << endl;
-    if(instrumento == 'p'){
-        habitacao->adicionaEquipamentoAZona(idZona, instrumento, comando);
-    }else{
-        habitacao->adicionaEquipamentoAZona(idZona, instrumento, tipo);
+    //cout << "[ CNOVO ] Equipamento adicionado com sucesso" << endl;
+    if(equipamento == 'p'){
+        //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
+    }else if(equipamento == 'a'){
+        Aparelho* aux = habitacao->adicionaAparelhoAZona(idZona, tipo);
+        cout << aux->getNome() << " id: " << aux->getId() << " adicionado com sucesso" << endl;
+        delete aux;
+    }else if(equipamento == 's'){
+        Sensor* aux = habitacao->adicionaSensorAZona(idZona, tipo);
+        cout << aux->getNome() << " id: " << aux->getId() << " adicionado com sucesso" << endl;
+        delete aux;
     }
 
 }

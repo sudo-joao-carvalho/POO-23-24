@@ -6,7 +6,7 @@
 
 int Aparelho::idAparelho = 0;
 
-Aparelho::Aparelho() {
+Aparelho::Aparelho(){
     idAparelho++;
     id = idAparelho;
 }

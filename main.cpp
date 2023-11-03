@@ -1,12 +1,17 @@
 #include <iostream>
+#include <ncurses.h>
 
 #include "Interface.h"
+#include "Terminal.h"
 
 using namespace std;
+using namespace term;
 
 int main() {
 
-    Interface* interface = new Interface();
+    Terminal &terminal = Terminal::instance();
+
+    Interface* interface = new Interface(terminal);
 
     interface->menu();
 

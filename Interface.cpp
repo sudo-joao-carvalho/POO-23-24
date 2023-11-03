@@ -9,9 +9,18 @@
 #include <sstream>
 #include <fstream>
 
-Interface::Interface() {
+Interface::Interface(Terminal& terminal):terminal(terminal),
+                                         windowLogs(150, 0, 100, 100, true),
+                                         windowHabitacao(0, 2, 150, 150, true),
+                                         windowComandos(0, 45, 100, 100, true){
     habitacao = nullptr;
-    cout << "Sistema de Controlo de Habitaçao Iniciado" << endl;
+
+    for(int i=1; i<20; i++) {
+        this->terminal.init_color(i, i, 0);
+    }
+
+    this->terminal << set_color(10) << "SISTEMA DE CONTROLO DE HABITACAO INICIADO" << move_to(0, 1);
+    windowLogs << "LOGS:" << move_to(0, 1);
 }
 
 Interface::~Interface(){
@@ -24,21 +33,43 @@ void Interface::menu() {
     string linha;
 
     do{
-        cout << "\t\tNumero de instantes: " << "0" << endl;
+        windowComandos << move_to(0, 1) << "\t\tNumero de instantes: " << "0";
 
-        cout << "[ COMANDOS ]" << endl;
-        cout << "Insira um comando: " << endl;
-        getline(cin, linha);
+        windowComandos << move_to(0, 2) << "[ COMANDOS ]";
+        windowComandos << move_to(0, 3) << "Insira um comando: ";
+        //getline(cin, linha);
+        windowComandos >> linha;
+        windowComandos.clear();
 
         if(!comandos(linha)){
-            cout << "[ ERRO ] Comando nao existe." << endl;
+            windowLogs << move_to(0, 2) << "[ ERRO ] Comando nao existe.";
             /*cout << "Insira um comando: " << endl;
             getline(cin, linha);*/
             continue;
         }
 
+        if(habitacao != nullptr){
+            printaHabitacao();
+        }
+
     }while(linha != "sair");
 
+}
+
+void Interface::printaHabitacao() {
+
+    int incrementoX = 0;
+    int incrementoY = 0;
+
+    for(int i = 0; i < habitacao->getMaxLinha(); i++){
+        for(int j = 0; j < habitacao->getMaxColuna(); j++){
+            windowHabitacao << move_to(j + incrementoX, i + incrementoY) << set_color(1) << "******************* ";
+            incrementoX += 20;
+        }
+
+        incrementoY += 10;
+        incrementoX = 0;
+    }
 }
 
 bool Interface::comandos(const string& comando){
@@ -184,36 +215,40 @@ bool Interface::comandos(const string& comando){
 }
 
 void Interface::comandoProx() {
-    cout << "Comando PROX em execucao" << endl;
+    windowLogs.clear();
+    //cout << "Comando PROX em execucao" << endl;
+    windowLogs << "Comando PROX em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoAvanca(istringstream &iss) {
+    windowLogs.clear();
 
     int passos;
     iss >> passos;
 
     // TODO AVANCAR
-    cout << "Avancou " << passos << " passos" << endl;
+    windowLogs << "Avancou " << passos << " passos" << move_to(0, 2);
 
 }
 
 void Interface::comandoHnova(istringstream &iss) {
+    windowLogs.clear();
 
     int nLinhas, nColunas;
     iss >> nLinhas >> nColunas;
 
     if(nLinhas < 2 || nLinhas > 4){
-        cout << "[ ERRO ] Numero de linhas tem que estar compreendido entre 2 e 4" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Numero de linhas tem que estar compreendido entre 2 e 4" << move_to(0, 2);
         return;
     }
 
     if(nColunas < 2 || nColunas > 4){
-        cout << "[ ERRO ] Numero de colunas tem que estar compreendido entre 2 e 4" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Numero de colunas tem que estar compreendido entre 2 e 4" << move_to(0, 2);
         return;
     }
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira argumentos validos: hnova <num_linhas> <num_colunas>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira argumentos validos: hnova <num_linhas> <num_colunas>" << move_to(0, 2);
         return;
     }
 
@@ -224,116 +259,128 @@ void Interface::comandoHnova(istringstream &iss) {
     habitacao = new Habitacao(nLinhas, nColunas);
 
     if(habitacao != nullptr){
-        cout << "[ HNOVA ] Habitacao criada com sucesso" << endl;
+        windowLogs << "[ HNOVA ] Habitacao criada com sucesso" << move_to(0, 2);
     }
 }
 
 void Interface::comandoHrem() {
+    windowLogs.clear();
 
-    cout << "[ LOG ] Comando HREM em execucao" << endl;
+    windowLogs << "[ LOG ] Comando HREM em execucao" << move_to(0, 2);
 
     // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
     if (habitacao != nullptr) {
         delete habitacao;
         habitacao = nullptr; // Define o ponteiro como nullptr após a desalocação
-        cout << "Habitação removida com sucesso" << endl;
+        windowLogs << "Habitação removida com sucesso" << move_to(0, 2);
     } else {
-        cout << "Não há habitação para remover" << endl;
+        windowLogs << "Não há habitação para remover" << move_to(0, 2);
     }
 
 }
 
 void Interface::comandoZnova(istringstream &iss) {
+    windowLogs.clear();
 
     int linha, coluna;
     iss >> linha >> coluna;
 
     // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
     if(iss.fail()){
-        cout << "[ ERRO ] Insira argumentos validos: znova <linha> <coluna>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira argumentos validos: znova <linha> <coluna>" << move_to(0, 2);
         return;
     }
 
     //cria zona e adiciona ao vector de zonas
-    if(linha >= 1 && linha <= habitacao->getMaxLinha()){
-        if(coluna >= 1 && coluna <= habitacao->getMaxColuna()){
+    if(habitacao->getZonas().size() < habitacao->getMaxLinha() * habitacao->getMaxColuna()){
+        if(linha >= 1 && linha <= habitacao->getMaxLinha()){
+            if(coluna >= 1 && coluna <= habitacao->getMaxColuna()){
 
-            for(Zona* zona: habitacao->getZonas()){
-                if(zona->getPosicao()[0] == coluna && zona->getPosicao()[1] == linha){
-                    cout << "[ ERRO ] Ja existe uma zona nessa posicao" << endl;
-                    return;
+                for(Zona* zona: habitacao->getZonas()){
+                    if(zona->getPosicao()[0] == coluna && zona->getPosicao()[1] == linha){
+                        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Ja existe uma zona nessa posicao" << move_to(0, 2);
+                        return;
+                    }
                 }
-            }
 
-            habitacao->adicionaZona(new Zona(coluna, linha));
-            cout << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << endl;
-        }
-    }else
-        cout << "[ ERRO ] Insira uma linha e coluna correta: " << endl
-             << "linha < 1 , " << habitacao->getMaxLinha() << " >" << endl
-             << "coluna < 1 , " << habitacao->getMaxColuna() << " >" << endl;
+                habitacao->adicionaZona(new Zona(coluna, linha));
+                windowLogs << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << move_to(0, 2);
+            }
+        }else
+            windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira uma linha e coluna correta: " << move_to(0, 2)
+                       << "linha < 1 , " << habitacao->getMaxLinha() << " >" << move_to(0, 3)
+                       << "coluna < 1 , " << habitacao->getMaxColuna() << " >" << move_to(0, 4);
+    }else{
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Habitacao cheia de zonas" << move_to(0, 2);
+    }
+
 }
 
 void Interface::comandoZrem(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira um id de zona: zrem <IDzona>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira um id de zona: zrem <IDzona>" << move_to(0, 2);
         return;
     }
 
     if(habitacao->getZonas().empty()) {
-        cout << "[ ERRO ] Nao existem zonas a eliminar" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao existem zonas a eliminar" << move_to(0, 2);
         return;
     }
 
     if(habitacao->removeZonaById(idZona))
-        cout << "[ ZREM ] Zona com id " << idZona << " removida com sucesso" << endl;
+        windowLogs << "[ ZREM ] Zona com id " << idZona << " removida com sucesso" << move_to(0, 2);
     else
-        cout << "[ ERRO ] Não existe nenhuma zona com o id " << idZona << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Não existe nenhuma zona com o id " << idZona << move_to(0, 2);
 
 }
 
 void Interface::comandoZlista() {
+    windowLogs.clear();
 
     if(habitacao->getZonas().empty())
-        cout << "[ LOG ] Nao existe nenhuma zona" << endl;
-    cout << "[ ZLISTA ]" << endl << habitacao->listaZonas();
+        windowLogs << "[ LOG ] Nao existe nenhuma zona" << move_to(0, 2);
+    windowLogs << "[ ZLISTA ]" << move_to(0, 2) << habitacao->listaZonas();
 
 }
 
 void Interface::comandoZcomp(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira um id de zona existente: zcomp <IDzona>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira um id de zona existente: zcomp <IDzona>" << move_to(0, 2);
         return;
     }
 
-    cout << endl << "[ ZCOMP ]" << endl;
-    cout << habitacao->listaEquipamentoZona(idZona) << endl;
+    windowLogs <<  "[ ZCOMP ]" << move_to(0, 2);
+    windowLogs << habitacao->listaEquipamentoZona(idZona) << move_to(0, 2);
 }
 
 void Interface::comandoZprops(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
 
     // TODO verificar se o id da zona existe
     if(iss.fail()){
-        cout << "[ ERRO ] Insira um id de zona existente: zprops <IDzona>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira um id de zona existente: zprops <IDzona>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ZPROPS em execucao" << endl;
+    windowLogs << "Comando ZPROPS em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoPmod(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
@@ -344,16 +391,17 @@ void Interface::comandoPmod(istringstream &iss) {
 
     // TODO verificar argumentos
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: pmod <IDzona> <nome> <valor>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: pmod <IDzona> <nome> <valor>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando PMOD em execucao" << endl;
+    windowLogs << "Comando PMOD em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoCnovo(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
@@ -369,7 +417,7 @@ void Interface::comandoCnovo(istringstream &iss) {
     }
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: cnovo <IDzona> < s | p | a > < tipo | comando >" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: cnovo <IDzona> < s | p | a > < tipo | comando >" << move_to(0, 2);
         return;
     }
 
@@ -377,15 +425,16 @@ void Interface::comandoCnovo(istringstream &iss) {
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
         int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
-        cout << "Aparelho id: " << id << " adicionado com sucesso" << endl;
+        windowLogs << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
     }else if(equipamento == 's'){
         int id = habitacao->adicionaSensorAZona(idZona, tipo);
-        cout << "Sensor id: " << id << " adicionado com sucesso" << endl;
+        windowLogs << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
     }
 
 }
 
 void Interface::comandoCrem(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona;
     iss >> idZona;
@@ -395,17 +444,18 @@ void Interface::comandoCrem(istringstream &iss) {
     iss >> idComponente;
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: crem <IDzona> < s | p | a > < IDcomponente >" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: crem <IDzona> < s | p | a > < IDcomponente >" << move_to(0, 2);
         return;
     }
 
-    cout << "[ CREM ]" << endl;
+    windowLogs << "[ CREM ]" << move_to(0, 2);
     if(habitacao->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
-        cout << "Equipamento removido com sucesso" << endl;
-    else cout << "[ ERRO ] Equipamento nao foi removido com sucesso" << endl;
+        windowLogs << "Equipamento removido com sucesso" << move_to(0, 2);
+    else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Equipamento nao foi removido com sucesso" << move_to(0, 2);
 }
 
 void Interface::comandoRnova(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra, idSensor;
     string regra;
@@ -420,16 +470,17 @@ void Interface::comandoRnova(istringstream &iss) {
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: rnova <IDzona> <ID proc. regras> <regra> <IDsensor> [param1] [param2]" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rnova <IDzona> <ID proc. regras> <regra> <IDsensor> [param1] [param2]" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando RNOVA em execucao" << endl;
+    windowLogs << "Comando RNOVA em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoPmuda(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra;
     string novoComando;
@@ -437,77 +488,82 @@ void Interface::comandoPmuda(istringstream &iss) {
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: pmuda <IDzona> <ID proc. regras> <novo comando>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: pmuda <IDzona> <ID proc. regras> <novo comando>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando PMUDA em execucao" << endl;
+    windowLogs << "Comando PMUDA em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoRlista(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra;
     iss >> idZona >> idProcRegra;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: rlista <IDzona> <ID proc. regras>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rlista <IDzona> <ID proc. regras>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando RLISTA em execucao" << endl;
+    windowLogs << "Comando RLISTA em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoRrem(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra, idRegra;
     iss >> idZona >> idProcRegra >> idRegra;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: rrem <IDzona> <ID proc. regras> <ID regra>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rrem <IDzona> <ID proc. regras> <ID regra>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando RREM em execucao" << endl;
+    windowLogs << "Comando RREM em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoAsoc(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra, idAparelho;
     iss >> idZona >> idProcRegra >> idAparelho;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: asoc <IDzona> <ID proc. regras> <ID aparelho>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: asoc <IDzona> <ID proc. regras> <ID aparelho>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ASOC em execucao" << endl;
+    windowLogs << "Comando ASOC em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoAdes(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra, idAparelho;
     iss >> idZona >> idProcRegra >> idAparelho;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: ades <IDzona> <ID proc. regras> <ID aparelho>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: ades <IDzona> <ID proc. regras> <ID aparelho>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ADES em execucao" << endl;
+    windowLogs << "Comando ADES em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoAcom(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idAparelho;
     string comando;
@@ -515,16 +571,17 @@ void Interface::comandoAcom(istringstream &iss) {
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: acom <IDzona> <ID aparelho> <comando>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: acom <IDzona> <ID aparelho> <comando>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando ACOM em execucao" << endl;
+    windowLogs << "Comando ACOM em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoPsalva(istringstream &iss) {
+    windowLogs.clear();
 
     int idZona, idProcRegra;
     string nome;
@@ -532,56 +589,60 @@ void Interface::comandoPsalva(istringstream &iss) {
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: acom <IDzona> <ID proc. regra> <nome>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: acom <IDzona> <ID proc. regra> <nome>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando PSALVA em execucao" << endl;
+    windowLogs << "Comando PSALVA em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoPrepoe(istringstream &iss) {
+    windowLogs.clear();
 
     string nome;
     iss >> nome;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: prepoe <nome>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: prepoe <nome>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando PREPOE em execucao" << endl;
+    windowLogs << "Comando PREPOE em execucao" << move_to(0, 2);
 }
 
 void Interface::comandoPrem(istringstream &iss) {
+    windowLogs.clear();
 
     string nome;
     iss >> nome;
 
     // TODO verificar se parametros existem
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: prem <nome>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: prem <nome>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    cout << "Comando PREM em execucao" << endl;
+    windowLogs << "Comando PREM em execucao" << move_to(0, 2);
 
 }
 
 void Interface::comandoPlista() {
-    cout << "Comando PLISTA em execuçao" << endl;
+    windowLogs.clear();
+    windowLogs << "Comando PLISTA em execuçao" << move_to(0, 2);
 }
 
 void Interface::comandoExec(istringstream &iss) {
+    windowLogs.clear();
 
     string nomeFicheiro;
     iss >> nomeFicheiro;
 
     if(iss.fail()){
-        cout << "[ ERRO ] Insira os argumentos corretos: exec <nome_ficheiro>" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: exec <nome_ficheiro>" << move_to(0, 2);
         return;
     }
 
@@ -597,7 +658,7 @@ void Interface::comandoExec(istringstream &iss) {
             }
         }
     }else{
-        cout << "[ ERRO ] Ficheiro nao encontrado" << endl;
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Ficheiro nao encontrado" << move_to(0, 2);
         return;
     }
 
@@ -606,5 +667,7 @@ void Interface::comandoExec(istringstream &iss) {
 }
 
 void Interface::comandoSair() {
-    cout << "Desligando Sistema..." << endl;
+    windowLogs.clear();
+    windowLogs << "Desligando Sistema..." << move_to(0, 2);
+    return;
 }

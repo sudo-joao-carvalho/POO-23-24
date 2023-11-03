@@ -8,21 +8,30 @@
 #include <string>
 
 #include "Habitacao.h"
+#include "Terminal.h"
 
 //class Habitacao;
 
 using namespace std;
+using namespace term;
 
 class Interface {
 private:
     Habitacao* habitacao;
+
+    Terminal& terminal;
+    Window windowComandos;
+    Window windowHabitacao;
+    Window windowLogs;
+
     //conjunto de habitaçoes --> como nao existe nenhum numero default de habitaçoes a interface nao vai começar com nenhuma habitaçao no construtor
     //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
 public:
-    Interface();
+    Interface(Terminal& terminal);
     ~Interface();
 
     void menu();
+    void printaHabitacao();
     bool comandos(const string& comando);
 
     //tempo

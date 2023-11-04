@@ -61,14 +61,27 @@ void Interface::printaHabitacao() {
     int incrementoX = 0;
     int incrementoY = 0;
 
-    for(int i = 0; i < habitacao->getMaxLinha(); i++){
+    for(int i = 0; i <= habitacao->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tenho que printar a linha de asteriscos 5 vezes
         for(int j = 0; j < habitacao->getMaxColuna(); j++){
-            windowHabitacao << move_to(j + incrementoX, i + incrementoY) << set_color(1) << "******************* ";
-            incrementoX += 20;
+            windowHabitacao << move_to(j + incrementoX, i + incrementoY) << set_color(1) << "*******************";
+
+            if(i != habitacao->getMaxLinha())
+                for(int k = 1; k <= 5; k++)
+                    windowHabitacao << move_to(j + incrementoX, i + incrementoY + k) << set_color(1) << "*";
+
+            if(j == habitacao->getMaxColuna() - 1){
+                if(i != habitacao->getMaxLinha())
+                    for(int k = 1; k <= 5; k++)
+                        windowHabitacao << move_to(j + incrementoX + 18, i + incrementoY + k) << set_color(1) << "*"; //printar a ultima linha vertical
+            }
+
+            incrementoX += 18;
         }
 
-        incrementoY += 10;
+        incrementoY += 5;
         incrementoX = 0;
+
+
     }
 }
 
@@ -253,8 +266,12 @@ void Interface::comandoHnova(istringstream &iss) {
     }
 
     // Cria habitacao
-    if(habitacao != nullptr) // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
+    if(habitacao != nullptr){ // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
+        windowLogs.clear();
+        windowHabitacao.clear();
         delete habitacao;
+    }
+
 
     habitacao = new Habitacao(nLinhas, nColunas);
 

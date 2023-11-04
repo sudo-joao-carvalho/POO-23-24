@@ -10,7 +10,7 @@
 #include <fstream>
 
 Interface::Interface(Terminal& terminal):terminal(terminal),
-                                         windowLogs(150, 0, 100, 100, true),
+                                         windowLogs(140, 0, 100, 100, true),
                                          windowHabitacao(0, 2, 150, 150, true),
                                          windowComandos(0, 45, 100, 100, true){
     habitacao = nullptr;
@@ -93,7 +93,7 @@ void Interface::printaHabitacao() {
                                 if(habitacao->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
                                     windowHabitacao << habitacao->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
                             }
-
+                    }
             }
 
             if(j == habitacao->getMaxColuna() - 1){
@@ -303,7 +303,7 @@ void Interface::comandoHnova(istringstream &iss) {
     habitacao = new Habitacao(nLinhas, nColunas);
 
     if(habitacao != nullptr){
-        windowLogs << "[ HNOVA ] Habitacao criada com sucesso" << move_to(0, 2);
+        windowLogs << set_color(3) << "[ HNOVA ] " << set_color(0) << "Habitacao criada com sucesso" << move_to(0, 2);
     }
 }
 
@@ -348,7 +348,7 @@ void Interface::comandoZnova(istringstream &iss) {
                 }
 
                 habitacao->adicionaZona(linha, coluna);
-                windowLogs << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << move_to(0, 2);
+                windowLogs << set_color(3) << "[ ZNOVA ] " << set_color(0) << "Zona nova criada com sucesso na posicao " << linha << " " << coluna << move_to(0, 2);
             }
         }else
             windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira uma linha e coluna correta: " << move_to(0, 2)
@@ -377,7 +377,7 @@ void Interface::comandoZrem(istringstream &iss) {
     }
 
     if(habitacao->removeZonaById(idZona))
-        windowLogs << "[ ZREM ] Zona com id " << idZona << " removida com sucesso" << move_to(0, 2);
+        windowLogs << set_color(3) << "[ ZREM ] " << set_color(0) << "Zona com id " << idZona << " removida com sucesso" << move_to(0, 2);
     else
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Não existe nenhuma zona com o id " << idZona << move_to(0, 2);
 
@@ -388,7 +388,7 @@ void Interface::comandoZlista() {
 
     if(habitacao->getZonas().empty())
         windowLogs << "[ LOG ] Nao existe nenhuma zona" << move_to(0, 2);
-    windowLogs << "[ ZLISTA ]" << move_to(0, 2) << habitacao->listaZonas();
+    windowLogs << set_color(3) << "[ HNOVA ] " << set_color(0) << move_to(0, 2) << habitacao->listaZonas();
 
 }
 
@@ -470,15 +470,15 @@ void Interface::comandoCnovo(istringstream &iss) {
     }else if(equipamento == 'a'){
         int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
         if(id != -1)
-            windowLogs << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
+            windowLogs << set_color(3) << "[ CNOVO ] " << set_color(0) << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else
-            windowLogs << "Aparelho nao foi adicionado" << move_to(0, 2);
+            windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Aparelho nao foi adicionado" << move_to(0, 2);
     }else if(equipamento == 's'){
         int id = habitacao->adicionaSensorAZona(idZona, tipo);
         if(id != -1)
-            windowLogs << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
+            windowLogs << set_color(3) << "[ CNOVO ] " << set_color(0) << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else
-            windowLogs << "Sensor nao foi adicionado" << move_to(0, 2);
+            windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Sensor nao foi adicionado" << move_to(0, 2);
     }
 
 }
@@ -498,9 +498,8 @@ void Interface::comandoCrem(istringstream &iss) {
         return;
     }
 
-    windowLogs << "[ CREM ]" << move_to(0, 2);
     if(habitacao->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
-        windowLogs << "Equipamento removido com sucesso" << move_to(0, 2);
+        windowLogs << set_color(3) << "[ CREM ] " << set_color(0) << "Equipamento removido com sucesso" << move_to(0, 2);
     else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Equipamento nao foi removido com sucesso" << move_to(0, 2);
 }
 

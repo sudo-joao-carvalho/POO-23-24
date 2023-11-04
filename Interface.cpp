@@ -33,6 +33,10 @@ void Interface::menu() {
     string linha;
 
     do{
+        if(habitacao != nullptr){
+            printaHabitacao();
+        }
+
         windowComandos << move_to(0, 1) << "\t\tNumero de instantes: " << "0";
 
         windowComandos << move_to(0, 2) << "[ COMANDOS ]";
@@ -48,9 +52,6 @@ void Interface::menu() {
             continue;
         }
 
-        if(habitacao != nullptr){
-            printaHabitacao();
-        }
 
     }while(linha != "sair");
 
@@ -61,13 +62,24 @@ void Interface::printaHabitacao() {
     int incrementoX = 0;
     int incrementoY = 0;
 
-    for(int i = 0; i <= habitacao->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tenho que printar a linha de asteriscos 5 vezes
+    for(int i = 0; i <= habitacao->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tem que printar a linha de asteriscos 5 vezes
         for(int j = 0; j < habitacao->getMaxColuna(); j++){
             windowHabitacao << move_to(j + incrementoX, i + incrementoY) << set_color(1) << "*******************";
 
-            if(i != habitacao->getMaxLinha())
+            if(i != habitacao->getMaxLinha()) {
                 for(int k = 1; k <= 5; k++)
                     windowHabitacao << move_to(j + incrementoX, i + incrementoY + k) << set_color(1) << "*";
+
+                //printa a ZONA <ID>
+                if(!habitacao->getZonas().empty())
+                    if(habitacao->getZonaByPosicao(j, i) != nullptr){
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "Zona " << habitacao->getZonaByPosicao(j, i)->getId();
+                    }else{
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "                       "; // para quando a zona e removida
+                    }
+                else
+                    windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "                       "; // para quando o vetor de zonas esta vazio
+            }
 
             if(j == habitacao->getMaxColuna() - 1){
                 if(i != habitacao->getMaxLinha())
@@ -320,7 +332,7 @@ void Interface::comandoZnova(istringstream &iss) {
                     }
                 }
 
-                habitacao->adicionaZona(new Zona(coluna, linha));
+                habitacao->adicionaZona(linha, coluna);
                 windowLogs << "[ ZNOVA ] Zona nova criada com sucesso na posicao " << linha << " " << coluna << move_to(0, 2);
             }
         }else

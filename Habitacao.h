@@ -22,8 +22,7 @@ public:
     Habitacao(int nLinhas, int nColunas);
     ~Habitacao();
 
-    void criaHabitacao();
-    void adicionaZona(Zona* novaZona);
+    void adicionaZona(const int& linha, const int& coluna);
     bool removeZonaById(const int& id);
 
     int adicionaAparelhoAZona(const int& idZona, const char& tipoEquipamento);
@@ -37,6 +36,7 @@ public:
     int getMaxLinha() const;
     int getMaxColuna() const;
     vector <Zona*> getZonas();
+    Zona* getZonaByPosicao(const int& posX, const int& posY) const;
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
 };

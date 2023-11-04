@@ -23,9 +23,7 @@ Zona::~Zona(){
         delete sensor;
     }
 
-    idZona = 0;
-
-    cout << "Zona destruida" << endl;
+    //idZona = 0;
 }
 
 /*Zona& Zona::operator=(const Zona* original) {

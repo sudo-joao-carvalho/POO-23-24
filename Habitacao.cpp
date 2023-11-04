@@ -15,30 +15,9 @@ Habitacao::~Habitacao(){
     cout << "Habitacao destruida" << endl;
 }
 
-void Habitacao::criaHabitacao(){
-
-    // TODO nesta funcao fazer apenas a printagem do board (se tiver couts deve ser feita na interface)
-
-    /*Zona * obj;
-    vector<string>aux;
-
-    for (int i = 0; i < maxLinha; i++)
-    {
-        vector<Zona*> temp;
-
-        for (int j = 0; j < maxColuna; j++)
-        {
-            obj = new Zona();
-            temp.push_back(obj);
-        }
-        //zonaH.push_back(temp); //zonas obviamente
-    }*/
-
-
-}
-
-void Habitacao::adicionaZona(Zona* novaZona) {
-    zonas.push_back(novaZona);
+void Habitacao::adicionaZona(const int& linha, const int& coluna) {
+    Zona* aux = new Zona(coluna, linha);
+    zonas.push_back(aux);
 }
 
 bool Habitacao::removeZonaById(const int &id) {
@@ -53,11 +32,11 @@ bool Habitacao::removeZonaById(const int &id) {
 
     for(auto it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
-            delete *it; // Libere a memória alocada
-            it = zonas.erase(it); // Remova o elemento do vetor
+            delete *it; // Liberta a memória alocada
+            it = zonas.erase(it); // Remove o elemento do vetor
             return true;
         } else {
-            ++it; // Avance para o próximo elemento
+            ++it; // Avanca para o próximo elemento
         }
     }
 
@@ -192,6 +171,16 @@ vector<Zona*> Habitacao::getZonas(){
     return zonas;
 }
 
+Zona* Habitacao::getZonaByPosicao(const int& posX, const int& posY) const{
+
+    for(Zona* zona: zonas){
+        if(zona->getPosicao()[0] - 1 == posX && zona->getPosicao()[1] - 1 == posY)
+            return zona;
+    }
+
+    return nullptr;
+}
+
 string Habitacao::listaZonas() const {
 
     ostringstream oss;
@@ -214,24 +203,3 @@ string Habitacao::listaEquipamentoZona(const int& id) const {
 
     return oss.str();
 }
-
-
-/*
-   string auxzo, auxed, auxtr, auxcont;
-    Zona *obj;
-    srand(time(NULL));
-    vector<string>aux;
-
-    for (int i = 0; i < MaxLinhaCriar; i++)
-    {
-        vector<Zona> temp;
-        for (int j = 0; j < MaxColunaCriar; j++)
-        {
-            obj = new Zona();
-            temp.push_back(obj);
-        }
-        zonailha.push_back(temp);
-    }
-
-
-*/

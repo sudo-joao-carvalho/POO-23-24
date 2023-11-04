@@ -37,6 +37,7 @@ public:
     int getMaxColuna() const;
     vector <Zona*> getZonas();
     Zona* getZonaByPosicao(const int& posX, const int& posY) const;
+    Aparelho* getAparelho(const int& posX, const int& posY, const int& indiceAparelho) const;
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
 };

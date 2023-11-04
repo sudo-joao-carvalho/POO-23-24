@@ -142,6 +142,24 @@ int Zona::getId() const {return id;}
 
 array<int, 2> Zona::getPosicao() const {return {this->posX, this->posY};}
 
+vector<Aparelho*> Zona::getAparelhos() const {
+    return aparelhos;
+}
+
+vector<Sensor*> Zona::getSensores() const {
+    return sensores;
+}
+
+/*Aparelho* Zona::getAparelhoAtIndex(const int& index) const {
+
+    for(int i = 0; i < aparelhos.size(); i++){
+        if(index == i)
+            return aparelhos[i];
+    }
+
+    return nullptr;
+}*/
+
 /*vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}*/
 
 string Zona::zonaAsString() const {

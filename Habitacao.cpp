@@ -181,6 +181,13 @@ Zona* Habitacao::getZonaByPosicao(const int& posX, const int& posY) const{
     return nullptr;
 }
 
+/*Aparelho* Habitacao::getAparelho(const int& posX, const int& posY, const int &indiceAparelho) const {
+    for(Zona* zona: zonas){
+        if(zona->getPosicao()[0] - 1 == posX && zona->getPosicao()[1] - 1 == posY)
+            return zona->getAparelhoAtIndex(indiceAparelho);
+    }
+}*/
+
 string Habitacao::listaZonas() const {
 
     ostringstream oss;

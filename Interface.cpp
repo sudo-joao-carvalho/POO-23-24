@@ -59,6 +59,8 @@ void Interface::menu() {
 
 void Interface::printaHabitacao() {
 
+    windowHabitacao.clear();
+
     int incrementoX = 0;
     int incrementoY = 0;
 
@@ -74,11 +76,24 @@ void Interface::printaHabitacao() {
                 if(!habitacao->getZonas().empty())
                     if(habitacao->getZonaByPosicao(j, i) != nullptr){
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "Zona " << habitacao->getZonaByPosicao(j, i)->getId();
-                    }else{
-                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "                       "; // para quando a zona e removida
-                    }
-                else
-                    windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "                       "; // para quando o vetor de zonas esta vazio
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 2) << set_color(0) << "A: ";
+
+                        // printar aparelhos
+                        if(!habitacao->getZonaByPosicao(j, i)->getAparelhos().empty())
+                            for(int a = 0; a < habitacao->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
+                                if(habitacao->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
+                                    windowHabitacao << habitacao->getZonaByPosicao(j, i)->getAparelhos()[a]->getAbreviacao();
+                            }
+
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 3) << set_color(0) << "S: ";
+
+                        //printar sensores
+                        if(!habitacao->getZonaByPosicao(j, i)->getSensores().empty())
+                            for(int a = 0; a < habitacao->getZonaByPosicao(j, i)->getSensores().size(); a++){
+                                if(habitacao->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
+                                    windowHabitacao << habitacao->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
+                            }
+
             }
 
             if(j == habitacao->getMaxColuna() - 1){
@@ -454,10 +469,16 @@ void Interface::comandoCnovo(istringstream &iss) {
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
         int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
-        windowLogs << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        if(id != -1)
+            windowLogs << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        else
+            windowLogs << "Aparelho nao foi adicionado" << move_to(0, 2);
     }else if(equipamento == 's'){
         int id = habitacao->adicionaSensorAZona(idZona, tipo);
-        windowLogs << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        if(id != -1)
+            windowLogs << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        else
+            windowLogs << "Sensor nao foi adicionado" << move_to(0, 2);
     }
 
 }

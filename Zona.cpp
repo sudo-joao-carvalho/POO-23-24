@@ -150,16 +150,6 @@ vector<Sensor*> Zona::getSensores() const {
     return sensores;
 }
 
-/*Aparelho* Zona::getAparelhoAtIndex(const int& index) const {
-
-    for(int i = 0; i < aparelhos.size(); i++){
-        if(index == i)
-            return aparelhos[i];
-    }
-
-    return nullptr;
-}*/
-
 /*vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}*/
 
 string Zona::zonaAsString() const {
@@ -167,9 +157,10 @@ string Zona::zonaAsString() const {
     ostringstream oss;
 
     oss << endl << "Zona: " << id << endl
+        << "Numero de Aparelhos: " << aparelhos.size() << endl
         << "Numero de Sensores: " << sensores.size() << endl
-        << "Numero de Processadores: " << "0"/*processadores.size()*/ << endl
-        << "Numero de Aparelhos: " << aparelhos.size() << endl << endl;
+        << "Numero de Processadores: " << "0" << endl << endl;
+
 
     return oss.str();
 }
@@ -178,9 +169,10 @@ string Zona::getEquipamentosAsString() const {
 
     ostringstream oss;
 
+    oss << "Zona: " << id << endl;
+
     for(Aparelho* a: aparelhos){
-        oss << "Zona: " << id << endl
-            << "Tipo: a" << a->getEquipamentoAsString() << endl;
+        oss << "Tipo: a" << a->getEquipamentoAsString() << endl;
         break;
     }
 
@@ -191,8 +183,7 @@ string Zona::getEquipamentosAsString() const {
     }*/
 
     for(Sensor* s: sensores){
-        oss << "Zona: " << id << endl
-            << "Tipo: s" << s->getEquipamentoAsString() << endl;
+        oss << "Tipo: s" << s->getEquipamentoAsString() << endl;
         break;
     }
 

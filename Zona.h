@@ -63,7 +63,6 @@ public:
     vector<Aparelho*> getAparelhos() const;
     vector<Sensor*> getSensores() const;
 
-    //Aparelho* getAparelhoAtIndex(const int& index) const;
     //vector<Equipamento*> getEquipamentos() const;
 
     string zonaAsString() const;

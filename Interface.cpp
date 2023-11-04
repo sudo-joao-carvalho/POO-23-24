@@ -10,8 +10,8 @@
 #include <fstream>
 
 Interface::Interface(Terminal& terminal):terminal(terminal),
-                                         windowLogs(140, 0, 100, 100, true),
-                                         windowHabitacao(0, 2, 150, 150, true),
+                                         windowLogs(135, 0, 100, 100, true),
+                                         windowHabitacao(0, 2, 85, 150, true),
                                          windowComandos(0, 45, 100, 100, true){
     habitacao = nullptr;
 
@@ -403,8 +403,7 @@ void Interface::comandoZcomp(istringstream &iss) {
         return;
     }
 
-    windowLogs << set_color(11) << "[ ZCOMP ]" << set_color(0) << move_to(0, 2);
-    windowLogs << habitacao->listaEquipamentoZona(idZona) << move_to(0, 2);
+    windowLogs << set_color(11) << "[ ZCOMP ]" << set_color(0) << move_to(2, 2) << habitacao->listaEquipamentoZona(idZona) << move_to(0, 2);
 }
 
 void Interface::comandoZprops(istringstream &iss) {

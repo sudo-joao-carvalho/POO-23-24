@@ -23,7 +23,7 @@ string Aparelho::getEquipamentoAsString() const {
 
     oss << endl << "ID: " << id << endl
         << "Nome: " << this->getNome() << endl
-        << "Estado: " << "COMPLETAR" <<endl;
+        << "Estado: " << "COMPLETAR" << endl;
 
     return oss.str();
 }

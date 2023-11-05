@@ -19,8 +19,8 @@ Interface::Interface(Terminal& terminal):terminal(terminal),
         this->terminal.init_color(i, i, 0);
     }
 
-    this->terminal << set_color(10) << "SISTEMA DE CONTROLO DE HABITACAO INICIADO" << move_to(0, 1);
-    windowLogs << "LOGS:" << move_to(0, 1);
+    this->terminal << set_color(10) << "SISTEMA DE CONTROLO DE HABITACAO INICIADO" << move_to(135, 0);
+    this->terminal << "LOGS:";
 }
 
 Interface::~Interface(){
@@ -37,9 +37,9 @@ void Interface::menu() {
             printaHabitacao();
         }
 
-        windowComandos << move_to(0, 1) << "\t\tNumero de instantes: " << "0";
+        windowComandos << move_to(0, 0) << "\t\tNumero de instantes: " << "0";
 
-        windowComandos << move_to(0, 2) << "[ COMANDOS ]";
+        this->terminal << move_to(0, 47) << set_color(11) << "[ COMANDOS ]" << set_color(0);
         windowComandos << move_to(0, 3) << "Insira um comando: ";
         //getline(cin, linha);
         windowComandos >> linha;

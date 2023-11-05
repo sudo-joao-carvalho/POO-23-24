@@ -37,8 +37,6 @@ private:
     int posX;
     int posY;
 
-    //vector<Equipamento*> equipamentos;
-
     //TODO Propriedades
 
     vector<Aparelho*> aparelhos;

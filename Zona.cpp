@@ -50,7 +50,7 @@ Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
     }
 
     if(tipoDerivado == 'r'){ //refrigerador
-        aparelhos.push_back(new Refrigerador());\
+        aparelhos.push_back(new Refrigerador());
         return aparelhos.back();
     }
 
@@ -105,14 +105,16 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
 
 bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamento) {
 
+
+
     if(tipoEquipamento == 'a'){
         for(auto it = aparelhos.begin(); it != aparelhos.end();){
             if ((*it)->getId() == idEquipamento) {
-                delete *it; // Libere a memória alocada
-                it = aparelhos.erase(it); // Remova o elemento do vetor
+                delete *it; // Liberta a memória alocada
+                //it = aparelhos.erase(it); // Remove o elemento do vetor
                 return true;
             } else {
-                ++it; // Avance para o próximo elemento
+                ++it; // Avanca para o próximo elemento
             }
         }
     }
@@ -120,11 +122,11 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
     if(tipoEquipamento == 's'){
         for(auto it = sensores.begin(); it != sensores.end();){
             if ((*it)->getId() == idEquipamento) {
-                delete *it; // Libere a memória alocada
-                it = sensores.erase(it); // Remova o elemento do vetor
+                delete *it; // Liberta a memória alocada
+                //it = sensores.erase(it); // Remove o elemento do vetor
                 return true;
             } else {
-                ++it; // Avance para o próximo elemento
+                ++it; // Avanca para o próximo elemento
             }
         }
     }

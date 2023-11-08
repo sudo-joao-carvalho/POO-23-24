@@ -110,6 +110,8 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
     if(tipoEquipamento == 'a'){
         for(auto it = aparelhos.begin(); it != aparelhos.end();){
             if ((*it)->getId() == idEquipamento) {
+                //da-se delete primeiro do que o erase pq se eu fizesse erase primeiro o erase devolve a posicao do proximo elemento entao se fizessemos delete depois iamos apagar o seguinte
+
                 delete *it; // Liberta a memória alocada
                 //it = aparelhos.erase(it); // Remove o elemento do vetor
                 return true;

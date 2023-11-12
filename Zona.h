@@ -11,6 +11,8 @@
 #include <vector>
 #include <array>
 #include <map>
+#include <cctype>
+#include <algorithm>
 
 #include "Equipamento.h"
 
@@ -63,6 +65,7 @@ public:
     //tratamento de propriedades da zona
     void inserePropriedade(const string& key, const int& value);
     int obtemValorPropriedade(const string& key);
+    bool alteraPropriedade(const string& key, const int& value);
 
     //getters
     int getId() const;

@@ -32,6 +32,9 @@ public:
 
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
 
+    //propriedades
+    bool alteraPropriedade(const int& idZona, const string& key, const int& value);
+
     //getters
     int getMaxLinha() const;
     int getMaxColuna() const;
@@ -41,6 +44,7 @@ public:
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
     string listaPropriedadesZona(const int& id) const;
+
 };
 
 

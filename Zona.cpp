@@ -7,14 +7,13 @@
 int Zona::idZona = 0;
 
 Zona::Zona(const int& posX, const int& posY):id(++idZona), posX(posX), posY(posY) {
-    /*propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Luz"] = 0;
+    propriedades["Radiacao"] = 0;
+    propriedades["Vibracao"] = 0;
     propriedades["Humidade"] = 0;
-    propriedades["Temperatura"] = 0;
-    propriedades["Temperatura"] = 0;
-    propriedades["Temperatura"] = 0;
-    propriedades["Temperatura"] = 0;
-    propriedades["Temperatura"] = 0;
-    propriedades["Temperatura"] = 0;*/
+    propriedades["Fumo"] = 0;
+    propriedades["Som"] = 0;
 }
 
 Zona::~Zona(){
@@ -159,6 +158,26 @@ int Zona::obtemValorPropriedade(const string &key) {
     }
 
     return -274; //valor para quando da erro
+}
+
+bool Zona::alteraPropriedade(const string& key, const int& value){
+
+    string keyLower = key;
+    transform(keyLower.begin(), keyLower.end(), keyLower.begin(), ::tolower);
+
+    for(map<string, int>::iterator it = propriedades.begin(); it != propriedades.end();){
+
+        string currentKeyLower = it->first;
+        transform(currentKeyLower.begin(), currentKeyLower.end(), currentKeyLower.begin(), ::tolower);
+
+        if(currentKeyLower == key){
+            it->second = value;
+            return true;
+        }else
+            ++it;
+    }
+
+    return false;
 }
 
 //getters

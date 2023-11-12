@@ -9,7 +9,7 @@ Habitacao::Habitacao(const int& nLinhas, const int& nColunas):maxLinha(nLinhas),
 
 Habitacao::~Habitacao(){
 
-    ///TODO Zona::idZona = 0; // é necessario dar reset a variavel static da zona pois quando é feito hrem a zona que é criada tem que ser a primeira novamente e naozontinua co o id anterior;
+    //TODO Zona::idZona = 0; // é necessario dar reset a variavel static da zona pois quando é feito hrem a zona que é criada tem que ser a primeira novamente e nao ontinua com o id anterior;
 
     for(auto & zona : zonas)
         delete zona;
@@ -35,7 +35,7 @@ bool Habitacao::removeZonaById(const int &id) {
     for(auto it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
             delete *it; // Liberta a memória alocada
-            it = zonas.erase(it); // Remove o elemento do vetor
+            //it = zonas.erase(it); // Remove o elemento do vetor
             return true;
         } else {
             ++it; // Avanca para o próximo elemento
@@ -93,6 +93,22 @@ bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipam
 
     return false;
 }
+
+//Propriedades
+
+bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value){
+
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            if(zona->alteraPropriedade(key, value))
+                return true;
+            else return false;
+        }
+    }
+
+    return false;
+}
+
 
 //TODO fazer quando a classe processador estiver construida
 //Processador* Habitacao::adicionaProcessadorAZona(const int &idZona, const char &abreviaturaEquipamento, const string& comandoProcessador) {

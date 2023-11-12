@@ -21,6 +21,7 @@ public:
     string getNome() const override;
     char getAbreviacao() const override;
     //Tipo getTipo() const override;
+    int fazLeitura() const override;
 
 };
 

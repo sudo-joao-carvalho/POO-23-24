@@ -18,6 +18,6 @@ add_executable(POO_23_24 main.cpp Interface.cpp Interface.h Terminal.cpp Termina
         SensorFumo.h
         SensorFumo.cpp
         SensorSom.h
-        SensorSom.cpp)
+        SensorSom.cpp Processador.cpp Processador.h Regra.cpp Regra.h EOperador.h)
 
 target_link_libraries(${PROJECT_NAME} -lncurses)

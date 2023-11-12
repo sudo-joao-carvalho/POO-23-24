@@ -14,3 +14,8 @@ SensorSom::SensorSom()  {
 string SensorSom::getNome() const {return nome;}
 
 char SensorSom::getAbreviacao() const {return letra;}
+
+int SensorSom::fazLeitura() const {
+    //TODO funcao para fazer a leitura de uma propriedade
+    return 0; //retorna o valor da leitura
+}

@@ -15,3 +15,8 @@ SensorRadiacao::SensorRadiacao()  {
 string SensorRadiacao::getNome() const {return nome;}
 
 char SensorRadiacao::getAbreviacao() const {return letra;}
+
+int SensorRadiacao::fazLeitura() const {
+    //TODO funcao para fazer a leitura de uma propriedade
+    return 0; //retorna o valor da leitura
+}

@@ -28,6 +28,8 @@
 #include "Refrigerador.h"
 #include "Lampada.h"
 
+#include "Processador.h"
+
  using namespace std;
 
 class Zona {
@@ -40,7 +42,7 @@ private:
     //TODO Propriedades
 
     vector<Aparelho*> aparelhos;
-    //vector<Processador*> processadore; //TODO
+    vector<Processador*> processadoes; //TODO
     vector<Sensor*> sensores;
 
 public:

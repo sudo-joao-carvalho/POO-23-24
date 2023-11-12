@@ -15,3 +15,8 @@ SensorHumidade::SensorHumidade()  {
 string SensorHumidade::getNome() const {return nome;}
 
 char SensorHumidade::getAbreviacao() const {return letra;}
+
+int SensorHumidade::fazLeitura() const {
+    //TODO funcao para fazer a leitura de uma propriedade
+    return 0; //retorna o valor da leitura
+}

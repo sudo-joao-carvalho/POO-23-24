@@ -15,3 +15,8 @@ SensorFumo::SensorFumo() {
 string SensorFumo::getNome() const {return nome;}
 
 char SensorFumo::getAbreviacao() const {return letra;}
+
+int SensorFumo::fazLeitura() const {
+    //TODO funcao para fazer a leitura de uma propriedade
+    return 0; //retorna o valor da leitura
+}

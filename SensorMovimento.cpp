@@ -15,3 +15,8 @@ SensorMovimento::SensorMovimento()  {
 string SensorMovimento::getNome() const {return nome;}
 
 char SensorMovimento::getAbreviacao() const {return letra;}
+
+int SensorMovimento::fazLeitura() const {
+    //TODO funcao para fazer a leitura de uma propriedade
+    return 0; //retorna o valor da leitura
+}

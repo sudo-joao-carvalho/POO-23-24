@@ -21,6 +21,8 @@ public:
     virtual char getAbreviacao() const = 0;
     int getId() const;
 
+    virtual int fazLeitura() const = 0;
+
     string getEquipamentoAsString() const override;
 
 private:

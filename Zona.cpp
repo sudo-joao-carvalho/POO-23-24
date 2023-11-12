@@ -111,36 +111,42 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
                 //da-se delete primeiro do que o erase pq se eu fizesse erase primeiro o erase devolve a posicao do proximo elemento entao se fizessemos delete depois iamos apagar o seguinte e o delete remove o elemento da memoria dinamica entao tem que se dar erase depois para remover a posicao dele no vetor
 
                 delete *it; // Liberta a memória alocada
-                //it = aparelhos.erase(it); // Remove o elemento do vetor
+                it = aparelhos.erase(it); // Remove o elemento do vetor
                 return true;
             } else {
                 ++it; // Avanca para o próximo elemento
             }
         }
+
+        return false;
     }
 
     if(tipoEquipamento == 's'){
         for(auto it = sensores.begin(); it != sensores.end();){
             if ((*it)->getId() == idEquipamento) {
                 delete *it; // Liberta a memória alocada
-                //it = sensores.erase(it); // Remove o elemento do vetor
+                it = sensores.erase(it); // Remove o elemento do vetor
                 return true;
             } else {
                 ++it; // Avanca para o próximo elemento
             }
         }
+
+        return false;
     }
 
     if(tipoEquipamento == 'p'){
         for(auto it = processadores.begin(); it != processadores.end();){
             if ((*it)->getId() == idEquipamento) {
                 delete *it; // Liberta a memória alocada
-                //it = sensores.erase(it); // Remove o elemento do vetor
+                it = processadores.erase(it); // Remove o elemento do vetor
                 return true;
             } else {
                 ++it; // Avanca para o próximo elemento
             }
         }
+
+        return false;
     }
 
     return false;

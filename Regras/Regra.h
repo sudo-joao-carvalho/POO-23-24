@@ -5,8 +5,8 @@
 #ifndef POO_23_24_REGRA_H
 #define POO_23_24_REGRA_H
 
-#include "Sensor.h"
-#include "EOperador.h"
+#include "../Sensores/Sensor.h"
+#include "../EOperador.h"
 
 using namespace std;
 

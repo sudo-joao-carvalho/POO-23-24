@@ -16,22 +16,22 @@
 
 #include "Equipamento.h"
 
-#include "Sensor.h"
-#include "SensorTemperatura.h"
-#include "SensorMovimento.h"
-#include "SensorLuminosidade.h"
-#include "SensorRadiacao.h"
-#include "SensorHumidade.h"
-#include "SensorSom.h"
-#include "SensorFumo.h"
+#include "Sensores/Sensor.h"
+#include "Sensores/SensorTemperatura.h"
+#include "Sensores/SensorMovimento.h"
+#include "Sensores/SensorLuminosidade.h"
+#include "Sensores/SensorRadiacao.h"
+#include "Sensores/SensorHumidade.h"
+#include "Sensores/SensorSom.h"
+#include "Sensores/SensorFumo.h"
 
-#include "Aparelho.h"
-#include "Aquecedor.h"
-#include "Aspersor.h"
-#include "Refrigerador.h"
-#include "Lampada.h"
+#include "Aparelhos/Aparelho.h"
+#include "Aparelhos/Aquecedor.h"
+#include "Aparelhos/Aspersor.h"
+#include "Aparelhos/Refrigerador.h"
+#include "Aparelhos/Lampada.h"
 
-#include "Processador.h"
+#include "Processadores/Processador.h"
 
  using namespace std;
 

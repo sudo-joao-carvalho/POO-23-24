@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#include "Regra.h"
+#include "../Regras/Regra.h"
 
 using namespace std;
 

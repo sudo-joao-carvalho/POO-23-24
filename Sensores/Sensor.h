@@ -5,7 +5,7 @@
 #ifndef POO_23_24_SENSOR_H
 #define POO_23_24_SENSOR_H
 
-#include "Equipamento.h"
+#include "../Equipamento.h"
 #include <string>
 
 using namespace std;

@@ -5,7 +5,7 @@
 #ifndef POO_23_24_APARELHO_H
 #define POO_23_24_APARELHO_H
 
-#include "Equipamento.h"
+#include "../Equipamento.h"
 #include <string>
 
 using namespace std;

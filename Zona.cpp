@@ -6,11 +6,15 @@
 
 int Zona::idZona = 0;
 
-Zona::Zona(const int& posX, const int& posY) {
-    idZona++;
-    id = idZona;
-    this->posX = posX;
-    this->posY = posY;
+Zona::Zona(const int& posX, const int& posY):id(++idZona), posX(posX), posY(posY) {
+    /*propriedades["Temperatura"] = 0;
+    propriedades["Humidade"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;
+    propriedades["Temperatura"] = 0;*/
 }
 
 Zona::~Zona(){
@@ -23,6 +27,9 @@ Zona::~Zona(){
         delete sensor;
     }
 
+    for(auto & processador : processadores){
+        delete processador;
+    }
     //idZona = 0;
 }
 
@@ -39,70 +46,70 @@ Zona::~Zona(){
 
 Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
 
-    if(tipoDerivado == 'a'){ //aquecedor
-        aparelhos.push_back(new Aquecedor());
+    Aparelho *novoAparelho = nullptr;
+
+    if (tipoDerivado == 'a') {
+        novoAparelho = new Aquecedor();
+    } else if (tipoDerivado == 's') {
+        novoAparelho = new Aspersor();
+    } else if (tipoDerivado == 'r') {
+        novoAparelho = new Refrigerador();
+    } else if (tipoDerivado == 'l') {
+        novoAparelho = new Lampada();
+    }
+    // Se tipoDerivado não for 'a', 's', 'r' ou 'l', novoAparelho permanecerá como nullptr
+
+    if (novoAparelho != nullptr) {
+        aparelhos.push_back(novoAparelho);
     }
 
-    if(tipoDerivado == 's'){ //aspersor
-        aparelhos.push_back(new Aspersor());
-    }
-
-    if(tipoDerivado == 'r'){ //refrigerador
-        aparelhos.push_back(new Refrigerador());
-    }
-
-    if(tipoDerivado == 'l'){ //lampada
-        aparelhos.push_back(new Lampada());
-    }else{
-        return nullptr;
-    }
-
-    return aparelhos.back();
+    return novoAparelho;
 }
 
 Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
 
-    if(tipoDerivado == 't'){ //temperatura
-        sensores.push_back(new SensorTemperatura());
+    Sensor *novoSensor = nullptr;
+
+    switch (tipoDerivado) {
+        case 't': // temperatura
+            novoSensor = new SensorTemperatura();
+            break;
+        case 'v': // movimento
+            novoSensor = new SensorMovimento();
+            break;
+        case 'm': // luminosidade
+            novoSensor = new SensorLuminosidade();
+            break;
+        case 'd': // radiacao
+            novoSensor = new SensorRadiacao();
+            break;
+        case 'h': // humidade
+            novoSensor = new SensorHumidade();
+            break;
+        case 'o': // som
+            novoSensor = new SensorSom();
+            break;
+        case 'f': // fumo
+            novoSensor = new SensorFumo();
+            break;
+        default:
+            // Tratar o caso em que tipoEquipamento não é reconhecido
+            return nullptr;
     }
 
-    if(tipoDerivado == 'v'){ //movimento
-        sensores.push_back(new SensorMovimento());
+    if (novoSensor != nullptr) {
+        sensores.push_back(novoSensor);
     }
 
-    if(tipoDerivado == 'm'){ //luminosidade
-        sensores.push_back(new SensorLuminosidade());
-    }
-
-    if(tipoDerivado == 'd'){ //radiacao
-        sensores.push_back(new SensorRadiacao());
-    }
-
-    if(tipoDerivado == 'h'){ //humidade
-        sensores.push_back(new SensorHumidade());
-    }
-
-    if(tipoDerivado == 'o'){ //som
-        sensores.push_back(new SensorSom());
-    }
-
-    if(tipoDerivado == 'f'){ //fumo
-        sensores.push_back(new SensorFumo());
-    }else{
-        return nullptr;
-    }
-
-    return sensores.back();
+    return novoSensor;
 }
 
 bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamento) {
 
-
-
     if(tipoEquipamento == 'a'){
         for(auto it = aparelhos.begin(); it != aparelhos.end();){
             if ((*it)->getId() == idEquipamento) {
-                //da-se delete primeiro do que o erase pq se eu fizesse erase primeiro o erase devolve a posicao do proximo elemento entao se fizessemos delete depois iamos apagar o seguinte
+                //da-se delete primeiro do que o erase pq se eu fizesse erase primeiro o erase devolve a posicao do proximo elemento entao se fizessemos delete depois iamos apagar o seguinte e o delete remove o elemento da memoria dinamica entao tem que se dar erase depois para remover a posicao dele no vetor
 
                 delete *it; // Liberta a memória alocada
                 //it = aparelhos.erase(it); // Remove o elemento do vetor
@@ -126,12 +133,33 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
     }
 
     if(tipoEquipamento == 'p'){
-
+        for(auto it = processadores.begin(); it != processadores.end();){
+            if ((*it)->getId() == idEquipamento) {
+                delete *it; // Liberta a memória alocada
+                //it = sensores.erase(it); // Remove o elemento do vetor
+                return true;
+            } else {
+                ++it; // Avanca para o próximo elemento
+            }
+        }
     }
 
     return false;
 }
 
+//tratamento de propriedades da zona
+void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
+
+int Zona::obtemValorPropriedade(const string &key) {
+    for(map<string, int>::iterator it = propriedades.begin(); it != propriedades.end();){
+        if(it->first == key)
+            return it->second;
+        else
+            ++it;
+    }
+
+    return -274; //valor para quando da erro
+}
 
 //getters
 int Zona::getId() const {return id;}
@@ -185,4 +213,16 @@ string Zona::getEquipamentosAsString() const {
 
     return oss.str();
 
+}
+
+string Zona::listaPropriedades() const {
+    ostringstream oss;
+
+    oss << "Zona: " << id << endl;
+
+    for(map<string, int>::const_iterator it = propriedades.cbegin(); it != propriedades.cend(); ++it){
+        oss << "\tPropriedade: " << it->first << "   Valor: " << it->second << endl;
+    }
+
+    return oss.str();
 }

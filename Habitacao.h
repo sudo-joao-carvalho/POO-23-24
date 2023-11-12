@@ -19,7 +19,7 @@ private:
     vector<Zona*> zonas;
 
 public:
-    Habitacao(int nLinhas, int nColunas);
+    Habitacao(const int& nLinhas, const int& nColunas);
     ~Habitacao();
 
     void adicionaZona(const int& linha, const int& coluna);
@@ -40,6 +40,7 @@ public:
     Aparelho* getAparelho(const int& posX, const int& posY, const int& indiceAparelho) const;
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
+    string listaPropriedadesZona(const int& id) const;
 };
 
 

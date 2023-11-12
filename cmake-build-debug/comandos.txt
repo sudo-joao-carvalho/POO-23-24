@@ -10,8 +10,8 @@ hrem
 hnova 2 2
 znova 1 1
 znova 1 2
-cnovo 1 a a
-cnovo 2 s t
+cnovo 2 a a
+cnovo 3 s t
 zlista
 zcomp 1
 zcomp 2

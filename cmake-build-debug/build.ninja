@@ -76,12 +76,6 @@ build CMakeFiles/POO_23_24.dir/Zona.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/
   OBJECT_DIR = CMakeFiles/POO_23_24.dir
   OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
 
-build CMakeFiles/POO_23_24.dir/Propriedades.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Propriedades.cpp || cmake_object_order_depends_target_POO_23_24
-  DEP_FILE = CMakeFiles/POO_23_24.dir/Propriedades.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
-  OBJECT_DIR = CMakeFiles/POO_23_24.dir
-  OBJECT_FILE_DIR = CMakeFiles/POO_23_24.dir
-
 build CMakeFiles/POO_23_24.dir/Aparelho.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users/joaocarvalho/Desktop/Universidade/3oAno/POO/TP/POO-23-24/Aparelho.cpp || cmake_object_order_depends_target_POO_23_24
   DEP_FILE = CMakeFiles/POO_23_24.dir/Aparelho.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -std=gnu++14
@@ -186,7 +180,7 @@ build CMakeFiles/POO_23_24.dir/Regra.cpp.o: CXX_COMPILER__POO_23_24_Debug /Users
 #############################################
 # Link the executable POO_23_24
 
-build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Terminal.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zona.cpp.o CMakeFiles/POO_23_24.dir/Propriedades.cpp.o CMakeFiles/POO_23_24.dir/Aparelho.cpp.o CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o CMakeFiles/POO_23_24.dir/Aspersor.cpp.o CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o CMakeFiles/POO_23_24.dir/Lampada.cpp.o CMakeFiles/POO_23_24.dir/Equipamento.cpp.o CMakeFiles/POO_23_24.dir/Sensor.cpp.o CMakeFiles/POO_23_24.dir/SensorTemperatura.cpp.o CMakeFiles/POO_23_24.dir/SensorLuminosidade.cpp.o CMakeFiles/POO_23_24.dir/SensorMovimento.cpp.o CMakeFiles/POO_23_24.dir/SensorRadiacao.cpp.o CMakeFiles/POO_23_24.dir/SensorHumidade.cpp.o CMakeFiles/POO_23_24.dir/SensorFumo.cpp.o CMakeFiles/POO_23_24.dir/SensorSom.cpp.o CMakeFiles/POO_23_24.dir/Processador.cpp.o CMakeFiles/POO_23_24.dir/Regra.cpp.o
+build POO_23_24: CXX_EXECUTABLE_LINKER__POO_23_24_Debug CMakeFiles/POO_23_24.dir/main.cpp.o CMakeFiles/POO_23_24.dir/Interface.cpp.o CMakeFiles/POO_23_24.dir/Terminal.cpp.o CMakeFiles/POO_23_24.dir/Habitacao.cpp.o CMakeFiles/POO_23_24.dir/Zona.cpp.o CMakeFiles/POO_23_24.dir/Aparelho.cpp.o CMakeFiles/POO_23_24.dir/Aquecedor.cpp.o CMakeFiles/POO_23_24.dir/Aspersor.cpp.o CMakeFiles/POO_23_24.dir/Refrigerador.cpp.o CMakeFiles/POO_23_24.dir/Lampada.cpp.o CMakeFiles/POO_23_24.dir/Equipamento.cpp.o CMakeFiles/POO_23_24.dir/Sensor.cpp.o CMakeFiles/POO_23_24.dir/SensorTemperatura.cpp.o CMakeFiles/POO_23_24.dir/SensorLuminosidade.cpp.o CMakeFiles/POO_23_24.dir/SensorMovimento.cpp.o CMakeFiles/POO_23_24.dir/SensorRadiacao.cpp.o CMakeFiles/POO_23_24.dir/SensorHumidade.cpp.o CMakeFiles/POO_23_24.dir/SensorFumo.cpp.o CMakeFiles/POO_23_24.dir/SensorSom.cpp.o CMakeFiles/POO_23_24.dir/Processador.cpp.o CMakeFiles/POO_23_24.dir/Regra.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   LINK_LIBRARIES = -lncurses
   OBJECT_DIR = CMakeFiles/POO_23_24.dir

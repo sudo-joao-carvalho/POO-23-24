@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <map>
 
 #include "Equipamento.h"
 
@@ -42,8 +43,10 @@ private:
     //TODO Propriedades
 
     vector<Aparelho*> aparelhos;
-    vector<Processador*> processadoes; //TODO
+    vector<Processador*> processadores; //TODO
     vector<Sensor*> sensores;
+
+    map<string, int> propriedades;
 
 public:
 
@@ -57,6 +60,10 @@ public:
 
     bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
 
+    //tratamento de propriedades da zona
+    void inserePropriedade(const string& key, const int& value);
+    int obtemValorPropriedade(const string& key);
+
     //getters
     int getId() const;
     array<int, 2> getPosicao() const;
@@ -67,6 +74,7 @@ public:
 
     string zonaAsString() const;
     string getEquipamentosAsString() const;
+    string listaPropriedades() const;
 };
 
 

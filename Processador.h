@@ -15,11 +15,16 @@ using namespace std;
 class Processador {
 
 public:
-    Processador() = default;
+    Processador();
 
     bool adicionaRegra(const Regra& regra);
 
+    //getters & setters
+    int getId() const;
+
 private:
+    static int idProcessador;
+    int id;
     string comandoOutput;
     vector<Regra> regras;
 

@@ -310,13 +310,12 @@ void Interface::comandoHnova(istringstream &iss) {
 void Interface::comandoHrem() {
     windowLogs.clear();
 
-    windowLogs << set_color(11) << "[ HREM ] " << set_color(0) << "Comando HREM em execucao" << move_to(0, 2);
-
     // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
     if (habitacao != nullptr) {
         delete habitacao;
         habitacao = nullptr; // Define o ponteiro como nullptr após a desalocação
         windowLogs << set_color(11) << "[ HREM ] " << set_color(0) << "Habitação removida com sucesso" << move_to(0, 2);
+        windowHabitacao.clear();
     } else {
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Não há habitação para remover" << move_to(0, 2);
     }
@@ -419,7 +418,7 @@ void Interface::comandoZprops(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando ZPROPS em execucao" << move_to(0, 2);
+    windowLogs << set_color(11) << "[ ZPROPS ] " << set_color(0) << habitacao->listaPropriedadesZona(idZona) << move_to(0, 2);
 }
 
 void Interface::comandoPmod(istringstream &iss) {
@@ -467,7 +466,9 @@ void Interface::comandoCnovo(istringstream &iss) {
     if(equipamento == 'p'){
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
+        windowLogs << "1";
         int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
+        windowLogs << "2";
         if(id != -1)
             windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else

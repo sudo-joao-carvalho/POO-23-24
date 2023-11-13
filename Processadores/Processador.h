@@ -16,6 +16,7 @@ class Processador {
 
 public:
     Processador();
+    ~Processador();
 
     bool adicionaRegra(const Regra& regra);
 
@@ -26,7 +27,7 @@ private:
     static int idProcessador;
     int id;
     string comandoOutput;
-    vector<Regra> regras;
+    vector<Regra*> regras; //composicao
 
 };
 

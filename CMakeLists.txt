@@ -18,6 +18,6 @@ add_executable(POO_23_24 main.cpp Interface.cpp Interface.h Terminal.cpp Termina
         Sensores/SensorFumo.h
         Sensores/SensorFumo.cpp
         Sensores/SensorSom.h
-        Sensores/SensorSom.cpp Processadores/Processador.cpp Processadores/Processador.h Regras/Regra.cpp Regras/Regra.h EOperador.h)
+        Sensores/SensorSom.cpp Processadores/Processador.cpp Processadores/Processador.h Regras/Regra.cpp Regras/Regra.h EOperador.h Regras/RegraIGUAL_A.cpp Regras/RegraIGUAL_A.h Regras/RegraMENOR_QUE.cpp Regras/RegraMENOR_QUE.h Regras/RegraMAIOR_QUE.cpp Regras/RegraMAIOR_QUE.h Regras/RegraENTRE.cpp Regras/RegraENTRE.h Regras/RegraFORA.cpp Regras/RegraFORA.h)
 
 target_link_libraries(${PROJECT_NAME} -lncurses)

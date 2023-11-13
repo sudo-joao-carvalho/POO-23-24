@@ -3,9 +3,13 @@
 //
 
 #include "Regra.h"
-Regra::Regra(Sensor &sensor, Operador operador, const int &num1, const int &num2):sensor(sensor), operador(operador), num1(num1), num2(num2) {}
 
-bool Regra::avaliaMedicoes() const {
+/*Regra::Regra(Sensor& sensor):sensor(sensor) {
+
+}*/
+//Regra::Regra(Sensor &sensor, Operador operador, const int &num1, const int &num2):sensor(sensor), operador(operador), num1(num1), num2(num2) {}
+
+/*bool Regra::avaliaMedicoes() const {
 
     int leitura = sensor.fazLeitura(); //TODO fazer funcao no sensor que faz leitura de propriedades
 
@@ -23,4 +27,7 @@ bool Regra::avaliaMedicoes() const {
         default:
             return false;
     }
-}
+}*/
+
+Regra::Regra() {}
+Regra::~Regra() {}

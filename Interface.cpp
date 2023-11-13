@@ -297,6 +297,7 @@ void Interface::comandoHnova(istringstream &iss) {
         windowLogs.clear();
         windowHabitacao.clear();
         delete habitacao;
+        habitacao = nullptr;
     }
 
 

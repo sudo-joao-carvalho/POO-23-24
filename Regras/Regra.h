@@ -13,18 +13,16 @@ using namespace std;
 class Regra {
 
 public:
-    //Regra(Sensor& sensor);
-    //Regra(Sensor& sensor, Operador operador, const int& num1, const int& num2 = 0);
+    Regra(Sensor& sensor);
 
-    //bool avaliaMedicoes() const;
-
-    Regra();
     virtual ~Regra();
     virtual bool avaliaMedicoes() const = 0;
 
+    Sensor& obtemSensor() const;
+
 private:
-    /*Sensor& sensor;
-    Operador operador;
+    Sensor& sensor;
+    /*Operador operador;
     int num1;
     int num2;*/
 };

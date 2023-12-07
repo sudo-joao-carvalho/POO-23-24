@@ -5,15 +5,13 @@
 #include "Lampada.h"
 
 Lampada::Lampada() {
-    nome        = "Lampada";
-    abreviacao  = 'l';
     isLigado    = false;
 }
 
 //getters
-string Lampada::getNome() const {return nome;}
+string Lampada::getNome() const {return "Lampada";}
 
-char Lampada::getAbreviacao() const {return abreviacao;}
+char Lampada::getAbreviacao() const {return 'l';}
 
 bool Lampada::liga() {
     isLigado = true;

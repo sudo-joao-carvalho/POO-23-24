@@ -5,15 +5,13 @@
 #include "Aquecedor.h"
 
 Aquecedor::Aquecedor() {
-    nome        = "Aquecedor";
-    abreviacao  = 'a';
     isLigado    = false;
 }
 
 //getters
-string Aquecedor::getNome() const {return nome;}
+string Aquecedor::getNome() const {return "Aquecedor";}
 
-char Aquecedor::getAbreviacao() const {return abreviacao;}
+char Aquecedor::getAbreviacao() const {return 'a';}
 
 bool Aquecedor::liga() {
     isLigado = true;

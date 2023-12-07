@@ -13,8 +13,6 @@ using namespace std;
 class Refrigerador: public Aparelho {
 
 private:
-    string nome;
-    char abreviacao;
     bool isLigado;
 
 public:

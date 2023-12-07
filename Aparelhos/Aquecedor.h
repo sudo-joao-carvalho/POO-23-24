@@ -1,7 +1,6 @@
 //
 // Created by João Carvalho on 22/10/2023.
 //
-
 #ifndef POO_23_24_AQUECEDOR_H
 #define POO_23_24_AQUECEDOR_H
 
@@ -13,11 +12,9 @@ using namespace std;
 class Aquecedor: public Aparelho {
 
 private:
-    string nome;
-    char abreviacao;
     bool isLigado;
-
 public:
+
     Aquecedor();
 
     //getters
@@ -31,6 +28,5 @@ public:
     //setters
     //void setIsLigado(bool isLigado);
 };
-
 
 #endif //POO_23_24_AQUECEDOR_H

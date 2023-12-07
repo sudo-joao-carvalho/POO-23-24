@@ -5,15 +5,13 @@
 #include "Refrigerador.h"
 
 Refrigerador::Refrigerador() {
-    nome        = "Refrigerador";
-    abreviacao  = 'r';
     isLigado    = false;
 }
 
 //getters
-string Refrigerador::getNome() const {return nome;}
+string Refrigerador::getNome() const {return "Refrigerador";}
 
-char Refrigerador::getAbreviacao() const {return abreviacao;}
+char Refrigerador::getAbreviacao() const {return 'r';}
 
 bool Refrigerador::liga() {
     isLigado = true;

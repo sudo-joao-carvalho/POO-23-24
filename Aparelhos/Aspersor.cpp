@@ -5,15 +5,13 @@
 #include "Aspersor.h"
 
 Aspersor::Aspersor() {
-    nome        = "Aspersor";
-    abreviacao  = 's';
     isLigado    = false;
 }
 
 //getters
-string Aspersor::getNome() const {return nome;}
+string Aspersor::getNome() const {return "Aspersor";}
 
-char Aspersor::getAbreviacao() const {return abreviacao;}
+char Aspersor::getAbreviacao() const {return 's';}
 
 bool Aspersor::liga() {
     isLigado = true;

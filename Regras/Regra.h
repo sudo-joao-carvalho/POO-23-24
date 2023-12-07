@@ -6,7 +6,6 @@
 #define POO_23_24_REGRA_H
 
 #include "../Sensores/Sensor.h"
-#include "../EOperador.h"
 
 using namespace std;
 

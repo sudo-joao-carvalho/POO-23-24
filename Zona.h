@@ -14,8 +14,6 @@
 #include <cctype>
 #include <algorithm>
 
-#include "Equipamento.h"
-
 #include "Sensores/Sensor.h"
 #include "Sensores/SensorTemperatura.h"
 #include "Sensores/SensorMovimento.h"

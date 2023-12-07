@@ -221,7 +221,7 @@ string Zona::getEquipamentosAsString() const {
     oss << "Zona: " << id << endl;
 
     for(Aparelho* a: aparelhos){
-        oss << "Tipo: a" << a->getEquipamentoAsString() << endl;
+        oss << "Tipo: a" << a->getAparelhoAsString() << endl;
     }
 
     /*for(Processador* s: processadores){
@@ -231,7 +231,7 @@ string Zona::getEquipamentosAsString() const {
     }*/
 
     for(Sensor* s: sensores){
-        oss << "Tipo: s" << s->getEquipamentoAsString() << endl;
+        oss << "Tipo: s" << s->getSensorAsString() << endl;
     }
 
     return oss.str();

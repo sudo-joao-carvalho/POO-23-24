@@ -4,17 +4,10 @@
 
 #include "SensorHumidade.h"
 
-
-SensorHumidade::SensorHumidade()  {
-    nome  = "Sensor Humidade";
-    letra = 'h';
-
-}
-
 //getters
-string SensorHumidade::getNome() const {return nome;}
+string SensorHumidade::getNome() const {return "Sensor Humidade";}
 
-char SensorHumidade::getAbreviacao() const {return letra;}
+char SensorHumidade::getAbreviacao() const {return 'h';}
 
 int SensorHumidade::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

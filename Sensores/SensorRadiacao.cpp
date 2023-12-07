@@ -4,17 +4,10 @@
 
 #include "SensorRadiacao.h"
 
-
-SensorRadiacao::SensorRadiacao()  {
-    nome  = "Sensor Radiacao";
-    letra = 'd';
-
-}
-
 //getters
-string SensorRadiacao::getNome() const {return nome;}
+string SensorRadiacao::getNome() const {return "Sensor Radiacao";}
 
-char SensorRadiacao::getAbreviacao() const {return letra;}
+char SensorRadiacao::getAbreviacao() const {return 'd';}
 
 int SensorRadiacao::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

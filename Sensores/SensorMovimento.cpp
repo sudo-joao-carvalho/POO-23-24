@@ -4,17 +4,10 @@
 
 #include "SensorMovimento.h"
 
-
-SensorMovimento::SensorMovimento()  {
-    nome  = "Sensor Movimento";
-    letra = 'v';
-
-}
-
 //getters
-string SensorMovimento::getNome() const {return nome;}
+string SensorMovimento::getNome() const {return "Sensor Movimento";}
 
-char SensorMovimento::getAbreviacao() const {return letra;}
+char SensorMovimento::getAbreviacao() const {return 'v';}
 
 int SensorMovimento::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

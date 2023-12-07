@@ -4,16 +4,10 @@
 
 #include "SensorTemperatura.h"
 
-SensorTemperatura::SensorTemperatura()  {
-    nome  = "Sensor Temperatura";
-    letra = 't';
-
-}
-
 //getters
-string SensorTemperatura::getNome() const {return nome;}
+string SensorTemperatura::getNome() const {return "Sensor Temperatura";}
 
-char SensorTemperatura::getAbreviacao() const {return letra;}
+char SensorTemperatura::getAbreviacao() const {return 't';}
 
 int SensorTemperatura::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

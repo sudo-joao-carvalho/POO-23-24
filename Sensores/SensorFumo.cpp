@@ -4,17 +4,10 @@
 
 #include "SensorFumo.h"
 
-
-SensorFumo::SensorFumo() {
-    nome  = "Sensor Fumo";
-    letra = 'f';
-
-}
-
 //getters
-string SensorFumo::getNome() const {return nome;}
+string SensorFumo::getNome() const {return "Sensor Fumo";}
 
-char SensorFumo::getAbreviacao() const {return letra;}
+char SensorFumo::getAbreviacao() const {return 'f';}
 
 int SensorFumo::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

@@ -4,16 +4,10 @@
 
 #include "SensorSom.h"
 
-SensorSom::SensorSom()  {
-    nome  = "Sensor Som";
-    letra = 'o';
-
-}
-
 //getters
-string SensorSom::getNome() const {return nome;}
+string SensorSom::getNome() const {return "Sensor Som";}
 
-char SensorSom::getAbreviacao() const {return letra;}
+char SensorSom::getAbreviacao() const {return 'o';}
 
 int SensorSom::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

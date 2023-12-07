@@ -14,12 +14,9 @@ using namespace std;
 class SensorLuminosidade: public Sensor {
 
 private:
-    string nome;
-    char letra;
-
 
 public:
-    SensorLuminosidade();
+    SensorLuminosidade() = default;
     string getNome() const override;
     char getAbreviacao() const override;
     //Tipo getTipo() const override;

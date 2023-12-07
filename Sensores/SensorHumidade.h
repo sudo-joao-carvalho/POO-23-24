@@ -13,12 +13,10 @@ using namespace std;
 class SensorHumidade: public Sensor {
 
 private:
-    string nome;
-    char letra;
-
 
 public:
-    SensorHumidade();
+    SensorHumidade() = default;
+
     string getNome() const override;
     char getAbreviacao() const override;
     //Tipo getTipo() const override;

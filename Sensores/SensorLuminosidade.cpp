@@ -8,17 +8,10 @@
 
 #include "SensorLuminosidade.h"
 
-
-SensorLuminosidade::SensorLuminosidade()  {
-    nome  = "Sensor Luminosidade";
-    letra = 'm';
-
-}
-
 //getters
-string SensorLuminosidade::getNome() const {return nome;}
+string SensorLuminosidade::getNome() const {return "Sensor Luminosidade";}
 
-char SensorLuminosidade::getAbreviacao() const {return letra;}
+char SensorLuminosidade::getAbreviacao() const {return 'm';}
 
 int SensorLuminosidade::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

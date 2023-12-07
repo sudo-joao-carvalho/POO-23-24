@@ -18,7 +18,7 @@ public:
 
     //getters & setters
     Habitacao* getHabitacao() const;
-
+    int getTempoDaHabitacao() const;
 private:
     Habitacao* habitacao;
 };

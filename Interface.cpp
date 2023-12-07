@@ -33,9 +33,8 @@ void Interface::menu() {
     do{
         if(gestorHabitacao->getHabitacao() != nullptr){
             printaHabitacao();
+            windowHabitacao << move_to(0, 0) << set_color(0) << "\t\tNumero de instantes: " << gestorHabitacao->getHabitacao()->getTempo();
         }
-
-        windowComandos << move_to(0, 0) << "\t\tNumero de instantes: " << "0";
 
         this->terminal << move_to(0, 47) << set_color(11) << "[ COMANDOS ]" << set_color(0);
         windowComandos << move_to(0, 3) << "Insira um comando: ";
@@ -60,7 +59,7 @@ void Interface::printaHabitacao() {
     windowHabitacao.clear();
 
     int incrementoX = 0;
-    int incrementoY = 0;
+    int incrementoY = 1;
 
     for(int i = 0; i <= gestorHabitacao->getHabitacao()->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tem que printar a linha de asteriscos 5 vezes
         for(int j = 0; j < gestorHabitacao->getHabitacao()->getMaxColuna(); j++){
@@ -254,8 +253,10 @@ bool Interface::comandos(const string& comando){
 
 void Interface::comandoProx() {
     windowLogs.clear();
-    //cout << "Comando PROX em execucao" << endl;
-    windowLogs << "Comando PROX em execucao" << move_to(0, 2);
+
+    //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
+    gestorHabitacao->getHabitacao()->avancaTempo();
+    windowLogs << set_color(11) << "[ PROX ] " << set_color(0) << "Avancou um instante" << move_to(0, 2);
 }
 
 void Interface::comandoAvanca(istringstream &iss) {
@@ -264,8 +265,9 @@ void Interface::comandoAvanca(istringstream &iss) {
     int passos;
     iss >> passos;
 
-    // TODO AVANCAR
-    windowLogs << "Avancou " << passos << " passos" << move_to(0, 2);
+    //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
+    gestorHabitacao->getHabitacao()->avancaTempoNVezes(passos);
+    windowLogs << set_color(11) << "[ AVANCA ] " << set_color(0) << "Avancou " << passos << " instantes" << move_to(0, 2);
 
 }
 

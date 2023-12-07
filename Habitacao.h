@@ -15,12 +15,16 @@ using namespace std;
 
 class Habitacao {
 private:
+    int tempo;
     int maxLinha, maxColuna;// é preciso receber estes valores pelo comando
     vector<Zona*> zonas;
 
 public:
     Habitacao(const int& nLinhas, const int& nColunas);
     ~Habitacao();
+
+    void avancaTempo();
+    void avancaTempoNVezes(const int& n);
 
     void adicionaZona(const int& linha, const int& coluna);
     bool removeZonaById(const int& id);
@@ -36,6 +40,7 @@ public:
     bool alteraPropriedade(const int& idZona, const string& key, const int& value);
 
     //getters
+    int getTempo() const;
     int getMaxLinha() const;
     int getMaxColuna() const;
     vector <Zona*> getZonas();

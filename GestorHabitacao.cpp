@@ -17,3 +17,5 @@ void GestorHabitacao::destroiHabitacao(){
     delete habitacao;
     this->habitacao = nullptr;
 }
+
+int GestorHabitacao::getTempoDaHabitacao() const { return habitacao->getTempo(); }

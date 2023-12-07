@@ -4,7 +4,7 @@
 
 #include "Habitacao.h"
 
-Habitacao::Habitacao(const int& nLinhas, const int& nColunas):maxLinha(nLinhas), maxColuna(nColunas) {
+Habitacao::Habitacao(const int& nLinhas, const int& nColunas):maxLinha(nLinhas), maxColuna(nColunas), tempo(1) {
 }
 
 Habitacao::~Habitacao(){
@@ -15,6 +15,10 @@ Habitacao::~Habitacao(){
         delete zona;
 
 }
+
+void Habitacao::avancaTempo() { tempo++; }
+
+void Habitacao::avancaTempoNVezes(const int &n) { tempo += n; }
 
 void Habitacao::adicionaZona(const int& linha, const int& coluna) {
     Zona* aux = new Zona(coluna, linha);
@@ -140,9 +144,11 @@ bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const in
 //}
 
 //getters
-int Habitacao::getMaxLinha() const {return maxLinha;}
+int Habitacao::getTempo() const { return tempo; }
 
-int Habitacao::getMaxColuna() const {return maxColuna;}
+int Habitacao::getMaxLinha() const { return maxLinha; }
+
+int Habitacao::getMaxColuna() const { return maxColuna; }
 
 vector<Zona*> Habitacao::getZonas(){
     return zonas;

@@ -3,6 +3,7 @@
 //
 
 #include "Sensor.h"
+#include <sstream>
 
 int Sensor::idSensor = 0;
 
@@ -17,13 +18,11 @@ Sensor::~Sensor() {
 
 int Sensor::getId() const {return id;}
 
-string Sensor::getEquipamentoAsString() const {
+string Sensor::getSensorAsString() const {
 
     ostringstream oss;
 
-    oss << endl << "ID: " << id << endl
-        << "Nome: " << this->getNome() << endl
-        << "Estado: " << "COMPLETAR" <<endl;
+    oss << endl << "ID: " << id << endl;
 
     return oss.str();
 }

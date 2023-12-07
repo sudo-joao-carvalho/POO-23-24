@@ -5,12 +5,11 @@
 #ifndef POO_23_24_SENSOR_H
 #define POO_23_24_SENSOR_H
 
-#include "../Equipamento.h"
 #include <string>
 
 using namespace std;
 
-class Sensor: public Equipamento {
+class Sensor {
 
 public:
 
@@ -23,7 +22,7 @@ public:
 
     virtual int fazLeitura() const = 0;
 
-    string getEquipamentoAsString() const override;
+    virtual string getSensorAsString() const;
 
 private:
     static int idSensor;

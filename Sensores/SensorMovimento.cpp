@@ -3,11 +3,23 @@
 //
 
 #include "SensorMovimento.h"
+#include <sstream>
 
 //getters
 string SensorMovimento::getNome() const {return "Sensor Movimento";}
 
 char SensorMovimento::getAbreviacao() const {return 'v';}
+
+string SensorMovimento::getSensorAsString() const {
+
+    ostringstream oss;
+
+    oss << Sensor::getSensorAsString() << endl
+        << "Nome: " << getNome() << endl
+        << "Abreviatura: " << getAbreviacao() << endl;
+
+    return oss.str();
+}
 
 int SensorMovimento::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

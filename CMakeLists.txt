@@ -3,7 +3,7 @@ project(POO_23_24)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(POO_23_24 main.cpp Interface.cpp Interface.h Terminal.cpp Terminal.h Habitacao.cpp Habitacao.h Zona.cpp Zona.h Aparelhos/Aparelho.cpp Aparelhos/Aparelho.h Aparelhos/Aquecedor.cpp Aparelhos/Aspersor.cpp Aparelhos/Aspersor.h Aparelhos/Refrigerador.cpp Aparelhos/Refrigerador.h Aparelhos/Lampada.cpp Aparelhos/Lampada.h Equipamento.cpp Equipamento.h Sensores/Sensor.cpp Sensores/Sensor.h
+add_executable(POO_23_24 main.cpp Interface.cpp Interface.h Terminal.cpp Terminal.h Habitacao.cpp Habitacao.h Zona.cpp Zona.h Aparelhos/Aparelho.cpp Aparelhos/Aparelho.h Aparelhos/Aquecedor.cpp Aparelhos/Aspersor.cpp Aparelhos/Aspersor.h Aparelhos/Refrigerador.cpp Aparelhos/Refrigerador.h Aparelhos/Lampada.cpp Aparelhos/Lampada.h Sensores/Sensor.cpp Sensores/Sensor.h
         Sensores/SensorTemperatura.h
         Sensores/SensorTemperatura.h
         Sensores/SensorTemperatura.cpp

@@ -3,6 +3,7 @@
 //
 
 #include "Aparelho.h"
+#include <sstream>
 
 int Aparelho::idAparelho = 0;
 
@@ -17,13 +18,11 @@ Aparelho::~Aparelho() {
 
 int Aparelho::getId() const {return id;}
 
-string Aparelho::getEquipamentoAsString() const {
+string Aparelho::getAparelhoAsString() const {
 
     ostringstream oss;
 
-    oss << endl << "ID: " << id << endl
-        << "Nome: " << this->getNome() << endl
-        << "Estado: " << "COMPLETAR" << endl;
+    oss << endl << "ID: " << id << endl;
 
     return oss.str();
 }

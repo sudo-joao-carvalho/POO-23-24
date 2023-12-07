@@ -3,6 +3,7 @@
 //
 
 #include "Aspersor.h"
+#include <sstream>
 
 Aspersor::Aspersor() {
     isLigado    = false;
@@ -12,6 +13,19 @@ Aspersor::Aspersor() {
 string Aspersor::getNome() const {return "Aspersor";}
 
 char Aspersor::getAbreviacao() const {return 's';}
+
+string Aspersor::getAparelhoAsString() const {
+
+    ostringstream oss;
+
+    oss << Aparelho::getAparelhoAsString() << endl
+        << "Nome: " << getNome() << endl
+        << "Abreviatura: " << getAbreviacao() << endl
+        << "Estado: " << isLigado << endl;
+
+    return oss.str();
+
+}
 
 bool Aspersor::liga() {
     isLigado = true;

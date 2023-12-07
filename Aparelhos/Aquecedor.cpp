@@ -3,6 +3,7 @@
 //
 
 #include "Aquecedor.h"
+#include <sstream>
 
 Aquecedor::Aquecedor() {
     isLigado    = false;
@@ -12,6 +13,19 @@ Aquecedor::Aquecedor() {
 string Aquecedor::getNome() const {return "Aquecedor";}
 
 char Aquecedor::getAbreviacao() const {return 'a';}
+
+string Aquecedor::getAparelhoAsString() const {
+
+    ostringstream oss;
+
+    oss << Aparelho::getAparelhoAsString() << endl
+        << "Nome: " << getNome() << endl
+        << "Abreviatura: " << getAbreviacao() << endl
+        << "Estado: " << isLigado << endl;
+
+    return oss.str();
+
+}
 
 bool Aquecedor::liga() {
     isLigado = true;

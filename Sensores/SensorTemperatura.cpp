@@ -3,11 +3,23 @@
 //
 
 #include "SensorTemperatura.h"
+#include <sstream>
 
 //getters
 string SensorTemperatura::getNome() const {return "Sensor Temperatura";}
 
 char SensorTemperatura::getAbreviacao() const {return 't';}
+
+string SensorTemperatura::getSensorAsString() const {
+
+    ostringstream oss;
+
+    oss << Sensor::getSensorAsString() << endl
+        << "Nome: " << getNome() << endl
+        << "Abreviatura: " << getAbreviacao() << endl;
+
+    return oss.str();
+}
 
 int SensorTemperatura::fazLeitura() const {
     //TODO funcao para fazer a leitura de uma propriedade

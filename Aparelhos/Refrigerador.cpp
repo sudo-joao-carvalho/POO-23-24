@@ -3,6 +3,7 @@
 //
 
 #include "Refrigerador.h"
+#include <sstream>
 
 Refrigerador::Refrigerador() {
     isLigado    = false;
@@ -12,6 +13,18 @@ Refrigerador::Refrigerador() {
 string Refrigerador::getNome() const {return "Refrigerador";}
 
 char Refrigerador::getAbreviacao() const {return 'r';}
+
+string Refrigerador::getAparelhoAsString() const {
+
+    ostringstream oss;
+
+    oss << Aparelho::getAparelhoAsString() << endl
+        << "Nome: " << getNome() << endl
+        << "Abreviatura: " << getAbreviacao() << endl
+        << "Estado: " << isLigado << endl;
+
+    return oss.str();
+}
 
 bool Refrigerador::liga() {
     isLigado = true;

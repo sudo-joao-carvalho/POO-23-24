@@ -20,6 +20,7 @@ public:
     //getters
     string getNome() const override;
     char getAbreviacao() const override;
+    string getAparelhoAsString() const override;
 
     //açoes
     bool liga() override;

@@ -9,11 +9,11 @@
 #include <sstream>
 #include <fstream>
 
-Interface::Interface(Terminal& terminal):terminal(terminal),
-                                         windowLogs(135, 0, 100, 100, true),
-                                         windowHabitacao(0, 2, 85, 150, true),
-                                         windowComandos(0, 45, 100, 100, true){
-    habitacao = nullptr;
+Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):terminal(terminal),
+                                                                            gestorHabitacao(gestorHabitacao),
+                                                                             windowLogs(135, 0, 100, 100, true),
+                                                                             windowHabitacao(0, 2, 85, 150, true),
+                                                                             windowComandos(0, 45, 100, 100, true){
 
     for(int i=1; i<20; i++) {
         this->terminal.init_color(i, i, 0);
@@ -24,8 +24,6 @@ Interface::Interface(Terminal& terminal):terminal(terminal),
 }
 
 Interface::~Interface(){
-    if(habitacao != nullptr)
-        delete habitacao;
 }
 
 void Interface::menu() {
@@ -33,7 +31,7 @@ void Interface::menu() {
     string linha;
 
     do{
-        if(habitacao != nullptr){
+        if(gestorHabitacao->getHabitacao() != nullptr){
             printaHabitacao();
         }
 
@@ -64,40 +62,40 @@ void Interface::printaHabitacao() {
     int incrementoX = 0;
     int incrementoY = 0;
 
-    for(int i = 0; i <= habitacao->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tem que printar a linha de asteriscos 5 vezes
-        for(int j = 0; j < habitacao->getMaxColuna(); j++){
+    for(int i = 0; i <= gestorHabitacao->getHabitacao()->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tem que printar a linha de asteriscos 5 vezes
+        for(int j = 0; j < gestorHabitacao->getHabitacao()->getMaxColuna(); j++){
             windowHabitacao << move_to(j + incrementoX, i + incrementoY) << set_color(1) << "*******************";
 
-            if(i != habitacao->getMaxLinha()) {
+            if(i != gestorHabitacao->getHabitacao()->getMaxLinha()) {
                 for(int k = 1; k <= 5; k++)
                     windowHabitacao << move_to(j + incrementoX, i + incrementoY + k) << set_color(1) << "*";
 
                 //printa a ZONA <ID>
-                if(!habitacao->getZonas().empty())
-                    if(habitacao->getZonaByPosicao(j, i) != nullptr){
-                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "Zona " << habitacao->getZonaByPosicao(j, i)->getId();
+                if(!gestorHabitacao->getHabitacao()->getZonas().empty())
+                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i) != nullptr){
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 1) << set_color(0) << "Zona " << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getId();
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 2) << set_color(0) << "A: ";
 
                         // printar aparelhos
-                        if(!habitacao->getZonaByPosicao(j, i)->getAparelhos().empty())
-                            for(int a = 0; a < habitacao->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
-                                if(habitacao->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
-                                    windowHabitacao << habitacao->getZonaByPosicao(j, i)->getAparelhos()[a]->getAbreviacao();
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().empty())
+                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
+                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getAbreviacao();
                             }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 3) << set_color(0) << "S: ";
 
                         //printar sensores
-                        if(!habitacao->getZonaByPosicao(j, i)->getSensores().empty())
-                            for(int a = 0; a < habitacao->getZonaByPosicao(j, i)->getSensores().size(); a++){
-                                if(habitacao->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
-                                    windowHabitacao << habitacao->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().empty())
+                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size(); a++){
+                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
                             }
                     }
             }
 
-            if(j == habitacao->getMaxColuna() - 1){
-                if(i != habitacao->getMaxLinha())
+            if(j == gestorHabitacao->getHabitacao()->getMaxColuna() - 1){
+                if(i != gestorHabitacao->getHabitacao()->getMaxLinha())
                     for(int k = 1; k <= 5; k++)
                         windowHabitacao << move_to(j + incrementoX + 18, i + incrementoY + k) << set_color(1) << "*"; //printar a ultima linha vertical
             }
@@ -293,17 +291,15 @@ void Interface::comandoHnova(istringstream &iss) {
     }
 
     // Cria habitacao
-    if(habitacao != nullptr){ // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao (talvez mudar para o codigo da classe habitacao)
+    if(gestorHabitacao->getHabitacao() != nullptr){ // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao
         windowLogs.clear();
         windowHabitacao.clear();
-        delete habitacao;
-        habitacao = nullptr;
+        gestorHabitacao->destroiHabitacao();
     }
 
+    gestorHabitacao->criaHabitacao(nLinhas, nColunas);
 
-    habitacao = new Habitacao(nLinhas, nColunas);
-
-    if(habitacao != nullptr){
+    if(gestorHabitacao->getHabitacao() != nullptr){
         windowLogs << set_color(11) << "[ HNOVA ] " << set_color(0) << "Habitacao criada com sucesso" << move_to(0, 2);
     }
 }
@@ -312,9 +308,9 @@ void Interface::comandoHrem() {
     windowLogs.clear();
 
     // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
-    if (habitacao != nullptr) {
-        delete habitacao;
-        habitacao = nullptr; // Define o ponteiro como nullptr após a desalocação
+    if (gestorHabitacao->getHabitacao() != nullptr) {
+        gestorHabitacao->destroiHabitacao();
+
         windowLogs << set_color(11) << "[ HREM ] " << set_color(0) << "Habitação removida com sucesso" << move_to(0, 2);
         windowHabitacao.clear();
     } else {
@@ -336,24 +332,24 @@ void Interface::comandoZnova(istringstream &iss) {
     }
 
     //cria zona e adiciona ao vector de zonas
-    if(habitacao->getZonas().size() < habitacao->getMaxLinha() * habitacao->getMaxColuna()){
-        if(linha >= 1 && linha <= habitacao->getMaxLinha()){
-            if(coluna >= 1 && coluna <= habitacao->getMaxColuna()){
+    if(gestorHabitacao->getHabitacao()->getZonas().size() < gestorHabitacao->getHabitacao()->getMaxLinha() * gestorHabitacao->getHabitacao()->getMaxColuna()){
+        if(linha >= 1 && linha <= gestorHabitacao->getHabitacao()->getMaxLinha()){
+            if(coluna >= 1 && coluna <= gestorHabitacao->getHabitacao()->getMaxColuna()){
 
-                for(Zona* zona: habitacao->getZonas()){
+                for(Zona* zona: gestorHabitacao->getHabitacao()->getZonas()){
                     if(zona->getPosicao()[0] == coluna && zona->getPosicao()[1] == linha){
                         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Ja existe uma zona nessa posicao" << move_to(0, 2);
                         return;
                     }
                 }
 
-                habitacao->adicionaZona(linha, coluna);
+                gestorHabitacao->getHabitacao()->adicionaZona(linha, coluna);
                 windowLogs << set_color(11) << "[ ZNOVA ] " << set_color(0) << "Zona nova criada com sucesso na posicao " << linha << " " << coluna << move_to(0, 2);
             }
         }else
             windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira uma linha e coluna correta: " << move_to(0, 2)
-                       << "linha < 1 , " << habitacao->getMaxLinha() << " >" << move_to(0, 3)
-                       << "coluna < 1 , " << habitacao->getMaxColuna() << " >" << move_to(0, 4);
+                       << "linha < 1 , " << gestorHabitacao->getHabitacao()->getMaxLinha() << " >" << move_to(0, 3)
+                       << "coluna < 1 , " << gestorHabitacao->getHabitacao()->getMaxColuna() << " >" << move_to(0, 4);
     }else{
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Habitacao cheia de zonas" << move_to(0, 2);
     }
@@ -371,12 +367,12 @@ void Interface::comandoZrem(istringstream &iss) {
         return;
     }
 
-    if(habitacao->getZonas().empty()) {
+    if(gestorHabitacao->getHabitacao()->getZonas().empty()) {
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao existem zonas a eliminar" << move_to(0, 2);
         return;
     }
 
-    if(habitacao->removeZonaById(idZona))
+    if(gestorHabitacao->getHabitacao()->removeZonaById(idZona))
         windowLogs << set_color(11) << "[ ZREM ] " << set_color(0) << "Zona com id " << idZona << " removida com sucesso" << move_to(0, 2);
     else
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Não existe nenhuma zona com o id " << idZona << move_to(0, 2);
@@ -386,9 +382,9 @@ void Interface::comandoZrem(istringstream &iss) {
 void Interface::comandoZlista() {
     windowLogs.clear();
 
-    if(habitacao->getZonas().empty())
+    if(gestorHabitacao->getHabitacao()->getZonas().empty())
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao existe nenhuma zona" << move_to(0, 2);
-    windowLogs << set_color(11) << "[ ZLISTA ] " << set_color(0) << move_to(0, 2) << habitacao->listaZonas();
+    windowLogs << set_color(11) << "[ ZLISTA ] " << set_color(0) << move_to(0, 2) << gestorHabitacao->getHabitacao()->listaZonas();
 
 }
 
@@ -403,7 +399,7 @@ void Interface::comandoZcomp(istringstream &iss) {
         return;
     }
 
-    windowLogs << set_color(11) << "[ ZCOMP ]" << set_color(0) << move_to(2, 2) << habitacao->listaEquipamentoZona(idZona) << move_to(0, 2);
+    windowLogs << set_color(11) << "[ ZCOMP ]" << set_color(0) << move_to(2, 2) << gestorHabitacao->getHabitacao()->listaEquipamentoZona(idZona) << move_to(0, 2);
 }
 
 void Interface::comandoZprops(istringstream &iss) {
@@ -419,7 +415,7 @@ void Interface::comandoZprops(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << set_color(11) << "[ ZPROPS ] " << set_color(0) << habitacao->listaPropriedadesZona(idZona) << move_to(0, 2);
+    windowLogs << set_color(11) << "[ ZPROPS ] " << set_color(0) << gestorHabitacao->getHabitacao()->listaPropriedadesZona(idZona) << move_to(0, 2);
 }
 
 void Interface::comandoPmod(istringstream &iss) {
@@ -441,7 +437,7 @@ void Interface::comandoPmod(istringstream &iss) {
     // TODO fazer o que o comando pede
     windowLogs << set_color(11) << "[ PMOD ] " << set_color(0) << "Comando PMOD em execucao" << move_to(0, 2);
 
-    if(!habitacao->alteraPropriedade(idZona, nome, valor)){
+    if(!gestorHabitacao->getHabitacao()->alteraPropriedade(idZona, nome, valor)){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Propriedade " << nome << " nao foi alterada" << move_to(0, 2);
         return;
     }
@@ -475,14 +471,14 @@ void Interface::comandoCnovo(istringstream &iss) {
         //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
     }else if(equipamento == 'a'){
         windowLogs << "1";
-        int id = habitacao->adicionaAparelhoAZona(idZona, tipo);
+        int id = gestorHabitacao->getHabitacao()->adicionaAparelhoAZona(idZona, tipo);
         windowLogs << "2";
         if(id != -1)
             windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else
             windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Aparelho nao foi adicionado" << move_to(0, 2);
     }else if(equipamento == 's'){
-        int id = habitacao->adicionaSensorAZona(idZona, tipo);
+        int id = gestorHabitacao->getHabitacao()->adicionaSensorAZona(idZona, tipo);
         if(id != -1)
             windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Sensor id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else
@@ -506,7 +502,7 @@ void Interface::comandoCrem(istringstream &iss) {
         return;
     }
 
-    if(habitacao->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
+    if(gestorHabitacao->getHabitacao()->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
         windowLogs << set_color(11) << "[ CREM ] " << set_color(0) << "Equipamento removido com sucesso" << move_to(0, 2);
     else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Equipamento nao foi removido com sucesso" << move_to(0, 2);
 }

@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include "Habitacao.h"
+#include "GestorHabitacao.h"
 #include "Terminal.h"
 
 //class Habitacao;
@@ -17,7 +17,7 @@ using namespace term;
 
 class Interface {
 private:
-    Habitacao* habitacao;
+    GestorHabitacao* gestorHabitacao;
 
     Terminal& terminal;
     Window windowComandos;
@@ -27,7 +27,7 @@ private:
     //conjunto de habitaçoes --> como nao existe nenhum numero default de habitaçoes a interface nao vai começar com nenhuma habitaçao no construtor
     //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
 public:
-    Interface(Terminal& terminal);
+    Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao);
     ~Interface();
 
     void menu();

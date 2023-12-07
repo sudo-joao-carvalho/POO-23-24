@@ -208,7 +208,7 @@ string Zona::zonaAsString() const {
     oss << endl << "Zona: " << id << endl
         << "Numero de Aparelhos: " << aparelhos.size() << endl
         << "Numero de Sensores: " << sensores.size() << endl
-        << "Numero de Processador: " << "0" << endl << endl;
+        << "Numero de Processador: " << processadores.size() << endl << endl;
 
 
     return oss.str();

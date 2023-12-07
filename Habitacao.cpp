@@ -14,7 +14,6 @@ Habitacao::~Habitacao(){
     for(auto & zona : zonas)
         delete zona;
 
-    cout << "Habitacao destruida" << endl;
 }
 
 void Habitacao::adicionaZona(const int& linha, const int& coluna) {
@@ -32,10 +31,10 @@ bool Habitacao::removeZonaById(const int &id) {
         }
     }*/
 
-    for(auto it = zonas.begin(); it != zonas.end();){
+    for(vector<Zona*>::iterator it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
             delete *it; // Liberta a memória alocada
-            //it = zonas.erase(it); // Remove o elemento do vetor
+            it = zonas.erase(it); // Remove o elemento do vetor //TODO perguntar ao stor pq q se isto estiver comentado da erro
             return true;
         } else {
             ++it; // Avanca para o próximo elemento

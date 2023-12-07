@@ -23,14 +23,6 @@ void Habitacao::adicionaZona(const int& linha, const int& coluna) {
 
 bool Habitacao::removeZonaById(const int &id) {
 
-    /*for (auto it = zonas.begin(); it != zonas.end(); ++it) {
-        if ((*it)->getId() == id) {
-            //delete *it;
-            zonas.erase(it);
-            return true;
-        }
-    }*/
-
     for(vector<Zona*>::iterator it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
             delete *it; // Liberta a memória alocada

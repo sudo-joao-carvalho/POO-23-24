@@ -57,6 +57,7 @@ public:
 
     Aparelho* adicionaAparelho(const char& tipoDerivado);
     Sensor* adicionaSensor(const char& tipoDerivado);
+    Processador* adicionaProcessador(const string& comando);
 
     bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
 
@@ -70,6 +71,7 @@ public:
     array<int, 2> getPosicao() const;
     vector<Aparelho*> getAparelhos() const;
     vector<Sensor*> getSensores() const;
+    vector<Processador*> getProcessadores() const;
 
     Processador* getProcessadorById(const int& idProcRegra) const;
 

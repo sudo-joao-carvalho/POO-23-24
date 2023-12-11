@@ -103,6 +103,12 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
     return novoSensor;
 }
 
+Processador* Zona::adicionaProcessador(const string& comando) {
+    Processador* novo = new Processador(comando);
+    processadores.push_back(novo);
+    return novo;
+}
+
 bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamento) {
 
     if(tipoEquipamento == 'a'){
@@ -197,6 +203,10 @@ vector<Aparelho*> Zona::getAparelhos() const {
 
 vector<Sensor*> Zona::getSensores() const {
     return sensores;
+}
+
+vector<Processador*> Zona::getProcessadores() const {
+    return processadores;
 }
 
 Processador* Zona::getProcessadorById(const int& idProcRegra) const {

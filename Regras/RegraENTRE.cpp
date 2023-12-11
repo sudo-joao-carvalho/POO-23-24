@@ -3,6 +3,7 @@
 //
 
 #include "RegraENTRE.h"
+#include <sstream>
 
 RegraENTRE::RegraENTRE(Sensor &sensor, const int &num1, const int &num2): Regra(sensor), num1(num1), num2(num2) {}
 
@@ -15,3 +16,13 @@ bool RegraENTRE::avaliaMedicoes() const {
 }
 
 string RegraENTRE::getNome() const { return "Regra Entre"; }
+
+string RegraENTRE::getRegraAsString() const {
+    ostringstream oss;
+
+    oss << Regra::getRegraAsString()
+        << "Nome: " << getNome() << endl
+        << "Id Sensor associado: " << obtemSensor().getId() << endl;
+
+    return oss.str();
+}

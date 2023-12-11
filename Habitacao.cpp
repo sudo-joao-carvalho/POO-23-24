@@ -76,6 +76,21 @@ int Habitacao::adicionaSensorAZona(const int &idZona, const char &tipoEquipament
 
 }
 
+int Habitacao::adicionaProcessadorAZona(const int &idZona, const string &comando) {
+
+    for (Zona *zona : zonas) {
+        if (zona->getId() == idZona) {
+            Processador *novoProcessador = zona->adicionaProcessador(comando);
+            if (novoProcessador != nullptr) {
+                return novoProcessador->getId();
+            }
+        }
+    }
+    // Tratar o caso em que a zona não é encontrada
+    return -1;
+
+}
+
 bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento){ //Modificar aqui para dar return do objeto eliminado
 
     for(Zona* zona: zonas){
@@ -223,4 +238,12 @@ string Habitacao::listaPropriedadesZona(const int &id) const {
     }
 
     return oss.str();
+}
+
+string Habitacao::listaRegrasNoProcessador(const int& idZona, const int& idProcRegra) const {
+
+    Zona* zonaAux = getZonaById(idZona);
+    Processador* processadorAux = zonaAux->getProcessadorById(idProcRegra);
+
+    return processadorAux->getRegrasAsString();
 }

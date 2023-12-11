@@ -22,9 +22,6 @@ public:
     virtual string getRegraAsString() const;
 private:
     Sensor& sensor;
-    /*Operador operador;
-    int num1;
-    int num2;*/
     int id;
     static int idS;
 };

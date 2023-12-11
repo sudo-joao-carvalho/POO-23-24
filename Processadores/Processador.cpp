@@ -7,7 +7,7 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador():id(++idProcessador) {}
+Processador::Processador(const string& comando):comandoOutput(comando),id(++idProcessador) {}
 
 Processador::~Processador() {
     for(Regra* regra: regras){
@@ -31,6 +31,9 @@ void Processador::setComandoOutput(const string& newComandoOutput) { comandoOutp
 string Processador::getRegrasAsString() const {
 
     ostringstream oss;
+
+    if(regras.empty())
+        return "Nao existem regras no processador";
 
     for(Regra* regra: regras){
         oss << regra->getRegraAsString() << endl;

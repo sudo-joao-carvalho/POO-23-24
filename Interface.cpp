@@ -90,6 +90,14 @@ void Interface::printaHabitacao() {
                                 if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
                                     windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
                             }
+
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 4) << set_color(0) << "P: ";
+
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().empty())
+                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size(); a++){
+                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a] != nullptr)
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getId();
+                            }
                     }
             }
 
@@ -470,11 +478,11 @@ void Interface::comandoCnovo(istringstream &iss) {
     }
 
     if(equipamento == 'p'){
-        //habitacao->adicionaProcessadorAZona(idZona, equipamento, comando);
+        int id = gestorHabitacao->getHabitacao()->adicionaProcessadorAZona(idZona, comando);
+
+        windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Processador id: " << id << " adicionado com sucesso" << move_to(0, 2);
     }else if(equipamento == 'a'){
-        windowLogs << "1";
         int id = gestorHabitacao->getHabitacao()->adicionaAparelhoAZona(idZona, tipo);
-        windowLogs << "2";
         if(id != -1)
             windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Aparelho id: " << id << " adicionado com sucesso" << move_to(0, 2);
         else
@@ -549,7 +557,7 @@ void Interface::comandoPmuda(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     //windowLogs << "Comando PMUDA em execucao" << move_to(0, 2);
-    windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << set_color(0);
+    windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << move_to(0,2);
     //gestorHabitacao->getHabitacao()->getZonaById(idZona)
     gestorHabitacao->getHabitacao()->mudaComandoProcessadorNaZona(idZona, idProcRegra, novoComando);
 }
@@ -568,7 +576,7 @@ void Interface::comandoRlista(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     //windowLogs << "Comando RLISTA em execucao" << move_to(0, 2);
-    windowLogs << set_color(11) << "[ RLISTA ] " << set_color(0) << gestorHabitacao->getHabitacao()
+    windowLogs << set_color(11) << "[ RLISTA ] " << set_color(0) << gestorHabitacao->getHabitacao()->listaRegrasNoProcessador(idZona, idProcRegra) << move_to(0,2);
 }
 
 void Interface::comandoRrem(istringstream &iss) {

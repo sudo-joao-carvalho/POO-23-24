@@ -31,6 +31,7 @@ public:
 
     int adicionaAparelhoAZona(const int& idZona, const char& tipoEquipamento);
     int adicionaSensorAZona(const int& idZona, const char& tipoEquipamento);
+    int adicionaProcessadorAZona(const int& idZona, const string& comando);
     //overload para processador que recebe comando
     //Processador* adicionaProcessadorAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
@@ -51,6 +52,7 @@ public:
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
     string listaPropriedadesZona(const int& id) const;
+    string listaRegrasNoProcessador(const int& idZona, const int& idProcRegras) const;
 
 };
 

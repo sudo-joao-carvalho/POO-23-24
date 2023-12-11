@@ -15,7 +15,7 @@ using namespace std;
 class Processador {
 
 public:
-    Processador();
+    Processador(const string& comando);
     ~Processador();
 
     bool adicionaRegra(Regra* regra);

@@ -89,6 +89,15 @@ bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipam
     return false;
 }
 
+//TODO verificar com o professor se esta bem
+void Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando){
+
+    Zona* auxZona = getZonaById(idZona);
+    Processador* auxProc = auxZona->getProcessadorById(idProcRegra);
+
+    auxProc->setComandoOutput(novoComando);
+}
+
 //Propriedades
 
 bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value){
@@ -159,6 +168,16 @@ Zona* Habitacao::getZonaByPosicao(const int& posX, const int& posY) const{
     for(Zona* zona: zonas){
         if(zona->getPosicao()[0] - 1 == posX && zona->getPosicao()[1] - 1 == posY)
             return zona;
+    }
+
+    return nullptr;
+}
+
+Zona* Habitacao::getZonaById(const int& idZona) const{
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            return zona;
+        }
     }
 
     return nullptr;

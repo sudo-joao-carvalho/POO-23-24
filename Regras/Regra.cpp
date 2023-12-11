@@ -6,9 +6,19 @@
 //fazer classes para cada propriedade
 
 #include "Regra.h"
+#include <sstream>
 
-Regra::Regra(Sensor& sensor):sensor(sensor) {}
+int Regra::idS = 0;
 
-Regra::~Regra() {}
+Regra::Regra(Sensor& sensor):sensor(sensor), id(idS++) {}
 
 Sensor& Regra::obtemSensor() const {return sensor;}
+
+string Regra::getRegraAsString() const {
+
+    ostringstream oss;
+
+    oss << "ID: " << id << endl;
+
+    return oss.str();
+}

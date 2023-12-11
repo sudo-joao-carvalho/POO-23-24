@@ -199,6 +199,13 @@ vector<Sensor*> Zona::getSensores() const {
     return sensores;
 }
 
+Processador* Zona::getProcessadorById(const int& idProcRegra) const {
+    for(Processador* proc: processadores){
+        if(proc->getId() == idProcRegra)
+            return proc;
+    }
+}
+
 /*vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}*/
 
 string Zona::zonaAsString() const {

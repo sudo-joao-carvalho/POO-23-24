@@ -14,16 +14,19 @@ class Regra {
 public:
     Regra(Sensor& sensor);
 
-    virtual ~Regra();
+    virtual ~Regra() = default;
     virtual bool avaliaMedicoes() const = 0;
 
     Sensor& obtemSensor() const;
 
+    virtual string getRegraAsString() const;
 private:
     Sensor& sensor;
     /*Operador operador;
     int num1;
     int num2;*/
+    int id;
+    static int idS;
 };
 
 

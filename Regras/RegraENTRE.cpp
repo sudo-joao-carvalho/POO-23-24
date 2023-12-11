@@ -13,3 +13,5 @@ bool RegraENTRE::avaliaMedicoes() const {
         return true;
     else return false;
 }
+
+string RegraENTRE::getNome() const { return "Regra Entre"; }

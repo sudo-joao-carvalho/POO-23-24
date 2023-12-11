@@ -14,3 +14,5 @@ bool RegraIGUAL_A::avaliaMedicoes() const {
         return true;
     else return false;
 }
+
+string RegraIGUAL_A::getNome() const { return "Regra Igual A"; }

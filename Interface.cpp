@@ -548,7 +548,10 @@ void Interface::comandoPmuda(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando PMUDA em execucao" << move_to(0, 2);
+    //windowLogs << "Comando PMUDA em execucao" << move_to(0, 2);
+    windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << set_color(0);
+    //gestorHabitacao->getHabitacao()->getZonaById(idZona)
+    gestorHabitacao->getHabitacao()->mudaComandoProcessadorNaZona(idZona, idProcRegra, novoComando);
 }
 
 void Interface::comandoRlista(istringstream &iss) {
@@ -564,7 +567,8 @@ void Interface::comandoRlista(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando RLISTA em execucao" << move_to(0, 2);
+    //windowLogs << "Comando RLISTA em execucao" << move_to(0, 2);
+    windowLogs << set_color(11) << "[ RLISTA ] " << set_color(0) << gestorHabitacao->getHabitacao()
 }
 
 void Interface::comandoRrem(istringstream &iss) {

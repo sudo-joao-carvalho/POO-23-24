@@ -16,6 +16,7 @@ public:
 
     bool avaliaMedicoes() const override;
 
+    string getNome() const;
 private:
     //Sensor& sensor;
     int num1;

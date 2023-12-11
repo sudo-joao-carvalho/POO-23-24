@@ -13,3 +13,5 @@ bool RegraMENOR_QUE::avaliaMedicoes() const {
         return true;
     else return false;
 }
+
+string RegraMENOR_QUE::getNome() const { return "Regra Menor Que"; }

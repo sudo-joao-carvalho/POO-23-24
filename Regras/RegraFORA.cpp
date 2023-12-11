@@ -13,3 +13,5 @@ bool RegraFORA::avaliaMedicoes() const {
         return true;
     else return false;
 }
+
+string RegraFORA::getNome() const { return "Regra Fora"; }

@@ -71,6 +71,8 @@ public:
     vector<Aparelho*> getAparelhos() const;
     vector<Sensor*> getSensores() const;
 
+    Processador* getProcessadorById(const int& idProcRegra) const;
+
     //vector<Equipamento*> getEquipamentos() const;
 
     string zonaAsString() const;

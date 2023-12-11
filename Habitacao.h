@@ -33,8 +33,9 @@ public:
     int adicionaSensorAZona(const int& idZona, const char& tipoEquipamento);
     //overload para processador que recebe comando
     //Processador* adicionaProcessadorAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
-
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
+
+    void mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
 
     //propriedades
     bool alteraPropriedade(const int& idZona, const string& key, const int& value);
@@ -45,6 +46,7 @@ public:
     int getMaxColuna() const;
     vector <Zona*> getZonas();
     Zona* getZonaByPosicao(const int& posX, const int& posY) const;
+    Zona* getZonaById(const int& idZona) const;
     Aparelho* getAparelho(const int& posX, const int& posY, const int& indiceAparelho) const;
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;

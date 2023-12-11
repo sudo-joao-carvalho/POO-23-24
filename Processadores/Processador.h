@@ -18,10 +18,14 @@ public:
     Processador();
     ~Processador();
 
-    bool adicionaRegra(const Regra& regra);
+    bool adicionaRegra(Regra* regra);
 
     //getters & setters
     int getId() const;
+    string getComandoOutput() const;
+
+    void setComandoOutput(const string& newComandoOutput);
+    string getRegrasAsString() const;
 
 private:
     static int idProcessador;

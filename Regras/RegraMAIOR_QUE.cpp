@@ -13,3 +13,5 @@ bool RegraMAIOR_QUE::avaliaMedicoes() const {
         return true;
     else return false;
 }
+
+string RegraMAIOR_QUE::getNome() const { return "Regra Maior Que"; }

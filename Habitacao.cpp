@@ -30,7 +30,7 @@ bool Habitacao::removeZonaById(const int &id) {
     for(vector<Zona*>::iterator it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
             delete *it; // Liberta a memória alocada
-            it = zonas.erase(it); // Remove o elemento do vetor //TODO perguntar ao stor pq q se isto estiver comentado da erro
+            zonas.erase(it); // Remove o elemento do vetor //TODO perguntar ao stor pq q se isto estiver comentado da erro
             return true;
         } else {
             ++it; // Avanca para o próximo elemento
@@ -106,6 +106,8 @@ bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipam
 
 //TODO verificar com o professor se esta bem
 void Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando){
+
+    //TODO fazer com smart pointer weak
 
     Zona* auxZona = getZonaById(idZona);
     Processador* auxProc = auxZona->getProcessadorById(idProcRegra);

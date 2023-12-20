@@ -37,6 +37,7 @@ public:
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
 
     void mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
+    bool removeRegraDoProcessadorDaZona(const int& idZona, const int& idProcRegra, const int& idRegra);
 
     //propriedades
     bool alteraPropriedade(const int& idZona, const string& key, const int& value);

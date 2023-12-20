@@ -4,6 +4,7 @@
 
 #include "Processador.h"
 #include <sstream>
+#include <algorithm>
 
 int Processador::idProcessador = 0;
 
@@ -15,9 +16,22 @@ Processador::~Processador() {
     }
 }
 
-bool Processador::adicionaRegra(Regra* regra) {
+void Processador::adicionaRegra(Regra* regra) {
     regras.push_back(regra);
-    return true;
+}
+
+bool Processador::eliminaRegra(const int &idRegra) {
+    //regras.erase(remove_if(regras.begin(), regras.end(), ))
+
+    for(vector<Regra*>::iterator it = regras.begin(); it != regras.end();){
+        if((*it)->getId() == idRegra){
+            delete *it;
+            regras.erase(it);
+            return true;
+        }else{
+            ++it;
+        }
+    }
 }
 
 int Processador::getId() const {

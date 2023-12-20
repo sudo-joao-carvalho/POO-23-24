@@ -22,3 +22,7 @@ string Regra::getRegraAsString() const {
 
     return oss.str();
 }
+
+int Regra::getId() const {
+    return id;
+}

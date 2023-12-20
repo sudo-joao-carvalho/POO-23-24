@@ -20,6 +20,9 @@ public:
     Sensor& obtemSensor() const;
 
     virtual string getRegraAsString() const;
+
+    int getId() const;
+
 private:
     Sensor& sensor;
     int id;

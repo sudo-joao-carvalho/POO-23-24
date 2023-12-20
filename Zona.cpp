@@ -214,9 +214,19 @@ Processador* Zona::getProcessadorById(const int& idProcRegra) const {
         if(proc->getId() == idProcRegra)
             return proc;
     }
+
+    return nullptr;
 }
 
-/*vector<Equipamento*> Zona::getEquipamentos() const {return equipamentos;}*/
+bool Zona::eliminaRegraDoProcessador(const int &idProcessador, const int &idRegra) {
+    for(Processador* p: processadores){
+        if(p->getId() == idProcessador){
+            return p->eliminaRegra(idRegra);
+        }
+    }
+
+    return false;
+}
 
 string Zona::zonaAsString() const {
 

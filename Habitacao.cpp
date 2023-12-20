@@ -115,6 +115,16 @@ void Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idPro
     auxProc->setComandoOutput(novoComando);
 }
 
+bool Habitacao::removeRegraDoProcessadorDaZona(const int &idZona, const int &idProcRegra, const int &idRegra) {
+    for(Zona* z: zonas){
+        if(z->getId() == idZona){
+            return z->eliminaRegraDoProcessador(idProcRegra, idRegra);
+        }
+    }
+
+    return false;
+}
+
 //Propriedades
 
 bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value){

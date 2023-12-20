@@ -592,7 +592,15 @@ void Interface::comandoRrem(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando RREM em execucao" << move_to(0, 2);
+    ostringstream oss;
+
+    oss << (gestorHabitacao->getHabitacao()->removeRegraDoProcessadorDaZona(idZona, idProcRegra, idRegra) ?
+            "Regra " + to_string(idRegra) + " removida com sucesso do Processador " + to_string(idProcRegra) + " da Zona " + to_string(idZona) :
+            "Falha ao remover Regra " + to_string(idRegra) + " do Processador " + to_string(idProcRegra) + " da Zona " + to_string(idZona));
+
+    string result = oss.str();
+
+    windowLogs << set_color(11) << "[RREM]" << set_color(0) << result << move_to(0, 2);
 }
 
 void Interface::comandoAsoc(istringstream &iss) {

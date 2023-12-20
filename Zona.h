@@ -74,8 +74,7 @@ public:
     vector<Processador*> getProcessadores() const;
 
     Processador* getProcessadorById(const int& idProcRegra) const;
-
-    //vector<Equipamento*> getEquipamentos() const;
+    bool eliminaRegraDoProcessador(const int& idProcessador, const int& idRegra);
 
     string zonaAsString() const;
     string getEquipamentosAsString() const;

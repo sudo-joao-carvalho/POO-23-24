@@ -18,7 +18,8 @@ public:
     Processador(const string& comando);
     ~Processador();
 
-    bool adicionaRegra(Regra* regra);
+    void adicionaRegra(Regra* regra);
+    bool eliminaRegra(const int& idRegra);
 
     //getters & setters
     int getId() const;

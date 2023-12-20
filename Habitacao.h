@@ -36,7 +36,7 @@ public:
     //Processador* adicionaProcessadorAZona(const int& idZona, const char& abreviaturaEquipamento, const string& comandoProcessador);
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
 
-    void mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
+    int mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
     bool removeRegraDoProcessadorDaZona(const int& idZona, const int& idProcRegra, const int& idRegra);
     int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params);
     //propriedades

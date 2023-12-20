@@ -105,14 +105,17 @@ bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipam
 }
 
 //TODO verificar com o professor se esta bem
-void Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando){
+int Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando){
 
     //TODO fazer com smart pointer weak
 
     Zona* auxZona = getZonaById(idZona);
+    if(auxZona == nullptr) return -1;
     Processador* auxProc = auxZona->getProcessadorById(idProcRegra);
+    if(auxProc == nullptr) return -2;
 
     auxProc->setComandoOutput(novoComando);
+    return 0;
 }
 
 bool Habitacao::removeRegraDoProcessadorDaZona(const int &idZona, const int &idProcRegra, const int &idRegra) {

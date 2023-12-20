@@ -560,17 +560,16 @@ void Interface::comandoPmuda(istringstream &iss) {
     string novoComando;
     iss >> idZona >> idProcRegra >> novoComando;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: pmuda <IDzona> <ID proc. regras> <novo comando>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
-    //windowLogs << "Comando PMUDA em execucao" << move_to(0, 2);
-    windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << move_to(0,2);
-    //gestorHabitacao->getHabitacao()->getZonaById(idZona)
-    gestorHabitacao->getHabitacao()->mudaComandoProcessadorNaZona(idZona, idProcRegra, novoComando);
+    int result = gestorHabitacao->getHabitacao()->mudaComandoProcessadorNaZona(idZona, idProcRegra, novoComando);
+
+    if(result == -1) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Zona nao existe" << move_to(0, 2);
+    if(result == -2) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Processador nao existe" << move_to(0, 2);
+    if(result == 0) windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << move_to(0,2);
 }
 
 void Interface::comandoRlista(istringstream &iss) {

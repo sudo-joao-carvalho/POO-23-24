@@ -578,14 +578,11 @@ void Interface::comandoRlista(istringstream &iss) {
     int idZona, idProcRegra;
     iss >> idZona >> idProcRegra;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rlista <IDzona> <ID proc. regras>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
-    //windowLogs << "Comando RLISTA em execucao" << move_to(0, 2);
     windowLogs << set_color(11) << "[ RLISTA ] " << set_color(0) << gestorHabitacao->getHabitacao()->listaRegrasNoProcessador(idZona, idProcRegra) << move_to(0,2);
 }
 
@@ -595,13 +592,11 @@ void Interface::comandoRrem(istringstream &iss) {
     int idZona, idProcRegra, idRegra;
     iss >> idZona >> idProcRegra >> idRegra;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rrem <IDzona> <ID proc. regras> <ID regra>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
     ostringstream oss;
 
     oss << (gestorHabitacao->getHabitacao()->removeRegraDoProcessadorDaZona(idZona, idProcRegra, idRegra) ?

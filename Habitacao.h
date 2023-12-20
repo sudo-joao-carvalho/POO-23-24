@@ -38,7 +38,7 @@ public:
 
     void mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
     bool removeRegraDoProcessadorDaZona(const int& idZona, const int& idProcRegra, const int& idRegra);
-
+    int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params);
     //propriedades
     bool alteraPropriedade(const int& idZona, const string& key, const int& value);
 
@@ -54,7 +54,6 @@ public:
     string listaEquipamentoZona(const int& id) const;
     string listaPropriedadesZona(const int& id) const;
     string listaRegrasNoProcessador(const int& idZona, const int& idProcRegras) const;
-
 };
 
 

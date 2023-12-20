@@ -12,16 +12,13 @@ using namespace std;
 class RegraIGUAL_A: public Regra{
 
 public:
-    RegraIGUAL_A(Sensor& sensor, const int &num1, const int &num2 = 0);
+    RegraIGUAL_A(Sensor* sensor, const int &num1);
 
     bool avaliaMedicoes() const override;
 
     string getNome() const;
     string getRegraAsString() const;
 private:
-    //Sensor& sensor;
-    int num1;
-    int num2;
 };
 
 

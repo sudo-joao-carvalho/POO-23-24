@@ -13,16 +13,13 @@ using namespace std;
 class RegraMENOR_QUE: public Regra{
 
 public:
-    RegraMENOR_QUE(Sensor& sensor, const int &num1, const int &num2 = 0);
+    RegraMENOR_QUE(Sensor* sensor, const int &num1);
 
     bool avaliaMedicoes() const override;
 
     string getNome() const;
     string getRegraAsString() const;
 private:
-    //Sensor& sensor;
-    int num1;
-    int num2;
 };
 
 

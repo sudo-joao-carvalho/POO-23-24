@@ -55,3 +55,36 @@ string Processador::getRegrasAsString() const {
 
     return oss.str();
 }
+
+int Processador::criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params) {
+
+    Regra* novaRegra = nullptr;
+
+    if(tipoRegra == "igual_a"){
+         novaRegra = new RegraIGUAL_A(sensor, params[0]);
+        regras.push_back(novaRegra);
+        return novaRegra->getId();
+    }
+    if(tipoRegra == "maior_que"){
+        novaRegra = new RegraMAIOR_QUE(sensor, params[0]);
+        regras.push_back(novaRegra);
+        return novaRegra->getId();
+    }
+    if(tipoRegra == "menor_que"){
+        novaRegra = new RegraMENOR_QUE(sensor, params[0]);
+        regras.push_back(novaRegra);
+        return novaRegra->getId();
+    }
+    if(tipoRegra == "entre"){
+        novaRegra = new RegraENTRE(sensor, params[0], params[1]);
+        regras.push_back(novaRegra);
+        return novaRegra->getId();
+    }
+    if(tipoRegra == "fora"){
+        novaRegra = new RegraFORA(sensor, params[0], params[1]);
+        regras.push_back(novaRegra);
+        return novaRegra->getId();
+    }
+
+    return -1;
+}

@@ -521,24 +521,35 @@ void Interface::comandoRnova(istringstream &iss) {
     windowLogs.clear();
 
     int idZona, idProcRegra, idSensor;
-    string regra;
+    string tipoRegra;
     vector<int> params;
 
-    iss >> idZona >> idProcRegra >> regra >> idSensor;
+    iss >> idZona >> idProcRegra >> tipoRegra >> idSensor;
+
+    if (idZona < 0 || idProcRegra < 0 || idSensor < 0) {
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "IDs devem ser não negativos." << move_to(0, 2);
+        return;
+    }
+
+    if(iss.fail()){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rnova <IDzona> <ID proc. regras> <regra> <IDsensor> [param1] [param2]" << move_to(0, 2);
+        return;
+    }
 
     int aux;
     while(iss >> aux){
         params.push_back(aux);
     }
 
-    // TODO verificar se parametros existem
-    if(iss.fail()){
-        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: rnova <IDzona> <ID proc. regras> <regra> <IDsensor> [param1] [param2]" << move_to(0, 2);
-        return;
-    }
+    int idZonaCriada = gestorHabitacao->getHabitacao()->criaNovaRegraNoProcessadorDaZona(idZona, idProcRegra, tipoRegra, idSensor, params);
 
-    // TODO fazer o que o comando pede
-    windowLogs << "Comando RNOVA em execucao" << move_to(0, 2);
+    if(idZonaCriada == -1){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao foi possivel criar a zona" << move_to(0, 2);
+    }else if(idZonaCriada == -2){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Id do Sensor invalido" << move_to(0, 2);
+    }else{
+        windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << "Comando executado com sucesso" << move_to(0, 2);
+    }
 
 }
 
@@ -600,7 +611,7 @@ void Interface::comandoRrem(istringstream &iss) {
 
     string result = oss.str();
 
-    windowLogs << set_color(11) << "[RREM]" << set_color(0) << result << move_to(0, 2);
+    windowLogs << set_color(11) << "[ RREM ]" << set_color(0) << result << move_to(0, 2);
 }
 
 void Interface::comandoAsoc(istringstream &iss) {

@@ -5,13 +5,13 @@
 #include "RegraIGUAL_A.h"
 #include <sstream>
 
-RegraIGUAL_A::RegraIGUAL_A(Sensor &sensor, const int &num1, const int &num2):Regra(sensor), num1(num1), num2(num2) {}
+RegraIGUAL_A::RegraIGUAL_A(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
 bool RegraIGUAL_A::avaliaMedicoes() const {
 
-    int leitura =  Regra::obtemSensor().fazLeitura();
+    int leitura =  Regra::obtemSensor()->fazLeitura();
 
-    if(leitura == num1)
+    if(leitura == Regra::getNum1())
         return true;
     else return false;
 }
@@ -23,7 +23,7 @@ string RegraIGUAL_A::getRegraAsString() const {
 
     oss << Regra::getRegraAsString()
         << "Nome: " << getNome() << endl
-        << "Id Sensor associado: " << obtemSensor().getId() << endl;
+        << "Id Sensor associado: " << obtemSensor()->getId() << endl;
 
     return oss.str();
 }

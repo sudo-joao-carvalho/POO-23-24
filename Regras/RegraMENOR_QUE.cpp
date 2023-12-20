@@ -5,12 +5,12 @@
 #include "RegraMENOR_QUE.h"
 #include <sstream>
 
-RegraMENOR_QUE::RegraMENOR_QUE(Sensor &sensor, const int &num1, const int &num2):Regra(sensor), num1(num1), num2(num2) {}
+RegraMENOR_QUE::RegraMENOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
 bool RegraMENOR_QUE::avaliaMedicoes() const {
-    int leitura =  Regra::obtemSensor().fazLeitura();
+    int leitura =  Regra::obtemSensor()->fazLeitura();
 
-    if(leitura < num1)
+    if(leitura < Regra::getNum1())
         return true;
     else return false;
 }
@@ -22,7 +22,7 @@ string RegraMENOR_QUE::getRegraAsString() const {
 
     oss << Regra::getRegraAsString()
         << "Nome: " << getNome() << endl
-        << "Id Sensor associado: " << obtemSensor().getId() << endl;
+        << "Id Sensor associado: " << obtemSensor()->getId() << endl;
 
     return oss.str();
 }

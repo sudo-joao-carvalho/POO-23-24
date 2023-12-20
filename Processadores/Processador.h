@@ -9,6 +9,11 @@
 #include <vector>
 
 #include "../Regras/Regra.h"
+#include "../Regras/RegraIGUAL_A.h"
+#include "../Regras/RegraENTRE.h"
+#include "../Regras/RegraFORA.h"
+#include "../Regras/RegraMAIOR_QUE.h"
+#include "../Regras/RegraMENOR_QUE.h"
 
 using namespace std;
 
@@ -27,6 +32,8 @@ public:
 
     void setComandoOutput(const string& newComandoOutput);
     string getRegrasAsString() const;
+
+    int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params);
 
 private:
     static int idProcessador;

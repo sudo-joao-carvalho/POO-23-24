@@ -12,19 +12,30 @@ using namespace std;
 class Regra {
 
 public:
-    Regra(Sensor& sensor);
+    Regra(Sensor* sensor, const int& num1, const int& num2);
 
     virtual ~Regra() = default;
     virtual bool avaliaMedicoes() const = 0;
 
-    Sensor& obtemSensor() const;
+    Sensor* obtemSensor() const;
 
     virtual string getRegraAsString() const;
 
     int getId() const;
 
+    int getNum1() const;
+
+    void setNum1(int num1);
+
+    int getNum2() const;
+
+    void setNum2(int num2);
+
 private:
-    Sensor& sensor;
+    Sensor* sensor;
+    int num1;
+    int num2;
+
     int id;
     static int idS;
 };

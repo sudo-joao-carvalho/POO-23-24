@@ -276,3 +276,25 @@ string Zona::listaPropriedades() const {
 
     return oss.str();
 }
+
+int Zona::criaNovaRegraNoProcessador(const int &idProcRegra, const string &tipoRegra, const int &idSensor,
+                                     vector<int> params) {
+
+    Sensor* aux = nullptr;
+
+    for(Sensor* s: sensores){
+        if(s->getId() == idSensor){
+             aux = s;
+        }
+    }
+
+    if(aux){
+        for(Processador* p: processadores){
+            if(p->getId() == idProcRegra){
+                return p->criaNovaRegra(tipoRegra, aux, params);
+            }
+        }
+    }else return -2; // o id do Sensor introduzido é invalido
+
+    return -1; // nao foi possivel criar a regra
+}

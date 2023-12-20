@@ -5,12 +5,12 @@
 #include "RegraMAIOR_QUE.h"
 #include <sstream>
 
-RegraMAIOR_QUE::RegraMAIOR_QUE(Sensor &sensor, const int &num1, const int &num2):Regra(sensor), num1(num1), num2(num2) {}
+RegraMAIOR_QUE::RegraMAIOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
 bool RegraMAIOR_QUE::avaliaMedicoes() const {
-    int leitura =  Regra::obtemSensor().fazLeitura();
+    int leitura =  Regra::obtemSensor()->fazLeitura();
 
-    if(leitura > num1)
+    if(leitura > Regra::getNum1())
         return true;
     else return false;
 }
@@ -22,7 +22,7 @@ string RegraMAIOR_QUE::getRegraAsString() const {
 
     oss << Regra::getRegraAsString()
         << "Nome: " << getNome() << endl
-        << "Id Sensor associado: " << obtemSensor().getId() << endl;
+        << "Id Sensor associado: " << obtemSensor()->getId() << endl;
 
     return oss.str();
 }

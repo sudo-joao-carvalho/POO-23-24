@@ -12,16 +12,13 @@ using namespace std;
 class RegraMAIOR_QUE: public Regra{
 
 public:
-    RegraMAIOR_QUE(Sensor& sensor, const int &num1, const int &num2 = 0);
+    RegraMAIOR_QUE(Sensor* sensor, const int &num1);
 
     bool avaliaMedicoes() const override;
 
     string getNome() const;
     string getRegraAsString() const;
 private:
-    //Sensor& sensor;
-    int num1;
-    int num2;
 };
 
 

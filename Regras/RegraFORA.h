@@ -13,16 +13,13 @@ using namespace std;
 class RegraFORA: public Regra{
 
 public:
-    RegraFORA(Sensor& sensor, const int &num1, const int &num2 = 0);
+    RegraFORA(Sensor* sensor, const int &num1, const int &num2);
 
     bool avaliaMedicoes() const override;
 
     string getNome() const;
     string getRegraAsString() const;
 private:
-    //Sensor& sensor;
-    int num1;
-    int num2;
 };
 
 

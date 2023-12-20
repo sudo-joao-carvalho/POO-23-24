@@ -5,12 +5,12 @@
 #include "RegraENTRE.h"
 #include <sstream>
 
-RegraENTRE::RegraENTRE(Sensor &sensor, const int &num1, const int &num2): Regra(sensor), num1(num1), num2(num2) {}
+RegraENTRE::RegraENTRE(Sensor* sensor, const int &num1, const int &num2): Regra(sensor, num1, num2) {}
 
 bool RegraENTRE::avaliaMedicoes() const {
-    int leitura = Regra::obtemSensor().fazLeitura();
+    int leitura = Regra::obtemSensor()->fazLeitura();
 
-    if(num1 < leitura < num2)
+    if(Regra::getNum1() < leitura < Regra::getNum2())
         return true;
     else return false;
 }
@@ -22,7 +22,7 @@ string RegraENTRE::getRegraAsString() const {
 
     oss << Regra::getRegraAsString()
         << "Nome: " << getNome() << endl
-        << "Id Sensor associado: " << obtemSensor().getId() << endl;
+        << "Id Sensor associado: " << obtemSensor()->getId() << endl;
 
     return oss.str();
 }

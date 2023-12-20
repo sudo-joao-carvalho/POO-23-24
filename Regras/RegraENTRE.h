@@ -13,7 +13,7 @@ using namespace std;
 class RegraENTRE: public Regra{
 
 public:
-    RegraENTRE(Sensor& sensor, const int &num1, const int &num2 = 0);
+    RegraENTRE(Sensor* sensor, const int &num1, const int &num2);
 
     bool avaliaMedicoes() const override;
 
@@ -21,9 +21,6 @@ public:
     string getRegraAsString() const;
 
 private:
-    //Sensor& sensor;
-    int num1;
-    int num2;
 };
 
 

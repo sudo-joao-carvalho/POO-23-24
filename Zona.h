@@ -79,6 +79,10 @@ public:
     string zonaAsString() const;
     string getEquipamentosAsString() const;
     string listaPropriedades() const;
+
+    int
+    criaNovaRegraNoProcessador(const int &idProcRegra, const string &tipoRegra, const int &idSensor,
+                               vector<int> params);
 };
 
 

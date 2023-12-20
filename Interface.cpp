@@ -541,11 +541,11 @@ void Interface::comandoRnova(istringstream &iss) {
         params.push_back(aux);
     }
 
-    int idZonaCriada = gestorHabitacao->getHabitacao()->criaNovaRegraNoProcessadorDaZona(idZona, idProcRegra, tipoRegra, idSensor, params);
+    int idRegraCriada = gestorHabitacao->getHabitacao()->criaNovaRegraNoProcessadorDaZona(idZona, idProcRegra, tipoRegra, idSensor, params);
 
-    if(idZonaCriada == -1){
-        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao foi possivel criar a zona" << move_to(0, 2);
-    }else if(idZonaCriada == -2){
+    if(idRegraCriada == -1){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao foi possivel criar a regra" << move_to(0, 2);
+    }else if(idRegraCriada == -2){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Id do Sensor invalido" << move_to(0, 2);
     }else{
         windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << "Comando executado com sucesso" << move_to(0, 2);

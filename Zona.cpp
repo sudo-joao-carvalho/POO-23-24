@@ -288,7 +288,7 @@ int Zona::criaNovaRegraNoProcessador(const int &idProcRegra, const string &tipoR
         }
     }
 
-    if(aux){
+    if(aux != nullptr){
         for(Processador* p: processadores){
             if(p->getId() == idProcRegra){
                 return p->criaNovaRegra(tipoRegra, aux, params);

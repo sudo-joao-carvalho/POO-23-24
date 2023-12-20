@@ -255,7 +255,10 @@ string Habitacao::listaPropriedadesZona(const int &id) const {
 string Habitacao::listaRegrasNoProcessador(const int& idZona, const int& idProcRegra) const {
 
     Zona* zonaAux = getZonaById(idZona);
+    if(zonaAux == nullptr) return "Zona nao existe";
+
     Processador* processadorAux = zonaAux->getProcessadorById(idProcRegra);
+    if(processadorAux == nullptr) return "Processador nao existe";
 
     return processadorAux->getRegrasAsString();
 }

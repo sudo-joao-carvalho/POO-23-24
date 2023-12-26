@@ -28,7 +28,7 @@ private:
     //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
 public:
     Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao);
-    ~Interface();
+    ~Interface() = default;
 
     void menu();
     void printaHabitacao();

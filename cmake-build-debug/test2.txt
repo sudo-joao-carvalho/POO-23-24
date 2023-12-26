@@ -12,7 +12,7 @@ cnovo 2 p desliga
 cnovo 3 p desliga
 cnovo 4 p desliga
 rnova 1 1 igual_a 1 20
-rnova 2 2 igual_a 2 20
-rnova 3 3 igual_a 3 20
+rnova 2 2 maior_que 2 20
+rnova 3 3 menor_que 3 20
 rnova 4 4 igual_a 4 20
 

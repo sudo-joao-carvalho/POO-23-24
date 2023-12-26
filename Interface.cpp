@@ -23,9 +23,6 @@ Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):termi
     this->terminal << "LOGS:";
 }
 
-Interface::~Interface(){
-}
-
 void Interface::menu() {
 
     string linha;
@@ -41,8 +38,8 @@ void Interface::menu() {
         //getline(cin, linha);
         windowComandos >> linha;
 
-        if(gestorHabitacao->getHabitacao() == nullptr && linha.find("hnova") == std::string::npos) {
-            windowLogs << set_color(1) << "[ ERRO ] O primeiro comando a ser inserido é o hnova para criar a habitacao" << move_to(0, 2);
+        if(gestorHabitacao->getHabitacao() == nullptr && linha.find("hnova") == std::string::npos && linha.find("exec") == std::string::npos) {
+            windowLogs << set_color(1) << "[ ERRO ] O primeiro comando a ser inserido é o hnova para criar a habitacao ou exec para executar ficheiro de texto" << move_to(0, 2);
             windowComandos.clear();
             continue;
         }
@@ -628,8 +625,8 @@ void Interface::comandoAsoc(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->associaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
-        windowLogs << set_color(11) << "[ ASOC ]" << set_color(0) << "Aparelho associado com sucesso" << move_to(0, 2);
-    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Erro ao associar aparelho ao sensor" << move_to(0, 2);
+        windowLogs << set_color(11) << "[ ASOC ]" << set_color(0) << " Aparelho associado com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Erro ao associar aparelho ao sensor" << move_to(0, 2);
 
 }
 
@@ -647,8 +644,8 @@ void Interface::comandoAdes(istringstream &iss) {
 
     // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->desassociaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
-        windowLogs << set_color(11) << "[ ADES ]" << set_color(0) << "Aparelho associado com sucesso" << move_to(0, 2);
-    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Erro ao associar aparelho ao sensor" << move_to(0, 2);
+        windowLogs << set_color(11) << "[ ADES ]" << set_color(0) << " Aparelho desassociado com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Erro ao desassociar aparelho ao sensor" << move_to(0, 2);
 
 }
 

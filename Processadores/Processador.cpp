@@ -8,7 +8,11 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando):comandoOutput(comando),id(++idProcessador) {}
+Processador::Processador(const string& comando):comandoOutput(comando), id(++idProcessador) {}
+
+Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), id(++idProcessador) {
+    *this = orig;
+}
 
 Processador::~Processador() {
     for(Regra* regra: regras){
@@ -16,12 +20,31 @@ Processador::~Processador() {
     }
 }
 
+/*
+ * Nesta funcao nao se adiciona os aparelhos e sensores associados porque estes estao por composicao e quando as copias sao feitas apenas o que pertence
+ * ao processador de regras é associado ao novo Processador
+ */
+Processador& Processador::operator=(const Processador &orig) {
+
+    //Prevencao de auto-atribuicao
+    if(this == &orig){
+        return *this;
+    }
+
+    //Faz uma copia de todas as regras que o processador tem e adiciona-as ao vetor de regras do novo processador
+    for(Regra* r: orig.regras){
+        Regra* regraDuplicada = r->duplica();
+        this->regras.emplace_back(regraDuplicada);
+    }
+
+    return *this;
+}
+
 void Processador::adicionaRegra(Regra* regra) {
     regras.push_back(regra);
 }
 
 bool Processador::eliminaRegra(const int &idRegra) {
-    //regras.erase(remove_if(regras.begin(), regras.end(), ))
 
     for(vector<Regra*>::iterator it = regras.begin(); it != regras.end();){
         if((*it)->getId() == idRegra){

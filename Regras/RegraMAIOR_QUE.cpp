@@ -7,6 +7,10 @@
 
 RegraMAIOR_QUE::RegraMAIOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
+Regra* RegraMAIOR_QUE::duplica() const {
+    return new RegraMAIOR_QUE(*this);
+}
+
 bool RegraMAIOR_QUE::avaliaMedicoes() const {
     int leitura =  Regra::obtemSensor()->fazLeitura();
 

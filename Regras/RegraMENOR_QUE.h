@@ -15,6 +15,8 @@ class RegraMENOR_QUE: public Regra{
 public:
     RegraMENOR_QUE(Sensor* sensor, const int &num1);
 
+    Regra* duplica() const override;
+
     bool avaliaMedicoes() const override;
 
     string getNome() const;

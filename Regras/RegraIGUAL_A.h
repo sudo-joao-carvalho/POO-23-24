@@ -14,6 +14,8 @@ class RegraIGUAL_A: public Regra{
 public:
     RegraIGUAL_A(Sensor* sensor, const int &num1);
 
+    Regra* duplica() const override;
+
     bool avaliaMedicoes() const override;
 
     string getNome() const;

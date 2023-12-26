@@ -115,6 +115,18 @@ bool Habitacao::desassociaProcessadorDaZonaAparelho(const int& idZona, const int
     return false;
 }
 
+bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra, const string& nome){
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            if(zona->salvaProcessador(idProcRegra, nome)){
+                return true;
+            }else return false;
+        }
+    }
+
+    return false;
+}
+
 bool Habitacao::mudaComandoAparelhoNaZona(const int& idZona, const int& idAparelho, const string& comando){
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
@@ -166,7 +178,6 @@ bool Habitacao::removeRegraDoProcessadorDaZona(const int &idZona, const int &idP
 }
 
 //Propriedades
-
 bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value){
 
     for(Zona* zona: zonas){
@@ -179,45 +190,6 @@ bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const in
 
     return false;
 }
-
-
-//TODO fazer quando a classe processador estiver construida
-//Processador* Habitacao::adicionaProcessadorAZona(const int &idZona, const char &abreviaturaEquipamento, const string& comandoProcessador) {
-
-    //processador
-    /*if(abreviaturaEquipamento == 'p'){
-        if(tipoEquipamento == 't') //temperatura
-            return;
-        //zona->adicionaEquipamento(new SensorTemperatura());
-
-        if(tipoEquipamento == 'v') //movimento
-            return;
-        //zona->adicionaEquipamento(new SensorMovimento());
-
-        if(tipoEquipamento == 'm') //luminosidade
-            return;
-        //zona->adicionaEquipamento(new SensorLuminosidade());
-
-        if(tipoEquipamento == 'd') //radiacao
-            return;
-        //zona->adicionaEquipamento(new SensorRadiacao());
-
-        if(tipoEquipamento == 'h') //humidade
-            return;
-        //zona->adicionaEquipamento(new SensorHumidade());
-
-        if(tipoEquipamento == 'o') //som
-            return;
-        //zona->adicionaEquipamento(new SensorSom());
-
-        if(tipoEquipamento == 'f') //fumo
-            return;
-        //zona->adicionaEquipamento(new SensorFumo());
-
-    }*/
-
-    //return nullptr;
-//}
 
 //getters
 int Habitacao::getTempo() const { return tempo; }

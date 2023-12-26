@@ -15,6 +15,8 @@ class RegraENTRE: public Regra{
 public:
     RegraENTRE(Sensor* sensor, const int &num1, const int &num2);
 
+    Regra* duplica() const override;
+
     bool avaliaMedicoes() const override;
 
     string getNome() const;

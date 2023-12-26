@@ -7,6 +7,10 @@
 
 RegraFORA::RegraFORA(Sensor* sensor, const int &num1, const int &num2):Regra(sensor, num1, num2) {}
 
+Regra* RegraFORA::duplica() const {
+    return new RegraFORA(*this);
+}
+
 bool RegraFORA::avaliaMedicoes() const {
     int leitura =  Regra::obtemSensor()->fazLeitura();
 

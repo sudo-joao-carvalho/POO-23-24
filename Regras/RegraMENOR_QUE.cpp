@@ -7,6 +7,10 @@
 
 RegraMENOR_QUE::RegraMENOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
+Regra* RegraMENOR_QUE::duplica() const {
+    return new RegraMENOR_QUE(*this);
+}
+
 bool RegraMENOR_QUE::avaliaMedicoes() const {
     int leitura =  Regra::obtemSensor()->fazLeitura();
 

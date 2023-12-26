@@ -10,7 +10,7 @@
 
 int Regra::idS = 0;
 
-Regra::Regra(Sensor* sensor, const int& num1, const int& num2 = 0):sensor(sensor), id(idS++) {}
+Regra::Regra(Sensor* sensor, const int& num1, const int& num2 = 0):sensor(sensor), id(++idS) {}
 
 Sensor* Regra::obtemSensor() const {return sensor;}
 

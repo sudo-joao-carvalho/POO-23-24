@@ -7,6 +7,10 @@
 
 RegraIGUAL_A::RegraIGUAL_A(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
 
+Regra* RegraIGUAL_A::duplica() const {
+    return new RegraIGUAL_A(*this);
+}
+
 bool RegraIGUAL_A::avaliaMedicoes() const {
 
     int leitura =  Regra::obtemSensor()->fazLeitura();

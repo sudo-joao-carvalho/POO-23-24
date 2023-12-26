@@ -218,6 +218,29 @@ bool Zona::desassociaProcessadorAparelho(const int& idProcRegras, const int& idA
     return false;
 }
 
+bool Zona::verificaSeGravacaoExiste(const string& nome){
+    if(gravacoesProcessadores.count(nome) == 1){
+        return true;
+    }else return false;
+}
+
+bool Zona::salvaProcessador(const int& idProcRegra, const string& nome){
+
+    Processador* aux = nullptr;
+
+    for(Processador* p: processadores){
+        if(p->getId() == idProcRegra){
+            aux = p;
+        }
+    }
+
+    if(aux == nullptr) return false;
+
+    Processador* novoProcessador = new Processador(*aux);
+    gravacoesProcessadores.insert(pair<string, Processador*>(nome, novoProcessador));
+    return true;
+}
+
 bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
     for(Aparelho* a: aparelhos){
         if(a->getId() == idAparelho){

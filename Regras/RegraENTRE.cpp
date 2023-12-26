@@ -7,6 +7,10 @@
 
 RegraENTRE::RegraENTRE(Sensor* sensor, const int &num1, const int &num2): Regra(sensor, num1, num2) {}
 
+Regra* RegraENTRE::duplica() const {
+    return new RegraENTRE(*this);
+}
+
 bool RegraENTRE::avaliaMedicoes() const {
     int leitura = Regra::obtemSensor()->fazLeitura();
 

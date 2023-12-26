@@ -19,7 +19,7 @@ Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):termi
         this->terminal.init_color(i, i, 0);
     }
 
-    this->terminal << set_color(10) << "SISTEMA DE CONTROLO DE HABITACAO INICIADO" << move_to(135, 0);
+    this->terminal << set_color(10) << "SISTEMA DE CONTROLO DE HABITACAO INICIADO" << move_to(125, 0);
     this->terminal << "LOGS:";
 }
 
@@ -676,14 +676,21 @@ void Interface::comandoPsalva(istringstream &iss) {
     string nome;
     iss >> idZona >> idProcRegra >> nome;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
-        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: acom <IDzona> <ID proc. regra> <nome>" << move_to(0, 2);
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: psalva <IDzona> <ID proc. regra> <nome>" << move_to(0, 2);
         return;
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando PSALVA em execucao" << move_to(0, 2);
+    if(gestorHabitacao->getHabitacao()->getZonaById(idZona)->verificaSeGravacaoExiste(nome)){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Já existe uma gravacao com esse nome" << move_to(0, 2);
+        return;
+    }
+
+    if(gestorHabitacao->getHabitacao()->salvaProcessadorDaZona(idZona, idProcRegra, nome)){
+        windowLogs << set_color(11) << "[ ACOM ]" << set_color(0) << " Processador de regras salvo com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Nao foi possivel salvar o processador de regras" << move_to(0, 2);
+
 }
 
 void Interface::comandoPrepoe(istringstream &iss) {

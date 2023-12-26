@@ -14,6 +14,8 @@ class RegraMAIOR_QUE: public Regra{
 public:
     RegraMAIOR_QUE(Sensor* sensor, const int &num1);
 
+    Regra* duplica() const override;
+
     bool avaliaMedicoes() const override;
 
     string getNome() const;

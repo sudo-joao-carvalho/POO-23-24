@@ -23,7 +23,9 @@ class Processador {
 
 public:
     Processador(const string& comando);
+    Processador(const Processador& orig);
     ~Processador();
+    Processador& operator=(const Processador& orig);
 
     void adicionaRegra(Regra* regra);
     bool eliminaRegra(const int& idRegra);

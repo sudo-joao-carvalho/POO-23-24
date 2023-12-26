@@ -115,12 +115,28 @@ bool Habitacao::desassociaProcessadorDaZonaAparelho(const int& idZona, const int
     return false;
 }
 
+bool Habitacao::verificaSeGravacaoExiste(const string& nome){
+    if(gravacoesProcessadores.count(nome) == 1){
+        return true;
+    }else return false;
+}
+
 bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra, const string& nome){
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
-            if(zona->salvaProcessador(idProcRegra, nome)){
-                return true;
-            }else return false;
+            Processador* aux = nullptr;
+
+            for(Processador* p: zona->getProcessadores()){
+                if(p->getId() == idProcRegra){
+                    aux = p;
+                }
+            }
+
+            if(aux == nullptr) return false;
+
+            Processador* novoProcessador = new Processador(*aux);
+            gravacoesProcessadores.insert(pair<string, Processador*>(nome, novoProcessador));
+            return true;
         }
     }
 

@@ -682,13 +682,13 @@ void Interface::comandoPsalva(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    if(gestorHabitacao->getHabitacao()->getZonaById(idZona)->verificaSeGravacaoExiste(nome)){
+    if(gestorHabitacao->getHabitacao()->verificaSeGravacaoExiste(nome)){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Já existe uma gravacao com esse nome" << move_to(0, 2);
         return;
     }
 
     if(gestorHabitacao->getHabitacao()->salvaProcessadorDaZona(idZona, idProcRegra, nome)){
-        windowLogs << set_color(11) << "[ ACOM ]" << set_color(0) << " Processador de regras salvo com sucesso" << move_to(0, 2);
+        windowLogs << set_color(11) << "[ PSALVA ]" << set_color(0) << " Processador de regras salvo com sucesso" << move_to(0, 2);
     }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Nao foi possivel salvar o processador de regras" << move_to(0, 2);
 
 }
@@ -728,7 +728,8 @@ void Interface::comandoPrem(istringstream &iss) {
 
 void Interface::comandoPlista() {
     windowLogs.clear();
-    windowLogs << "Comando PLISTA em execuçao" << move_to(0, 2);
+    windowLogs << set_color(11) << "[ PLISTA ]" << set_color(0) << move(0, 3);
+    //windowLogs << gestorHabitacao->getHabitacao()->
 }
 
 void Interface::comandoExec(istringstream &iss) {

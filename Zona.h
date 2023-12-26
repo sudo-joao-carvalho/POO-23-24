@@ -47,7 +47,6 @@ private:
     vector<Sensor*> sensores;
 
     map<string, double> propriedades;
-    map<string, Processador*> gravacoesProcessadores; //key = nomeGravacao, value = processador
 
 public:
 
@@ -63,8 +62,6 @@ public:
     bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
     bool associaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
     bool desassociaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
-    bool verificaSeGravacaoExiste(const string& nome);
-    bool salvaProcessador(const int& idProcRegra, const string& nome);
 
     bool mudaComandoAparelho(const int& idAparelho, const string& comando);
 

@@ -22,7 +22,7 @@ using namespace std;
 class Processador {
 
 public:
-    Processador(const string& comando);
+    Processador(const string& comando, const int& idZona);
     Processador(const Processador& orig);
     ~Processador();
     Processador& operator=(const Processador& orig);
@@ -47,6 +47,8 @@ public:
 private:
     static int idProcessador;
     int id;
+    int idZona;
+
     string comandoOutput;
     vector<Regra*> regras; //composicao
     vector<Sensor*> sensoresAssociados; //agregação

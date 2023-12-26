@@ -124,7 +124,7 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
 }
 
 Processador* Zona::adicionaProcessador(const string& comando) {
-    Processador* novo = new Processador(comando);
+    Processador* novo = new Processador(comando, this->id);
     processadores.push_back(novo);
     return novo;
 }

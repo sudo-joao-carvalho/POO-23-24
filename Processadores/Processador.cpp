@@ -8,9 +8,9 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando):comandoOutput(comando), id(++idProcessador) {}
+Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), id(++idProcessador) {}
 
-Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), id(++idProcessador) {
+Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(++idProcessador) {
     *this = orig;
 }
 

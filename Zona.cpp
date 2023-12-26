@@ -4,16 +4,36 @@
 
 #include "Zona.h"
 
+#include "Propriedades/Temperatura.h"
+#include "Propriedades/Luz.h"
+#include "Propriedades/Radicacao.h"
+#include "Propriedades/VibracaoMovimento.h"
+#include "Propriedades/Humidade.h"
+#include "Propriedades/Fumo.h"
+#include "Propriedades/Som.h"
+
 int Zona::idZona = 0;
 
-Zona::Zona(const int& posX, const int& posY):id(++idZona), posX(posX), posY(posY) {
-    propriedades["Temperatura"] = 0;
-    propriedades["Luz"] = 0;
-    propriedades["Radiacao"] = 0;
-    propriedades["Vibracao"] = 0;
-    propriedades["Humidade"] = 0;
-    propriedades["Fumo"] = 0;
-    propriedades["Som"] = 0;
+Zona::Zona(const int& posX, const int& posY)
+            :id(++idZona),
+            posX(posX),
+            posY(posY)
+            /*propriedades{
+                     {make_shared<Temperatura>()->getNome(), 0.0},
+                     {make_shared<Luz>()->getNome(), 0.0},
+                     {make_shared<Radiacao>()->getNome(), 0.0},
+                     {make_shared<VibracaoMovimento>()->getNome(), 0.0},
+                     {make_shared<Humidade>()->getNome(), 0.0},
+                     {make_shared<Fumo>()->getNome(), 0.0},
+                     {make_shared<Som>()->getNome(), 0.0}
+            }*/{
+    propriedades["Temperatura"] = 0.0;
+    propriedades["Luz"] = 0.0;
+    propriedades["Radiacao"] = 0.0;
+    propriedades["Vibracao"] = 0.0;
+    propriedades["Humidade"] = 0.0;
+    propriedades["Fumo"] = 0.0;
+    propriedades["Som"] = 0.0;
 }
 
 Zona::~Zona(){
@@ -202,7 +222,7 @@ bool Zona::desassociaProcessadorAparelho(const int& idProcRegras, const int& idA
 void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
 
 int Zona::obtemValorPropriedade(const string &key) {
-    for(map<string, int>::iterator it = propriedades.begin(); it != propriedades.end();){
+    for(map<string, double>::iterator it = propriedades.begin(); it != propriedades.end();){
         if(it->first == key)
             return it->second;
         else
@@ -217,7 +237,7 @@ bool Zona::alteraPropriedade(const string& key, const int& value){
     string keyLower = key;
     transform(keyLower.begin(), keyLower.end(), keyLower.begin(), ::tolower);
 
-    for(map<string, int>::iterator it = propriedades.begin(); it != propriedades.end();){
+    for(map<string, double>::iterator it = propriedades.begin(); it != propriedades.end();){
 
         string currentKeyLower = it->first;
         transform(currentKeyLower.begin(), currentKeyLower.end(), currentKeyLower.begin(), ::tolower);
@@ -309,7 +329,7 @@ string Zona::listaPropriedades() const {
 
     oss << "Zona: " << id << endl;
 
-    for(map<string, int>::const_iterator it = propriedades.cbegin(); it != propriedades.cend(); ++it){
+    for(map<string, double>::const_iterator it = propriedades.cbegin(); it != propriedades.cend(); ++it){
         oss << "\tPropriedade: " << it->first << "   Valor: " << it->second << endl;
     }
 

@@ -33,13 +33,19 @@ void Interface::menu() {
     do{
         if(gestorHabitacao->getHabitacao() != nullptr){
             printaHabitacao();
-            windowHabitacao << move_to(0, 0) << set_color(0) << "\t\tNumero de instantes: " << gestorHabitacao->getHabitacao()->getTempo();
+            windowHabitacao << move_to(0, 0) << set_color(0) << "\t\tNumero de instantes: " << gestorHabitacao->getTempoDaHabitacao();
         }
 
         this->terminal << move_to(0, 47) << set_color(11) << "[ COMANDOS ]" << set_color(0);
         windowComandos << move_to(0, 3) << "Insira um comando: ";
         //getline(cin, linha);
         windowComandos >> linha;
+
+        if(gestorHabitacao->getHabitacao() == nullptr && linha.find("hnova") == std::string::npos) {
+            windowLogs << set_color(1) << "[ ERRO ] O primeiro comando a ser inserido é o hnova para criar a habitacao" << move_to(0, 2);
+            windowComandos.clear();
+            continue;
+        }
         windowComandos.clear();
 
         if(!comandos(linha)){

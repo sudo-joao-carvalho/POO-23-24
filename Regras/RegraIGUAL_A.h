@@ -17,7 +17,7 @@ public:
     bool avaliaMedicoes() const override;
 
     string getNome() const;
-    string getRegraAsString() const;
+    string getRegraAsString() const override;
 private:
 };
 

@@ -46,7 +46,7 @@ private:
     vector<Processador*> processadores; //TODO
     vector<Sensor*> sensores;
 
-    map<string, int> propriedades;
+    map<string, double> propriedades;
 
 public:
 

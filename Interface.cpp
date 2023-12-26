@@ -568,11 +568,12 @@ void Interface::comandoPmuda(istringstream &iss) {
         return;
     }
 
+    string ultimoComando = gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput();
     int result = gestorHabitacao->getHabitacao()->mudaComandoProcessadorNaZona(idZona, idProcRegra, novoComando);
 
     if(result == -1) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Zona nao existe" << move_to(0, 2);
     if(result == -2) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Processador nao existe" << move_to(0, 2);
-    if(result == 0) windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << gestorHabitacao->getHabitacao()->getZonaById(idZona)->getProcessadorById(idProcRegra)->getComandoOutput() << "para " << novoComando << move_to(0,2);
+    if(result == 0) windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << ultimoComando << " para " << novoComando << move_to(0,2);
 }
 
 void Interface::comandoRlista(istringstream &iss) {

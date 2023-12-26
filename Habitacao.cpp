@@ -94,8 +94,9 @@ int Habitacao::adicionaProcessadorAZona(const int &idZona, const string &comando
 bool Habitacao::associaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho){
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
-            zona->associaProcessadorAparelho(idProcRegras, idAparelho);
-            return true;
+            if(zona->associaProcessadorAparelho(idProcRegras, idAparelho)){
+                return true;
+            }else return true;
         }
     }
 
@@ -105,8 +106,9 @@ bool Habitacao::associaProcessadorDaZonaAparelho(const int& idZona, const int& i
 bool Habitacao::desassociaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho){
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
-            zona->desassociaProcessadorAparelho(idProcRegras, idAparelho);
-            return true;
+            if(zona->desassociaProcessadorAparelho(idProcRegras, idAparelho)){
+                return true;
+            }else return true;
         }
     }
 

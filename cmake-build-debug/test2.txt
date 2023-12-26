@@ -11,8 +11,17 @@ cnovo 1 p desliga
 cnovo 2 p desliga
 cnovo 3 p desliga
 cnovo 4 p desliga
+cnovo 1 a a
+cnovo 2 a s
+cnovo 3 a r
+cnovo 4 a l
 rnova 1 1 igual_a 1 20
 rnova 2 2 maior_que 2 20
 rnova 3 3 menor_que 3 20
 rnova 4 4 igual_a 4 20
-
+asoc 1 1 1
+asoc 2 1 1
+asoc 3 1 1
+asoc 4 1 1
+ades 1 1 1
+pmuda 1 1 liga

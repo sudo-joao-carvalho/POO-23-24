@@ -8,7 +8,7 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), id(++idProcessador) {}
+Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), idZona(idZona), id(++idProcessador) {}
 
 Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(++idProcessador) {
     *this = orig;
@@ -136,4 +136,12 @@ string Processador::getProcessadorAsString() const {
         << "Numero Regras: " << regras.size() << endl;
 
     return oss.str();
+}
+
+int Processador::getIdZona() const {
+    return idZona;
+}
+
+void Processador::setIdZona(int idZona) {
+    idZona = idZona;
 }

@@ -30,6 +30,11 @@ public:
     void adicionaRegra(Regra* regra);
     bool eliminaRegra(const int& idRegra);
 
+    int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params);
+
+    void adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado);
+    void removeAparelhoAssociado(Aparelho* aparelhoParaRemover);
+
     //getters & setters
     int getId() const;
     string getComandoOutput() const;
@@ -37,12 +42,10 @@ public:
     void setComandoOutput(const string& newComandoOutput);
     string getRegrasAsString() const;
 
-    int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params);
-
-    void adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado);
-    void removeAparelhoAssociado(Aparelho* aparelhoParaRemover);
-
     string getProcessadorAsString() const;
+
+    int getIdZona() const;
+    void setIdZona(int idZona);
 
 private:
     static int idProcessador;

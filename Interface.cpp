@@ -729,7 +729,7 @@ void Interface::comandoPrem(istringstream &iss) {
 void Interface::comandoPlista() {
     windowLogs.clear();
     windowLogs << set_color(11) << "[ PLISTA ]" << set_color(0) << move(0, 3);
-    //windowLogs << gestorHabitacao->getHabitacao()->
+    windowLogs << gestorHabitacao->getHabitacao()->listaGravacoes();
 }
 
 void Interface::comandoExec(istringstream &iss) {

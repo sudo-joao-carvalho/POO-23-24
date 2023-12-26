@@ -143,6 +143,19 @@ bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra
     return false;
 }
 
+string Habitacao::listaGravacoes() const {
+
+    ostringstream oss;
+
+    for(auto it = gravacoesProcessadores.begin(); it != gravacoesProcessadores.end(); it++){
+        oss << endl << "Nome: " << it->first << endl
+            << "ID Processador: " << it->second->getId() << endl
+            << "ID Zona: " << it->second->getIdZona() << endl;
+    }
+
+    return oss.str();
+}
+
 bool Habitacao::mudaComandoAparelhoNaZona(const int& idZona, const int& idAparelho, const string& comando){
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){

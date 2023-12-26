@@ -35,6 +35,8 @@ public:
     bool associaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho);
     bool desassociaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho);
 
+    bool mudaComandoAparelhoNaZona(const int& idZona, const int& idAparelho, const string& comando);
+
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
 
     int mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);

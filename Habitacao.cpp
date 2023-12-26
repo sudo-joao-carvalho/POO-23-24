@@ -96,7 +96,7 @@ bool Habitacao::associaProcessadorDaZonaAparelho(const int& idZona, const int& i
         if(zona->getId() == idZona){
             if(zona->associaProcessadorAparelho(idProcRegras, idAparelho)){
                 return true;
-            }else return true;
+            }else return false;
         }
     }
 
@@ -108,7 +108,19 @@ bool Habitacao::desassociaProcessadorDaZonaAparelho(const int& idZona, const int
         if(zona->getId() == idZona){
             if(zona->desassociaProcessadorAparelho(idProcRegras, idAparelho)){
                 return true;
-            }else return true;
+            }else return false;
+        }
+    }
+
+    return false;
+}
+
+bool Habitacao::mudaComandoAparelhoNaZona(const int& idZona, const int& idAparelho, const string& comando){
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            if(zona->mudaComandoAparelho(idAparelho, comando)){
+                return true;
+            }else return false;
         }
     }
 

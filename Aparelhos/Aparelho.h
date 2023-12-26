@@ -22,12 +22,15 @@ public:
     virtual bool desliga() = 0; // TODO implementar em cada classe derivada
 
     int getId() const;
+    string getUltimoComandoRecebido() const;
     virtual string getAparelhoAsString() const;
+
+    void setUltimoComandoRecebido(const string& comando);
 
 private:
     static int idAparelho;
     int id;
-
+    string ultimoComandoRecebido;
 };
 
 

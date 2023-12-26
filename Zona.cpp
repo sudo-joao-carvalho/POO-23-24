@@ -218,6 +218,17 @@ bool Zona::desassociaProcessadorAparelho(const int& idProcRegras, const int& idA
     return false;
 }
 
+bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
+    for(Aparelho* a: aparelhos){
+        if(a->getId() == idAparelho){
+            a->setUltimoComandoRecebido(comando);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 //tratamento de propriedades da zona
 void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
 

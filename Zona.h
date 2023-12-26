@@ -63,6 +63,8 @@ public:
     bool associaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
     bool desassociaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
 
+    bool mudaComandoAparelho(const int& idAparelho, const string& comando);
+
     //tratamento de propriedades da zona
     void inserePropriedade(const string& key, const int& value);
     int obtemValorPropriedade(const string& key);

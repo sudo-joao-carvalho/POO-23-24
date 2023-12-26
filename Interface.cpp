@@ -657,14 +657,15 @@ void Interface::comandoAcom(istringstream &iss) {
     string comando;
     iss >> idZona >> idAparelho >> comando;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: acom <IDzona> <ID aparelho> <comando>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
-    windowLogs << "Comando ACOM em execucao" << move_to(0, 2);
+    if(gestorHabitacao->getHabitacao()->mudaComandoAparelhoNaZona(idZona, idAparelho, comando)){
+        windowLogs << set_color(11) << "[ ACOM ]" << set_color(0) << " Comando mudando com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Nao foi possivel mudar o comando" << move_to(0, 2);
+
 
 }
 

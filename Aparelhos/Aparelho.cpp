@@ -7,9 +7,9 @@
 
 int Aparelho::idAparelho = 0;
 
-Aparelho::Aparelho(){
-    idAparelho++;
-    id = idAparelho;
+Aparelho::Aparelho():id(++idAparelho), ultimoComandoRecebido(""){
+    /*idAparelho++;
+    id = idAparelho;*/
 }
 
 Aparelho::~Aparelho() {
@@ -18,12 +18,18 @@ Aparelho::~Aparelho() {
 
 int Aparelho::getId() const {return id;}
 
+string Aparelho::getUltimoComandoRecebido() const { return ultimoComandoRecebido; }
+
 string Aparelho::getAparelhoAsString() const {
 
     ostringstream oss;
 
-    oss << endl << "ID: " << id << endl;
-    //TODO meter aqui o ultimo comando recebido
+    oss << endl << "ID: " << id << endl
+        << "Ultimo Comando Recebido: " << ultimoComandoRecebido << endl;
 
     return oss.str();
+}
+
+void Aparelho::setUltimoComandoRecebido(const string& comando){
+    ultimoComandoRecebido = comando;
 }

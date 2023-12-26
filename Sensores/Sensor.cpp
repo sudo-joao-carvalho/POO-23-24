@@ -23,6 +23,7 @@ string Sensor::getSensorAsString() const {
     ostringstream oss;
 
     oss << endl << "ID: " << id << endl;
+    //TODO meter aqui o valor atual da leitura
 
     return oss.str();
 }

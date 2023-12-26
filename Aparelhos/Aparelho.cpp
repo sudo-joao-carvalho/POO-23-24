@@ -23,6 +23,7 @@ string Aparelho::getAparelhoAsString() const {
     ostringstream oss;
 
     oss << endl << "ID: " << id << endl;
+    //TODO meter aqui o ultimo comando recebido
 
     return oss.str();
 }

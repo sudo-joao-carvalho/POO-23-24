@@ -103,3 +103,14 @@ void Processador::removeAparelhoAssociado(Aparelho* aparelhoParaRemover){
     }
 
 }
+
+string Processador::getProcessadorAsString() const {
+
+    ostringstream oss;
+
+    oss << "ID: " << id << endl
+        << "ComandoOutput: " << comandoOutput << endl
+        << "Numero Regras: " << regras.size() << endl;
+
+    return oss.str();
+}

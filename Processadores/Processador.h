@@ -40,6 +40,8 @@ public:
     void adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado);
     void removeAparelhoAssociado(Aparelho* aparelhoParaRemover);
 
+    string getProcessadorAsString() const;
+
 private:
     static int idProcessador;
     int id;

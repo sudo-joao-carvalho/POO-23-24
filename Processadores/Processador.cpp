@@ -96,7 +96,7 @@ void Processador::adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado){
 void Processador::removeAparelhoAssociado(Aparelho* aparelhoParaRemover){
 
     for(int i = 0; i < aparelhosAssociados.size(); i++){
-        if(aparelhosAssociados[i] == aparelhoParaRemover){
+        if(aparelhosAssociados[i] == aparelhoParaRemover){ //isto aqui retorna true se os aparelhos estao na mesma zona de memoria, logo nao é necessario redefinir o operador == para comparar se tem o mesmo id, ate pq podem ter o mesmo id mas serem de zonas diferentes
             aparelhosAssociados.erase(aparelhosAssociados.begin() + i);
             break;
         }

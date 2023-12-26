@@ -11,7 +11,7 @@
 
 Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):terminal(terminal),
                                                                             gestorHabitacao(gestorHabitacao),
-                                                                             windowLogs(135, 0, 100, 100, true),
+                                                                             windowLogs(125, 0, 100, 100, true),
                                                                              windowHabitacao(0, 2, 85, 150, true),
                                                                              windowComandos(0, 45, 100, 100, true){
 
@@ -551,7 +551,7 @@ void Interface::comandoRnova(istringstream &iss) {
     }else if(idRegraCriada == -2){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Id do Sensor invalido" << move_to(0, 2);
     }else{
-        windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << "Comando executado com sucesso" << move_to(0, 2);
+        windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << " Comando executado com sucesso" << move_to(0, 2);
     }
 
 }
@@ -573,7 +573,7 @@ void Interface::comandoPmuda(istringstream &iss) {
 
     if(result == -1) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Zona nao existe" << move_to(0, 2);
     if(result == -2) windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Processador nao existe" << move_to(0, 2);
-    if(result == 0) windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << ultimoComando << " para " << novoComando << move_to(0,2);
+    if(result == 0) windowLogs << set_color(11) << "[ PMUDA ] " << set_color(0) << "Comando do Processador " << idProcRegra << " da Zona " << idZona << " mudado de " << ultimoComando << " para " << novoComando << move_to(0, 2);
 }
 
 void Interface::comandoRlista(istringstream &iss) {

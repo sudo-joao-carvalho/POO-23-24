@@ -24,4 +24,3 @@ asoc 2 1 1
 asoc 3 1 1
 asoc 4 1 1
 ades 1 1 1
-pmuda 1 1 liga

@@ -621,7 +621,9 @@ void Interface::comandoAsoc(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando ASOC em execucao" << move_to(0, 2);
+    if(gestorHabitacao->getHabitacao()->associaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
+        windowLogs << set_color(11) << "[ ASOC ]" << set_color(0) << "Aparelho associado com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Erro ao associar aparelho ao sensor" << move_to(0, 2);
 
 }
 
@@ -638,7 +640,9 @@ void Interface::comandoAdes(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando ADES em execucao" << move_to(0, 2);
+    if(gestorHabitacao->getHabitacao()->desassociaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
+        windowLogs << set_color(11) << "[ ADES ]" << set_color(0) << "Aparelho associado com sucesso" << move_to(0, 2);
+    }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Erro ao associar aparelho ao sensor" << move_to(0, 2);
 
 }
 

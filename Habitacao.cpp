@@ -91,6 +91,29 @@ int Habitacao::adicionaProcessadorAZona(const int &idZona, const string &comando
 
 }
 
+bool Habitacao::associaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho){
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            zona->associaProcessadorAparelho(idProcRegras, idAparelho);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Habitacao::desassociaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho){
+    for(Zona* zona: zonas){
+        if(zona->getId() == idZona){
+            zona->desassociaProcessadorAparelho(idProcRegras, idAparelho);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento){ //Modificar aqui para dar return do objeto eliminado
 
     for(Zona* zona: zonas){

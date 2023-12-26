@@ -15,6 +15,8 @@
 #include "../Regras/RegraMAIOR_QUE.h"
 #include "../Regras/RegraMENOR_QUE.h"
 
+#include "../Aparelhos/Aparelho.h"
+
 using namespace std;
 
 class Processador {
@@ -35,12 +37,16 @@ public:
 
     int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params);
 
+    void adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado);
+    void removeAparelhoAssociado(Aparelho* aparelhoParaRemover);
+
 private:
     static int idProcessador;
     int id;
     string comandoOutput;
     vector<Regra*> regras; //composicao
-
+    vector<Sensor*> sensoresAssociados; //agregação
+    vector<Aparelho*> aparelhosAssociados; //agregação
 };
 
 

@@ -158,6 +158,46 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
     return false;
 }
 
+bool Zona::associaProcessadorAparelho(const int& idProcRegras, const int& idAparelho){
+    Aparelho* aparelhoAssociado = nullptr;
+    for(Aparelho* a: aparelhos){
+        if(a->getId() == idAparelho){
+            aparelhoAssociado = a;
+        }
+    }
+
+    if(aparelhoAssociado != nullptr){
+        for(Processador* p: processadores){
+            if(p->getId() == idProcRegras){
+                p->adicionaAparelhoAssociado(aparelhoAssociado);
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+bool Zona::desassociaProcessadorAparelho(const int& idProcRegras, const int& idAparelho){
+    Aparelho* aparelhoAssociado = nullptr;
+    for(Aparelho* a: aparelhos){
+        if(a->getId() == idAparelho){
+            aparelhoAssociado = a;
+        }
+    }
+
+    if(aparelhoAssociado != nullptr){
+        for(Processador* p: processadores){
+            if(p->getId() == idProcRegras){
+                p->removeAparelhoAssociado(aparelhoAssociado);
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 //tratamento de propriedades da zona
 void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
 

@@ -60,6 +60,8 @@ public:
     Processador* adicionaProcessador(const string& comando);
 
     bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
+    bool associaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
+    bool desassociaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);
 
     //tratamento de propriedades da zona
     void inserePropriedade(const string& key, const int& value);

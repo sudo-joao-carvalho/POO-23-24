@@ -32,12 +32,15 @@ public:
     int adicionaAparelhoAZona(const int& idZona, const char& tipoEquipamento);
     int adicionaSensorAZona(const int& idZona, const char& tipoEquipamento);
     int adicionaProcessadorAZona(const int& idZona, const string& comando);
+    bool associaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho);
+    bool desassociaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho);
 
     bool removeEquipamentoByID(const int& idZona, const char& tipoEquipamento, const int& idEquipamento);
 
     int mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
     bool removeRegraDoProcessadorDaZona(const int& idZona, const int& idProcRegra, const int& idRegra);
     int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params);
+
     //propriedades
     bool alteraPropriedade(const int& idZona, const string& key, const int& value);
 

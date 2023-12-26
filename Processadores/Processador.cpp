@@ -88,3 +88,18 @@ int Processador::criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<i
 
     return -1;
 }
+
+void Processador::adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado){
+    aparelhosAssociados.push_back(novoAparelhoAssociado);
+}
+
+void Processador::removeAparelhoAssociado(Aparelho* aparelhoParaRemover){
+
+    for(int i = 0; i < aparelhosAssociados.size(); i++){
+        if(aparelhosAssociados[i] == aparelhoParaRemover){
+            aparelhosAssociados.erase(aparelhosAssociados.begin() + i);
+            break;
+        }
+    }
+
+}

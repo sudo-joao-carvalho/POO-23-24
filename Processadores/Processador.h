@@ -47,6 +47,8 @@ public:
     int getIdZona() const;
     void setIdZona(int idZona);
 
+    vector<Aparelho*> getAparelhosAssociados(){return aparelhosAssociados;}
+
 private:
     static int idProcessador;
     int id;

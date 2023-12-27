@@ -151,6 +151,7 @@ string Habitacao::listaGravacoes() const {
         oss << endl << "Nome: " << it->first << endl
             << "ID Processador: " << it->second->getId() << endl
             << "ID Zona: " << it->second->getIdZona() << endl;
+            //<< "N aparelhos associados" << it->second->getAparelhosAssociados().size();
     }
 
     return oss.str();

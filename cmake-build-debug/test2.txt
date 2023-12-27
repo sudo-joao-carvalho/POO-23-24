@@ -23,7 +23,7 @@ asoc 1 1 1
 asoc 2 1 1
 asoc 3 1 1
 asoc 4 1 1
-ades 1 1 1
+ades 2 1 1
 psalva 1 1 save1
 psalva 2 2 save2
 plista

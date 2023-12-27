@@ -24,11 +24,14 @@ public:
 
     virtual string getSensorAsString() const;
 
+    int getValorUltimaLeitura() const;
+    void setValorUltimaLeitura(const int& leitura);
+
 private:
     static int idSensor;
     int id;
 
-
+    int valorUltimaLeitura;
 };
 
 

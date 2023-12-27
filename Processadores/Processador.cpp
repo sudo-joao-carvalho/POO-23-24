@@ -10,7 +10,7 @@ int Processador::idProcessador = 0;
 
 Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), idZona(idZona), id(++idProcessador), nome("p" + to_string(id)) {}
 
-Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(++idProcessador), nome("p" + to_string(id))  {
+Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(orig.id), nome("p" + to_string(id))  {
     *this = orig;
 }
 

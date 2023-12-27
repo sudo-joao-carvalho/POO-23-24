@@ -13,7 +13,7 @@ Aparelho::Aparelho():id(++idAparelho), ultimoComandoRecebido(""){
 }
 
 Aparelho::~Aparelho() {
-    idAparelho = 0;
+    //idAparelho = 0;
 }
 
 int Aparelho::getId() const {return id;}

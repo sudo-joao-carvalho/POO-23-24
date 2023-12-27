@@ -7,13 +7,13 @@
 
 int Sensor::idSensor = 0;
 
-Sensor::Sensor() {
-    idSensor++;
-    id = idSensor;
+Sensor::Sensor():id(++idSensor), valorUltimaLeitura(-999) {
+    /*idSensor++;
+    id = idSensor;*/
 }
 
 Sensor::~Sensor() {
-    idSensor = 0;
+    //idSensor = 0;
 }
 
 int Sensor::getId() const {return id;}
@@ -22,8 +22,8 @@ string Sensor::getSensorAsString() const {
 
     ostringstream oss;
 
-    oss << endl << "ID: " << id << endl;
-    //TODO meter aqui o valor atual da leitura
+    oss << endl << "ID: " << id << endl
+        << "Valor ultima leitura: " << valorUltimaLeitura << endl;
 
     return oss.str();
 }

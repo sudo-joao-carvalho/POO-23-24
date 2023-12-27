@@ -8,11 +8,12 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <unistd.h>
 
 Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):terminal(terminal),
                                                                             gestorHabitacao(gestorHabitacao),
                                                                              windowLogs(125, 0, 100, 100, true),
-                                                                             windowHabitacao(0, 2, 85, 150, true),
+                                                                             windowHabitacao(0, 2, 100, 150, true),
                                                                              windowComandos(0, 45, 100, 100, true){
 
     for(int i=1; i<20; i++) {
@@ -30,7 +31,7 @@ void Interface::menu() {
     do{
         if(gestorHabitacao->getHabitacao() != nullptr){
             printaHabitacao();
-            windowHabitacao << move_to(0, 0) << set_color(0) << "\t\tNumero de instantes: " << gestorHabitacao->getTempoDaHabitacao();
+            windowHabitacao << move_to(0, 0) << set_color(0) << "Instantes: " << gestorHabitacao->getTempoDaHabitacao() << move_to(0, 1) << "# -> numero de componentes superior ao suportado pela grelha, zcomp <idZona> para detalhes";
         }
 
         this->terminal << move_to(0, 47) << set_color(11) << "[ COMANDOS ]" << set_color(0);
@@ -62,7 +63,7 @@ void Interface::printaHabitacao() {
     windowHabitacao.clear();
 
     int incrementoX = 0;
-    int incrementoY = 1;
+    int incrementoY = 2;
 
     for(int i = 0; i <= gestorHabitacao->getHabitacao()->getMaxLinha(); i++){ // = para fazer a ultima linha de todas, ou seja, tem que printar a linha de asteriscos 5 vezes
         for(int j = 0; j < gestorHabitacao->getHabitacao()->getMaxColuna(); j++){
@@ -80,27 +81,39 @@ void Interface::printaHabitacao() {
 
                         // printar aparelhos
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().empty())
-                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
-                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getNome();
+                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size() > 7){
+                                windowHabitacao << "#";
+                            }else{
+                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
+                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getNome();
+                                }
                             }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 3) << set_color(0) << "S: ";
 
                         //printar sensores
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().empty())
-                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size(); a++){
-                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getNome();
+                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size() > 7){
+                                windowHabitacao << "#";
+                            }else{
+                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size(); a++){
+                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getNome();
+                                }
                             }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 4) << set_color(0) << "P: ";
 
                         //printa processadores
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().empty())
-                            for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size(); a++){
-                                if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getNome();
+                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size() > 7){
+                                windowHabitacao << "#";
+                            }else{
+                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size(); a++){
+                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a] != nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getNome();
+                                }
                             }
                     }
             }
@@ -421,13 +434,11 @@ void Interface::comandoZprops(istringstream &iss) {
     int idZona;
     iss >> idZona;
 
-    // TODO verificar se o id da zona existe
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira um id de zona existente: zprops <IDzona>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
     windowLogs << set_color(11) << "[ ZPROPS ] " << set_color(0) << gestorHabitacao->getHabitacao()->listaPropriedadesZona(idZona) << move_to(0, 2);
 }
 
@@ -441,13 +452,11 @@ void Interface::comandoPmod(istringstream &iss) {
     int valor;
     iss >> valor;
 
-    // TODO verificar argumentos
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: pmod <IDzona> <nome> <valor>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
     windowLogs << set_color(11) << "[ PMOD ] " << set_color(0) << "Comando PMOD em execucao" << move_to(0, 2);
 
     if(!gestorHabitacao->getHabitacao()->alteraPropriedade(idZona, nome, valor)){
@@ -618,13 +627,11 @@ void Interface::comandoAsoc(istringstream &iss) {
     int idZona, idProcRegra, idAparelho;
     iss >> idZona >> idProcRegra >> idAparelho;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: asoc <IDzona> <ID proc. regras> <ID aparelho>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->associaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
         windowLogs << set_color(11) << "[ ASOC ]" << set_color(0) << " Aparelho associado com sucesso" << move_to(0, 2);
     }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Erro ao associar aparelho ao sensor" << move_to(0, 2);
@@ -637,13 +644,11 @@ void Interface::comandoAdes(istringstream &iss) {
     int idZona, idProcRegra, idAparelho;
     iss >> idZona >> idProcRegra >> idAparelho;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: ades <IDzona> <ID proc. regras> <ID aparelho>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->desassociaProcessadorDaZonaAparelho(idZona, idProcRegra, idAparelho)){
         windowLogs << set_color(11) << "[ ADES ]" << set_color(0) << " Aparelho desassociado com sucesso" << move_to(0, 2);
     }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Erro ao desassociar aparelho ao sensor" << move_to(0, 2);
@@ -681,7 +686,6 @@ void Interface::comandoPsalva(istringstream &iss) {
         return;
     }
 
-    // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->verificaSeGravacaoExiste(nome)){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Já existe uma gravacao com esse nome" << move_to(0, 2);
         return;
@@ -770,5 +774,5 @@ void Interface::comandoExec(istringstream &iss) {
 void Interface::comandoSair() {
     windowLogs.clear();
     windowLogs << "Desligando Sistema..." << move_to(0, 2);
-    return;
+    sleep(3); //espera 3 segundos antes de encerrar o sistema
 }

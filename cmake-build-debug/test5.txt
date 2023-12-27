@@ -1,0 +1,10 @@
+hnova 2 2
+znova 1 1
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a
+cnovo 1 a a

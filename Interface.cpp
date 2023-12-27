@@ -115,6 +115,8 @@ void Interface::printaHabitacao() {
                                         windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getNome();
                                 }
                             }
+
+                        windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 5) << set_color(2) << "( " << i + 1 << ", " << j + 1 << " )";
                     }
             }
 

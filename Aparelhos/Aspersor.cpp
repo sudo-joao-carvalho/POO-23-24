@@ -10,7 +10,12 @@ Aspersor::Aspersor() {
 }
 
 //getters
-string Aspersor::getNome() const {return "Aspersor";}
+string Aspersor::getNome() const {
+    if(isLigado)
+        return "S" + to_string(getId());
+
+    return "s" + to_string(getId());
+}
 
 char Aspersor::getAbreviacao() const {return 's';}
 

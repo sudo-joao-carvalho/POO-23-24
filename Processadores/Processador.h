@@ -45,14 +45,17 @@ public:
     string getProcessadorAsString() const;
 
     int getIdZona() const;
-    void setIdZona(int idZona);
+    void setIdZona(const int& idZona);
 
-    vector<Aparelho*> getAparelhosAssociados(){return aparelhosAssociados;}
+    string getNome() const;
+
+    vector<Aparelho*> getAparelhosAssociados();
 
 private:
     static int idProcessador;
     int id;
     int idZona;
+    string nome;
 
     string comandoOutput;
     vector<Regra*> regras; //composicao

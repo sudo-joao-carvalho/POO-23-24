@@ -8,9 +8,9 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), idZona(idZona), id(++idProcessador) {}
+Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), idZona(idZona), id(++idProcessador), nome("p" + to_string(id)) {}
 
-Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(++idProcessador) {
+Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(++idProcessador), nome("p" + to_string(id))  {
     *this = orig;
 }
 
@@ -142,6 +142,10 @@ int Processador::getIdZona() const {
     return idZona;
 }
 
-void Processador::setIdZona(int idZona) {
-    idZona = idZona;
+void Processador::setIdZona(const int& idZona) {
+    this->idZona = idZona;
 }
+
+string Processador::getNome() const { return nome; }
+
+vector<Aparelho*> Processador::getAparelhosAssociados(){return aparelhosAssociados;}

@@ -82,7 +82,7 @@ void Interface::printaHabitacao() {
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().empty())
                             for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
                                 if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getAbreviacao();
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getNome();
                             }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 3) << set_color(0) << "S: ";
@@ -91,15 +91,16 @@ void Interface::printaHabitacao() {
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().empty())
                             for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size(); a++){
                                 if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getAbreviacao();
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getNome();
                             }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 4) << set_color(0) << "P: ";
 
+                        //printa processadores
                         if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().empty())
                             for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size(); a++){
                                 if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a] != nullptr)
-                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getId();
+                                    windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getNome();
                             }
                     }
             }

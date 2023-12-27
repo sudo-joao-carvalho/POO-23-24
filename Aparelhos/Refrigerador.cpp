@@ -10,7 +10,12 @@ Refrigerador::Refrigerador() {
 }
 
 //getters
-string Refrigerador::getNome() const {return "Refrigerador";}
+string Refrigerador::getNome() const {
+    if(isLigado)
+        return "R" + to_string(getId());
+
+    return "r" + to_string(getId());
+}
 
 char Refrigerador::getAbreviacao() const {return 'r';}
 

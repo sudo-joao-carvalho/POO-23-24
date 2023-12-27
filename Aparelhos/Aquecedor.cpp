@@ -10,7 +10,12 @@ Aquecedor::Aquecedor() {
 }
 
 //getters
-string Aquecedor::getNome() const {return "Aquecedor";}
+string Aquecedor::getNome() const {
+    if(isLigado)
+        return "A" + to_string(getId());
+
+    return "a" + to_string(getId());
+}
 
 char Aquecedor::getAbreviacao() const {return 'a';}
 

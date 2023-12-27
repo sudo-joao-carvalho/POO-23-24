@@ -715,14 +715,18 @@ void Interface::comandoPrem(istringstream &iss) {
     string nome;
     iss >> nome;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: prem <nome>" << move_to(0, 2);
         return;
     }
 
-    // TODO fazer o que o comando pede
-    windowLogs << "Comando PREM em execucao" << move_to(0, 2);
+    if(!gestorHabitacao->getHabitacao()->verificaSeGravacaoExiste(nome)){
+        windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Nao existe uma gravacao com esse nome" << move_to(0, 2);
+        return;
+    }
+
+    gestorHabitacao->getHabitacao()->removeGravacaoProcessador(nome);
+    windowLogs << set_color(11) << "[ PREM ] " << set_color(0) << "Processador guardado foi removido com sucesso" << move_to(0, 2);
 
 }
 

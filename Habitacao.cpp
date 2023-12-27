@@ -143,6 +143,10 @@ bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra
     return false;
 }
 
+bool Habitacao::removeGravacaoProcessador(const string &nome) {
+    gravacoesProcessadores.erase(nome); //remove o elemento dado a key
+}
+
 string Habitacao::listaGravacoes() const {
 
     ostringstream oss;

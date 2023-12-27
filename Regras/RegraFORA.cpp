@@ -12,9 +12,9 @@ Regra* RegraFORA::duplica() const {
 }
 
 bool RegraFORA::avaliaMedicoes() const {
-    int leitura =  Regra::obtemSensor()->fazLeitura();
+    int leitura = obtemSensor()->fazLeitura();
 
-    if(leitura < Regra::getNum1() && leitura > Regra::getNum2())
+    if(leitura < getNum1() && leitura > getNum2())
         return true;
     else return false;
 }

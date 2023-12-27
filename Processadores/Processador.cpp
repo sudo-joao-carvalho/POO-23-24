@@ -149,3 +149,7 @@ void Processador::setIdZona(const int& idZona) {
 string Processador::getNome() const { return nome; }
 
 vector<Aparelho*> Processador::getAparelhosAssociados(){return aparelhosAssociados;}
+
+bool avaliaRegras(){
+
+}

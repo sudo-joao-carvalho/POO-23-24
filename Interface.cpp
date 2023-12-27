@@ -284,6 +284,11 @@ void Interface::comandoProx() {
     //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
     gestorHabitacao->getHabitacao()->avancaTempo();
     windowLogs << set_color(11) << "[ PROX ] " << set_color(0) << "Avancou um instante" << move_to(0, 2);
+    for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
+        for(int i = 0; i < z->getProcessadores().size(); i++){
+            //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos
+        }
+    }
 }
 
 void Interface::comandoAvanca(istringstream &iss) {
@@ -295,6 +300,14 @@ void Interface::comandoAvanca(istringstream &iss) {
     //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
     gestorHabitacao->getHabitacao()->avancaTempoNVezes(passos);
     windowLogs << set_color(11) << "[ AVANCA ] " << set_color(0) << "Avancou " << passos << " instantes" << move_to(0, 2);
+
+    for(int j = 0; j < passos; j++){
+        for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
+            for(int i = 0; i < z->getProcessadores().size(); i++){
+                //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos
+            }
+        }
+    }
 
 }
 

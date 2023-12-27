@@ -12,9 +12,9 @@ Regra* RegraENTRE::duplica() const {
 }
 
 bool RegraENTRE::avaliaMedicoes() const {
-    int leitura = Regra::obtemSensor()->fazLeitura();
+    int leitura = obtemSensor()->fazLeitura();
 
-    if(Regra::getNum1() < leitura < Regra::getNum2())
+    if(getNum1() < leitura < getNum2())
         return true;
     else return false;
 }

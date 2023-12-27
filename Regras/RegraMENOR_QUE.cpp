@@ -12,9 +12,9 @@ Regra* RegraMENOR_QUE::duplica() const {
 }
 
 bool RegraMENOR_QUE::avaliaMedicoes() const {
-    int leitura =  Regra::obtemSensor()->fazLeitura();
+    int leitura =  obtemSensor()->fazLeitura();
 
-    if(leitura < Regra::getNum1())
+    if(leitura < getNum1())
         return true;
     else return false;
 }

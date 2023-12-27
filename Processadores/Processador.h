@@ -51,6 +51,8 @@ public:
 
     vector<Aparelho*> getAparelhosAssociados();
 
+    bool avaliaRegras();
+
 private:
     static int idProcessador;
     int id;

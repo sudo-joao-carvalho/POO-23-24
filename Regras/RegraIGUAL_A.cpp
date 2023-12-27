@@ -13,9 +13,9 @@ Regra* RegraIGUAL_A::duplica() const {
 
 bool RegraIGUAL_A::avaliaMedicoes() const {
 
-    int leitura =  Regra::obtemSensor()->fazLeitura();
+    int leitura = obtemSensor()->fazLeitura();
 
-    if(leitura == Regra::getNum1())
+    if(leitura == getNum1())
         return true;
     else return false;
 }

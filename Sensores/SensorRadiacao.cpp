@@ -6,7 +6,7 @@
 #include <sstream>
 
 //getters
-string SensorRadiacao::getNome() const {return "Sensor Radiacao";}
+string SensorRadiacao::getNome() const {return "d" + to_string(getId());}
 
 char SensorRadiacao::getAbreviacao() const {return 'd';}
 

@@ -339,7 +339,6 @@ void Interface::comandoZnova(istringstream &iss) {
     int linha, coluna;
     iss >> linha >> coluna;
 
-    // TODO fazer verificaçao se os numeros indicados esta disponivel para a grelha indicada pelo utilizador
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira argumentos validos: znova <linha> <coluna>" << move_to(0, 2);
         return;

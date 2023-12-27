@@ -6,7 +6,7 @@
 #include <sstream>
 
 //getters
-string SensorHumidade::getNome() const {return "Sensor Humidade";}
+string SensorHumidade::getNome() const {return "h" + to_string(getId());}
 
 char SensorHumidade::getAbreviacao() const {return 'h';}
 

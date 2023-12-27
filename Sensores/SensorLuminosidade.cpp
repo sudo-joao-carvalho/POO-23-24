@@ -10,7 +10,7 @@
 #include <sstream>
 
 //getters
-string SensorLuminosidade::getNome() const {return "Sensor Luminosidade";}
+string SensorLuminosidade::getNome() const {return "m" + to_string(getId());}
 
 char SensorLuminosidade::getAbreviacao() const {return 'm';}
 

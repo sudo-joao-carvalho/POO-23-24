@@ -291,11 +291,14 @@ string Habitacao::listaPropriedadesZona(const int &id) const {
     ostringstream oss;
 
     for(Zona* zona: zonas){
-        if(zona->getId() == id)
+        if(zona->getId() == id){
             oss << zona->listaPropriedades();
+            return oss.str();
+        }
+
     }
 
-    return oss.str();
+    return "Zona nao existe";
 }
 
 string Habitacao::listaRegrasNoProcessador(const int& idZona, const int& idProcRegra) const {

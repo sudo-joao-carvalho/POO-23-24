@@ -6,7 +6,7 @@
 #include <sstream>
 
 //getters
-string SensorMovimento::getNome() const {return "Sensor Movimento";}
+string SensorMovimento::getNome() const {return "v" + to_string(getId());}
 
 char SensorMovimento::getAbreviacao() const {return 'v';}
 

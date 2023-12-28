@@ -55,6 +55,8 @@ bool Processador::eliminaRegra(const int &idRegra) {
             ++it;
         }
     }
+
+    return false;
 }
 
 int Processador::getId() const {

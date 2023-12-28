@@ -29,3 +29,57 @@ ades 2 2 3
 psalva 1 1 save1
 psalva 2 2 save2
 plista
+zprops 1
+avanca 3
+zprops 1
+avanca 3
+zprops 1
+pmuda 1 1 desliga
+prox
+zprops 1
+pmuda 1 1 liga
+avanca 3
+zprops 1
+hrem
+hnova 2 2
+znova 1 1
+znova 1 2
+znova 2 1
+znova 2 2
+cnovo 1 s f
+cnovo 2 s f
+cnovo 3 s f
+cnovo 4 s f
+cnovo 1 p liga
+cnovo 2 p liga
+cnovo 3 p liga
+cnovo 4 p liga
+cnovo 1 a a
+cnovo 1 a s
+cnovo 2 a s
+cnovo 3 a r
+cnovo 4 a l
+rnova 1 1 igual_a 1 20
+rnova 2 2 maior_que 2 20
+rnova 3 3 menor_que 3 20
+rnova 4 4 igual_a 4 20
+asoc 1 1 1
+asoc 1 1 2
+asoc 2 2 3
+asoc 3 3 4
+asoc 4 4 5
+ades 2 2 3
+psalva 1 1 save1
+psalva 2 2 save2
+plista
+zprops 1
+avanca 3
+zprops 1
+avanca 3
+zprops 1
+pmuda 1 1 desliga
+prox
+zprops 1
+pmuda 1 1 liga
+avanca 3
+zprops 1

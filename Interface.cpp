@@ -354,7 +354,7 @@ void Interface::comandoHnova(istringstream &iss) {
     }
 
     // Cria habitacao
-    if(gestorHabitacao->getHabitacao() != nullptr){ // esta verificaçao serve para o caso de ja existir uma habitacao e eu querer criar uma nova habitacao
+    if(gestorHabitacao->getHabitacao() != nullptr){ // esta verificaçao serve para o caso de ja existir uma habitacao e eu quiser criar uma nova habitacao
         windowLogs.clear();
         windowHabitacao.clear();
         gestorHabitacao->destroiHabitacao();
@@ -528,7 +528,10 @@ void Interface::comandoCnovo(istringstream &iss) {
     if(equipamento == 'p'){
         int id = gestorHabitacao->getHabitacao()->adicionaProcessadorAZona(idZona, comando);
 
-        windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Processador id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        if(id != -1)
+            windowLogs << set_color(11) << "[ CNOVO ] " << set_color(0) << "Processador id: " << id << " adicionado com sucesso" << move_to(0, 2);
+        else
+            windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Processador nao foi adicionado" << move_to(0, 2);
     }else if(equipamento == 'a'){
         int id = gestorHabitacao->getHabitacao()->adicionaAparelhoAZona(idZona, tipo);
         if(id != -1)
@@ -797,7 +800,8 @@ void Interface::comandoExec(istringstream &iss) {
             while(getline(ficheiro, comando)){
                 sleep(1);
                 comandos(comando);
-                printaHabitacao();
+                if(gestorHabitacao->getHabitacao() != nullptr)
+                    printaHabitacao();
             }
         }
     }else{

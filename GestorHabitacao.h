@@ -12,6 +12,7 @@ using namespace std;
 class GestorHabitacao {
 public:
     GestorHabitacao();
+    ~GestorHabitacao();
 
     void criaHabitacao(const int& nLinhas, const int& nColunas);
     void destroiHabitacao();

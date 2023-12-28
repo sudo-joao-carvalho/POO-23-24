@@ -5,6 +5,9 @@
 #include "GestorHabitacao.h"
 
 GestorHabitacao::GestorHabitacao():habitacao(nullptr) {}
+GestorHabitacao::~GestorHabitacao() {
+    delete habitacao;
+}
 
 //getters & setters
 Habitacao* GestorHabitacao::getHabitacao() const {return this->habitacao;}
@@ -14,8 +17,10 @@ void GestorHabitacao::criaHabitacao(const int& nLinhas, const int& nColunas) {
 }
 
 void GestorHabitacao::destroiHabitacao(){
-    delete habitacao;
-    this->habitacao = nullptr;
+    if (habitacao != nullptr) {
+        delete habitacao;
+        habitacao = nullptr;
+    }
 }
 
 int GestorHabitacao::getTempoDaHabitacao() const { return habitacao->getTempo(); }

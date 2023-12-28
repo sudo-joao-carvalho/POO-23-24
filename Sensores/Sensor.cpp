@@ -3,11 +3,12 @@
 //
 
 #include "Sensor.h"
+#include "../Zona.h"
 #include <sstream>
 
 int Sensor::idSensor = 0;
 
-Sensor::Sensor():id(++idSensor), valorUltimaLeitura(-999) {
+Sensor::Sensor(Zona* zona):id(++idSensor), valorUltimaLeitura(-999), zona(zona) {
     /*idSensor++;
     id = idSensor;*/
 }
@@ -27,3 +28,8 @@ string Sensor::getSensorAsString() const {
 
     return oss.str();
 }
+
+int Sensor::getValorUltimaLeitura() const{ return valorUltimaLeitura; }
+void Sensor::setValorUltimaLeitura(const int &leitura) { this->valorUltimaLeitura = leitura; }
+
+Zona* Sensor::getZonaAssociada() { return zona; }

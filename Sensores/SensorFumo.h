@@ -15,14 +15,15 @@ class SensorFumo: public Sensor {
 private:
 
 public:
-    SensorFumo() = default;
+    SensorFumo(Zona* zona);
+    ~SensorFumo() = default;
 
     string getNome() const override;
     char getAbreviacao() const override;
     string getSensorAsString() const override;
 
     //Tipo getTipo() const override;
-    int fazLeitura() const override;
+    int fazLeitura() override;
 };
 
 

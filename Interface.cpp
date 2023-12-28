@@ -287,6 +287,7 @@ void Interface::comandoProx() {
     for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
         for(int i = 0; i < z->getProcessadores().size(); i++){
             //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos
+            z->getProcessadores()[i]->avaliaRegras();
         }
     }
 }
@@ -305,6 +306,7 @@ void Interface::comandoAvanca(istringstream &iss) {
         for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
             for(int i = 0; i < z->getProcessadores().size(); i++){
                 //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos
+                z->getProcessadores()[i]->avaliaRegras();
             }
         }
     }

@@ -16,14 +16,15 @@ class SensorLuminosidade: public Sensor {
 private:
 
 public:
-    SensorLuminosidade() = default;
+    SensorLuminosidade(Zona* zona);
+    ~SensorLuminosidade() = default;
 
     string getNome() const override;
     char getAbreviacao() const override;
     string getSensorAsString() const override;
 
     //Tipo getTipo() const override;
-    int fazLeitura() const override;
+    int fazLeitura() override;
 
 };
 

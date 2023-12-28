@@ -2,12 +2,11 @@
 // Created by henri on 24/10/2023.
 //
 
-
-
-
-
 #include "SensorLuminosidade.h"
+#include "../Zona.h"
 #include <sstream>
+
+SensorLuminosidade::SensorLuminosidade(Zona* zona): Sensor(zona){}
 
 //getters
 string SensorLuminosidade::getNome() const {return "m" + to_string(getId());}
@@ -25,7 +24,9 @@ string SensorLuminosidade::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorLuminosidade::fazLeitura() const {
-    //TODO funcao para fazer a leitura de uma propriedade
+int SensorLuminosidade::fazLeitura() {
+    int valor = getZonaAssociada()->obtemValorPropriedade("Luminosidade");
+
+    setValorUltimaLeitura(valor);
     return 0; //retorna o valor da leitura
 }

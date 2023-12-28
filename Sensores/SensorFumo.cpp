@@ -3,7 +3,10 @@
 //
 
 #include "SensorFumo.h"
+#include "../Zona.h"
 #include <sstream>
+
+SensorFumo::SensorFumo(Zona* zona): Sensor(zona){}
 
 //getters
 string SensorFumo::getNome() const {return "f" + to_string(getId());}
@@ -21,7 +24,9 @@ string SensorFumo::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorFumo::fazLeitura() const {
-    //TODO funcao para fazer a leitura de uma propriedade
+int SensorFumo::fazLeitura() {
+    int valor = getZonaAssociada()->obtemValorPropriedade("Fumo");
+
+    setValorUltimaLeitura(valor);
     return 0; //retorna o valor da leitura
 }

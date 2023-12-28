@@ -131,7 +131,7 @@ string Processador::getProcessadorAsString() const {
 
     ostringstream oss;
 
-    oss << "ID: " << id << endl
+    oss << endl << "ID: " << id << endl
         << "ComandoOutput: " << comandoOutput << endl
         << "Numero Regras: " << regras.size() << endl;
 
@@ -150,6 +150,21 @@ string Processador::getNome() const { return nome; }
 
 vector<Aparelho*> Processador::getAparelhosAssociados(){return aparelhosAssociados;}
 
-bool avaliaRegras(){
+//TODO Rever
+void Processador::avaliaRegras(){
 
+    for(Regra* r: regras){
+        if(!r->avaliaMedicoes()){
+            return;
+        }
+    }
+    //Envia comando
+    for(Aparelho* a: aparelhosAssociados){
+        a->setUltimoComandoRecebido(comandoOutput);
+        if(a->getUltimoComandoRecebido() == "liga"){
+            a->liga();
+        }else if(a->getUltimoComandoRecebido() == "desliga"){
+            a->desliga();
+        }
+    }
 }

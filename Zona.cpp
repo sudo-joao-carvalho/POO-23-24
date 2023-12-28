@@ -32,7 +32,7 @@ Zona::Zona(const int& posX, const int& posY)
     propriedades["Radiacao"] = 0.0;
     propriedades["Vibracao"] = 0.0;
     propriedades["Humidade"] = 0.0;
-    propriedades["Fumo"] = 0.0;
+    propriedades["Fumo"] = 10.0;
     propriedades["Som"] = 0.0;
 }
 
@@ -91,25 +91,25 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
 
     switch (tipoDerivado) {
         case 't': // temperatura
-            novoSensor = new SensorTemperatura();
+            novoSensor = new SensorTemperatura(this);
             break;
         case 'v': // movimento
-            novoSensor = new SensorMovimento();
+            novoSensor = new SensorMovimento(this);
             break;
         case 'm': // luminosidade
-            novoSensor = new SensorLuminosidade();
+            novoSensor = new SensorLuminosidade(this);
             break;
         case 'd': // radiacao
-            novoSensor = new SensorRadiacao();
+            novoSensor = new SensorRadiacao(this);
             break;
         case 'h': // humidade
-            novoSensor = new SensorHumidade();
+            novoSensor = new SensorHumidade(this);
             break;
         case 'o': // som
-            novoSensor = new SensorSom();
+            novoSensor = new SensorSom(this);
             break;
         case 'f': // fumo
-            novoSensor = new SensorFumo();
+            novoSensor = new SensorFumo(this);
             break;
         default:
             // Tratar o caso em que tipoEquipamento não é reconhecido

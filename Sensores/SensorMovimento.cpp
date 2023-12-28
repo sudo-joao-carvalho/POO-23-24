@@ -3,7 +3,10 @@
 //
 
 #include "SensorMovimento.h"
+#include "../Zona.h"
 #include <sstream>
+
+SensorMovimento::SensorMovimento(Zona* zona): Sensor(zona){}
 
 //getters
 string SensorMovimento::getNome() const {return "v" + to_string(getId());}
@@ -21,7 +24,9 @@ string SensorMovimento::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorMovimento::fazLeitura() const {
-    //TODO funcao para fazer a leitura de uma propriedade
+int SensorMovimento::fazLeitura() {
+    int valor = getZonaAssociada()->obtemValorPropriedade("Movimento");
+
+    setValorUltimaLeitura(valor);
     return 0; //retorna o valor da leitura
 }

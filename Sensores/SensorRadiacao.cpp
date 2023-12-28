@@ -3,7 +3,10 @@
 //
 
 #include "SensorRadiacao.h"
+#include "../Zona.h"
 #include <sstream>
+
+SensorRadiacao::SensorRadiacao(Zona* zona): Sensor(zona){}
 
 //getters
 string SensorRadiacao::getNome() const {return "d" + to_string(getId());}
@@ -21,7 +24,9 @@ string SensorRadiacao::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorRadiacao::fazLeitura() const {
-    //TODO funcao para fazer a leitura de uma propriedade
+int SensorRadiacao::fazLeitura() {
+    int valor = getZonaAssociada()->obtemValorPropriedade("Radiacao");
+
+    setValorUltimaLeitura(valor);
     return 0; //retorna o valor da leitura
 }

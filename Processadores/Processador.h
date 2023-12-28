@@ -51,7 +51,7 @@ public:
 
     vector<Aparelho*> getAparelhosAssociados();
 
-    bool avaliaRegras();
+    void avaliaRegras();
 
 private:
     static int idProcessador;
@@ -61,7 +61,6 @@ private:
 
     string comandoOutput;
     vector<Regra*> regras; //composicao
-    vector<Sensor*> sensoresAssociados; //agregação
     vector<Aparelho*> aparelhosAssociados; //agregação
 };
 

@@ -136,6 +136,15 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
             if ((*it)->getId() == idEquipamento) {
                 //da-se delete primeiro do que o erase pq se eu fizesse erase primeiro o erase devolve a posicao do proximo elemento entao se fizessemos delete depois iamos apagar o seguinte e o delete remove o elemento da memoria dinamica entao tem que se dar erase depois para remover a posicao dele no vetor
 
+                //verificar se o aparelho esta a associado a um processador, se estiver nao deixa remover
+                for(Processador* p: processadores){
+                    for(Aparelho* a: p->getAparelhosAssociados()){
+                        if(a->getId() == idEquipamento){
+                            return false;
+                        }
+                    }
+                }
+
                 delete *it; // Liberta a memória alocada
                 aparelhos.erase(it); // Remove o elemento do vetor
                 return true;

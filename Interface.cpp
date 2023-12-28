@@ -546,7 +546,7 @@ void Interface::comandoCrem(istringstream &iss) {
         return;
     }
 
-    if(gestorHabitacao->getHabitacao()->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODOdevia receber o objeto removido para dizer qual o id e a zona onde ele estava
+    if(gestorHabitacao->getHabitacao()->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODO devia receber o objeto removido para dizer qual o id e a zona onde ele estava
         windowLogs << set_color(11) << "[ CREM ] " << set_color(0) << "Equipamento removido com sucesso" << move_to(0, 2);
     else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Equipamento nao foi removido com sucesso" << move_to(0, 2);
 }

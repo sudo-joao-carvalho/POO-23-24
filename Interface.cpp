@@ -795,7 +795,9 @@ void Interface::comandoExec(istringstream &iss) {
             string comando;
             string primeiro;
             while(getline(ficheiro, comando)){
+                sleep(1);
                 comandos(comando);
+                printaHabitacao();
             }
         }
     }else{

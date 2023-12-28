@@ -22,10 +22,10 @@ rnova 3 3 menor_que 3 20
 rnova 4 4 igual_a 4 20
 asoc 1 1 1
 asoc 1 1 2
-asoc 2 1 1
-asoc 3 1 1
-asoc 4 1 1
-ades 2 1 1
+asoc 2 2 3
+asoc 3 3 4
+asoc 4 4 5
+ades 2 2 3
 psalva 1 1 save1
 psalva 2 2 save2
 plista

@@ -68,7 +68,7 @@ public:
     //tratamento de propriedades da zona
     void inserePropriedade(const string& key, const int& value);
     int obtemValorPropriedade(const string& key);
-    bool alteraPropriedade(const string& key, const int& value);
+    bool alteraPropriedade(const string& key, const int& value, const char& operacao);
 
     //getters
     int getId() const;

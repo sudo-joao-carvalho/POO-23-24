@@ -212,11 +212,11 @@ bool Habitacao::removeRegraDoProcessadorDaZona(const int &idZona, const int &idP
 }
 
 //Propriedades
-bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value){
+bool Habitacao::alteraPropriedade(const int& idZona, const string& key, const int& value, const char& operacao){
 
     for(Zona* zona: zonas){
         if(zona->getId() == idZona){
-            if(zona->alteraPropriedade(key, value))
+            if(zona->alteraPropriedade(key, value, operacao))
                 return true;
             else return false;
         }

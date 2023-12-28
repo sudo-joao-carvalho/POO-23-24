@@ -29,12 +29,14 @@ public:
 
     void setUltimoComandoRecebido(const string& comando);
 
+    Zona* getZona();
+
 private:
     static int idAparelho;
     int id;
     string ultimoComandoRecebido;
 
-    Zona* zona
+    Zona* zona;
 };
 
 

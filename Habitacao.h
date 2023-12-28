@@ -51,7 +51,7 @@ public:
     int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params);
 
     //propriedades
-    bool alteraPropriedade(const int& idZona, const string& key, const int& value);
+    bool alteraPropriedade(const int& idZona, const string& key, const int& value, const char& operacao);
 
     //getters
     int getTempo() const;

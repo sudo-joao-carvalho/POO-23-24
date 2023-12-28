@@ -15,6 +15,8 @@ class Aquecedor: public Aparelho {
 
 private:
     bool isLigado;
+    int contador;
+
 public:
 
     Aquecedor(Zona* zona);

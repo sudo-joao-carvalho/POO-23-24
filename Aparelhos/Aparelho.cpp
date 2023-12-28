@@ -34,3 +34,5 @@ string Aparelho::getAparelhoAsString() const {
 void Aparelho::setUltimoComandoRecebido(const string& comando){
     ultimoComandoRecebido = comando;
 }
+
+Zona* Aparelho::getZona() { return zona; }

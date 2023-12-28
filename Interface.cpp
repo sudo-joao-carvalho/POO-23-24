@@ -481,7 +481,7 @@ void Interface::comandoPmod(istringstream &iss) {
 
     windowLogs << set_color(11) << "[ PMOD ] " << set_color(0) << "Comando PMOD em execucao" << move_to(0, 2);
 
-    if(!gestorHabitacao->getHabitacao()->alteraPropriedade(idZona, nome, valor)){
+    if(!gestorHabitacao->getHabitacao()->alteraPropriedade(idZona, nome, valor, 'n')){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Propriedade " << nome << " nao foi alterada" << move_to(0, 2);
         return;
     }

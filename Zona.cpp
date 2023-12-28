@@ -275,6 +275,7 @@ bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
 void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
 
 int Zona::obtemValorPropriedade(const string &key) {
+
     for(map<string, double>::iterator it = propriedades.begin(); it != propriedades.end();){
         if(it->first == key)
             return it->second;
@@ -285,7 +286,7 @@ int Zona::obtemValorPropriedade(const string &key) {
     return -274; //valor para quando da erro
 }
 
-bool Zona::alteraPropriedade(const string& key, const int& value){
+bool Zona::alteraPropriedade(const string& key, const int& value, const char& operacao){
 
     string keyLower = key;
     transform(keyLower.begin(), keyLower.end(), keyLower.begin(), ::tolower);
@@ -296,7 +297,13 @@ bool Zona::alteraPropriedade(const string& key, const int& value){
         transform(currentKeyLower.begin(), currentKeyLower.end(), currentKeyLower.begin(), ::tolower);
 
         if(currentKeyLower == key){
-            it->second = value;
+            if(operacao == '+'){
+                it->second += value;
+            }else if(operacao == '-'){
+                it->second -= value;
+            }else{
+                it->second = value;
+            }
             return true;
         }else
             ++it;

@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Lampada::Lampada(Zona* zona): Aparelho(zona), isLigado(false), contador(0) {
+Lampada::Lampada(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
 }
 
 //getters
@@ -30,7 +30,7 @@ string Lampada::getAparelhoAsString() const {
     return oss.str();
 }
 
-bool Lampada::liga() {
+bool Lampada::liga(Zona* zona) {
     isLigado = true;
 
     ++contador;
@@ -39,20 +39,20 @@ bool Lampada::liga() {
      * Adiciona 900 lumens no primeiro instante de ligado
      */
     if(contador == 1){
-        getZona()->alteraPropriedade("Luz", 900, '+');
+        zona->alteraPropriedade("Luz", 900, '+');
     }
 
     return isLigado;
 }
 
-bool Lampada::desliga() {
+bool Lampada::desliga(Zona* zona) {
     isLigado = false;
 
 /*
      * Remove 20 db de ruído no primeiro instante
      */
     if(contador != 0)
-        getZona()->alteraPropriedade("luz", 900, '-');
+        zona->alteraPropriedade("luz", 900, '-');
 
     contador = 0;
 

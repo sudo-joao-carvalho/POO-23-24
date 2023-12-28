@@ -8,9 +8,9 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando, const int& idZona):comandoOutput(comando), idZona(idZona), id(++idProcessador), nome("p" + to_string(id)) {}
+Processador::Processador(const string& comando/*, const int& idZona*/, Zona* zona):comandoOutput(comando)/*, idZona(idZona)*/, zona(zona) , id(++idProcessador), nome("p" + to_string(id)) {}
 
-Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), idZona(orig.idZona), id(orig.id), nome("p" + to_string(id))  {
+Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), zona(orig.zona), id(orig.id), nome("p" + to_string(id))  {
     *this = orig;
 }
 
@@ -138,13 +138,15 @@ string Processador::getProcessadorAsString() const {
     return oss.str();
 }
 
-int Processador::getIdZona() const {
+/*int Processador::getIdZona() const {
     return idZona;
 }
 
 void Processador::setIdZona(const int& idZona) {
     this->idZona = idZona;
-}
+}*/
+
+Zona* Processador::getZona() const { return zona; }
 
 string Processador::getNome() const { return nome; }
 
@@ -163,9 +165,9 @@ void Processador::avaliaRegras(){
     for(Aparelho* a: aparelhosAssociados){
         a->setUltimoComandoRecebido(comandoOutput);
         if(a->getUltimoComandoRecebido() == "liga"){
-            a->liga();
+            a->liga(zona);
         }else if(a->getUltimoComandoRecebido() == "desliga"){
-            a->desliga();
+            a->desliga(zona);
         }
     }
 }

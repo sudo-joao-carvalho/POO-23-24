@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Aspersor::Aspersor(Zona* zona): Aparelho(zona), isLigado(false), contador(0) {
+Aspersor::Aspersor(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
 }
 
 //getters
@@ -32,7 +32,7 @@ string Aspersor::getAparelhoAsString() const {
 
 }
 
-bool Aspersor::liga() {
+bool Aspersor::liga(Zona* zona) {
     isLigado = true;
 
     ++contador;
@@ -44,10 +44,10 @@ bool Aspersor::liga() {
      * - Adiciona vibração de 100 Hz.
      */
     if(contador == 1){
-        getZona()->alteraPropriedade("vibracao", 100, '+');
+        zona->alteraPropriedade("vibracao", 100, '+');
 
-        if(getZona()->obtemValorPropriedade("Humidade") < 75){
-            getZona()->alteraPropriedade("humidade", 0.5 * getZona()->obtemValorPropriedade("Humidade"), '+');
+        if(zona->obtemValorPropriedade("Humidade") < 75){
+            zona->alteraPropriedade("humidade", 0.5 * zona->obtemValorPropriedade("Humidade"), '+');
         }
 
     }
@@ -56,20 +56,20 @@ bool Aspersor::liga() {
      * Coloca o fumo a 0 uma única vez no segundo instante
      */
     if(contador == 2){
-        getZona()->alteraPropriedade("fumo", 0, 'n');
+        zona->alteraPropriedade("fumo", 0, 'n');
     }
 
     return isLigado;
 }
 
-bool Aspersor::desliga() {
+bool Aspersor::desliga(Zona* zona) {
     isLigado = false;
 
     /*
      * Remove 100 Hz de vibração no primeiro instante
      */
     if(contador != 0)
-        getZona()->alteraPropriedade("vibracao", 100, '-');
+        zona->alteraPropriedade("vibracao", 100, '-');
 
     contador = 0;
 

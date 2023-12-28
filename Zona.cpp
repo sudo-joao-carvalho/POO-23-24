@@ -68,13 +68,13 @@ Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
     Aparelho *novoAparelho = nullptr;
 
     if (tipoDerivado == 'a') {
-        novoAparelho = new Aquecedor(this);
+        novoAparelho = new Aquecedor();
     } else if (tipoDerivado == 's') {
-        novoAparelho = new Aspersor(this);
+        novoAparelho = new Aspersor();
     } else if (tipoDerivado == 'r') {
-        novoAparelho = new Refrigerador(this);
+        novoAparelho = new Refrigerador();
     } else if (tipoDerivado == 'l') {
-        novoAparelho = new Lampada(this);
+        novoAparelho = new Lampada();
     }
     // Se tipoDerivado não for 'a', 's', 'r' ou 'l', novoAparelho permanecerá como nullptr
 
@@ -124,7 +124,7 @@ Sensor* Zona::adicionaSensor(const char& tipoDerivado) {
 }
 
 Processador* Zona::adicionaProcessador(const string& comando) {
-    Processador* novo = new Processador(comando, this->id);
+    Processador* novo = new Processador(comando/*, this->id*/, this);
     processadores.push_back(novo);
     return novo;
 }

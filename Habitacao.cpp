@@ -154,7 +154,7 @@ string Habitacao::listaGravacoes() const {
     for(auto it = gravacoesProcessadores.begin(); it != gravacoesProcessadores.end(); it++){
         oss << endl << "Nome: " << it->first << endl
             << "ID Processador: " << it->second->getId() << endl
-            << "ID Zona: " << it->second->getIdZona() << endl;
+            << "ID Zona: " << it->second->getZona()->getId() << endl;
             //<< "N aparelhos associados" << it->second->getAparelhosAssociados().size();
     }
 

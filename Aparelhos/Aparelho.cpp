@@ -8,7 +8,7 @@
 
 int Aparelho::idAparelho = 0;
 
-Aparelho::Aparelho(Zona* zona):id(++idAparelho), ultimoComandoRecebido(""), zona(zona){
+Aparelho::Aparelho(/*Zona* zona*/):id(++idAparelho), ultimoComandoRecebido("")/*, zona(zona)*/{
     /*idAparelho++;
     id = idAparelho;*/
 }
@@ -35,4 +35,4 @@ void Aparelho::setUltimoComandoRecebido(const string& comando){
     ultimoComandoRecebido = comando;
 }
 
-Zona* Aparelho::getZona() { return zona; }
+//Zona* Aparelho::getZona() { return zona; }

@@ -19,7 +19,7 @@ private:
     int contador;
 
 public:
-    Lampada(Zona* zona);
+    Lampada(/*Zona* zona*/);
 
     //getters
     string getNome() const override;
@@ -27,8 +27,8 @@ public:
     string getAparelhoAsString() const override;
 
     //açoes
-    bool liga() override;
-    bool desliga() override;
+    bool liga(Zona* zona) override;
+    bool desliga(Zona* zona) override;
 
     //setters
     //void setIsLigado(bool isLigado);

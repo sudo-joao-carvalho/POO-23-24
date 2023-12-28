@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Aquecedor::Aquecedor(Zona* zona): Aparelho(zona), isLigado(false), contador(0) {
+Aquecedor::Aquecedor(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
 }
 
 //getters
@@ -32,7 +32,7 @@ string Aquecedor::getAparelhoAsString() const {
 
 }
 
-bool Aquecedor::liga() {
+bool Aquecedor::liga(Zona* zona) {
     isLigado = true;
 
     /*
@@ -40,27 +40,27 @@ bool Aquecedor::liga() {
      */
     ++contador;
     if(contador % 3 == 0){
-        if(getZona()->obtemValorPropriedade("Temperatura") < 50)
-            getZona()->alteraPropriedade("temperatura", 1, '+');
+        if(zona->obtemValorPropriedade("Temperatura") < 50)
+            zona->alteraPropriedade("temperatura", 1, '+');
     }
 
     /*
      * Adiciona 5db de ruido uma unica vez -> altera a propriedade som
      */
     if(contador == 1)
-        getZona()->alteraPropriedade("som", 5, '+');
+        zona->alteraPropriedade("som", 5, '+');
 
     return isLigado;
 }
 
-bool Aquecedor::desliga() {
+bool Aquecedor::desliga(Zona* zona) {
     isLigado = false;
 
     /*
      * Remove 5 db de ruído no primeiro instante
      */
     if(contador != 0)
-        getZona()->alteraPropriedade("som", 5, '-');
+        zona->alteraPropriedade("som", 5, '-');
 
     contador = 0;
 

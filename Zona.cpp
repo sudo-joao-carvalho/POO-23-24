@@ -32,7 +32,7 @@ Zona::Zona(const int& posX, const int& posY)
     propriedades["Radiacao"] = 0.0;
     propriedades["Vibracao"] = 0.0;
     propriedades["Humidade"] = 0.0;
-    propriedades["Fumo"] = 10.0;
+    propriedades["Fumo"] = 20.0;
     propriedades["Som"] = 0.0;
 }
 

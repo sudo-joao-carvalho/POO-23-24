@@ -263,7 +263,7 @@ bool Zona::salvaProcessador(const int& idProcRegra, const string& nome){
 bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
     for(Aparelho* a: aparelhos){
         if(a->getId() == idAparelho){
-            a->setUltimoComandoRecebido(comando);
+            a->setUltimoComandoRecebido(comando, this);
             return true;
         }
     }

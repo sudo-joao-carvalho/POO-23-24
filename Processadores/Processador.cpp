@@ -163,11 +163,11 @@ void Processador::avaliaRegras(){
     }
     //Envia comando
     for(Aparelho* a: aparelhosAssociados){
-        a->setUltimoComandoRecebido(comandoOutput);
-        if(a->getUltimoComandoRecebido() == "liga"){
+        a->setUltimoComandoRecebido(comandoOutput, zona);
+        /*if(a->getUltimoComandoRecebido() == "liga"){
             a->liga(zona);
         }else if(a->getUltimoComandoRecebido() == "desliga"){
             a->desliga(zona);
-        }
+        }*/
     }
 }

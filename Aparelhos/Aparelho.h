@@ -28,7 +28,7 @@ public:
     string getUltimoComandoRecebido() const;
     virtual string getAparelhoAsString() const;
 
-    void setUltimoComandoRecebido(const string& comando);
+    void setUltimoComandoRecebido(const string& comando, Zona* zona);
 
     //Zona* getZona();
 

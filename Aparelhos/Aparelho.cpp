@@ -31,8 +31,14 @@ string Aparelho::getAparelhoAsString() const {
     return oss.str();
 }
 
-void Aparelho::setUltimoComandoRecebido(const string& comando){
+void Aparelho::setUltimoComandoRecebido(const string& comando, Zona* zona){
     ultimoComandoRecebido = comando;
+
+    if(ultimoComandoRecebido == "liga"){
+        liga(zona);
+    }else if(ultimoComandoRecebido == "desliga"){
+        desliga(zona);
+    }
 }
 
 //Zona* Aparelho::getZona() { return zona; }

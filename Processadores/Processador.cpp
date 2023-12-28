@@ -150,7 +150,7 @@ string Processador::getNome() const { return nome; }
 
 vector<Aparelho*> Processador::getAparelhosAssociados(){return aparelhosAssociados;}
 
-//TODO Rever
+//TODO Rever -> dar return de uma string que diz o que aconteceu
 void Processador::avaliaRegras(){
 
     for(Regra* r: regras){

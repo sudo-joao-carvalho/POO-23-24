@@ -12,6 +12,7 @@
 
 Interface::Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao):terminal(terminal),
                                                                             gestorHabitacao(gestorHabitacao),
+                                                                            windowInstante(0, 0, 2, 150, true),
                                                                              windowLogs(125, 0, 100, 100, true),
                                                                              windowHabitacao(0, 2, 100, 150, true),
                                                                              windowComandos(0, 45, 100, 100, true){
@@ -31,7 +32,7 @@ void Interface::menu() {
     do{
         if(gestorHabitacao->getHabitacao() != nullptr){
             printaHabitacao();
-            windowHabitacao << move_to(0, 0) << set_color(0) << "Instantes: " << gestorHabitacao->getTempoDaHabitacao() << move_to(0, 1) << "# -> numero de componentes superior ao suportado pela grelha, zcomp <idZona> para detalhes";
+            windowInstante << move_to(0, 0) << set_color(0) << "Instantes: " << gestorHabitacao->getTempoDaHabitacao() << move_to(0, 1) << "# -> numero de componentes superior ao suportado pela grelha, zcomp <idZona> para detalhes";
         }
 
         this->terminal << move_to(0, 47) << set_color(11) << "[ COMANDOS ]" << set_color(0);
@@ -310,7 +311,9 @@ void Interface::comandoAvanca(istringstream &iss) {
             }
         }
 
+        sleep(1);
         gestorHabitacao->getHabitacao()->avancaTempo();
+        windowInstante << move_to(0, 0) << set_color(0) << "Instantes: " << gestorHabitacao->getTempoDaHabitacao() << move_to(0, 1) << "# -> numero de componentes superior ao suportado pela grelha, zcomp <idZona> para detalhes";
     }
 
 }

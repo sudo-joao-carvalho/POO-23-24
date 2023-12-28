@@ -20,6 +20,7 @@ private:
     GestorHabitacao* gestorHabitacao;
 
     Terminal& terminal;
+    Window windowInstante;
     Window windowComandos;
     Window windowHabitacao;
     Window windowLogs;

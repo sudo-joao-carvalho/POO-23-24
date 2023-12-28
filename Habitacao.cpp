@@ -18,7 +18,7 @@ Habitacao::~Habitacao(){
 
 void Habitacao::avancaTempo() { tempo++; }
 
-void Habitacao::avancaTempoNVezes(const int &n) { tempo += n; }
+//void Habitacao::avancaTempoNVezes(const int &n) { tempo += n; }
 
 void Habitacao::adicionaZona(const int& linha, const int& coluna) {
     Zona* aux = new Zona(coluna, linha);

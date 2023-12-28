@@ -25,7 +25,7 @@ public:
     ~Habitacao();
 
     void avancaTempo();
-    void avancaTempoNVezes(const int& n);
+    //void avancaTempoNVezes(const int& n);
 
     void adicionaZona(const int& linha, const int& coluna);
     bool removeZonaById(const int& id);

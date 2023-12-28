@@ -60,7 +60,6 @@ bool Aquecedor::desliga() {
     /*
      * Remove 5 db de ruído no primeiro instante
      */
-
     if(contador != 0)
         getZona()->alteraPropriedade("som", 5, '-');
 

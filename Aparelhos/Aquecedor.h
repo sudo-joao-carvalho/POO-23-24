@@ -9,13 +9,15 @@
 
 using namespace std;
 
+class Zona;
+
 class Aquecedor: public Aparelho {
 
 private:
     bool isLigado;
 public:
 
-    Aquecedor();
+    Aquecedor(Zona* zona);
 
     //getters
     string getNome() const override;

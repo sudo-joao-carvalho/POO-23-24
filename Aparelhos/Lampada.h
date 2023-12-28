@@ -10,13 +10,15 @@
 
 using namespace std;
 
+class Zona;
+
 class Lampada: public Aparelho {
 
 private:
     bool isLigado;
 
 public:
-    Lampada();
+    Lampada(Zona* zona);
 
     //getters
     string getNome() const override;

@@ -9,11 +9,13 @@
 
 using namespace std;
 
+class Zona;
+
 class Aparelho {
 
 public:
 
-    Aparelho();
+    Aparelho(Zona* zona);
     virtual ~Aparelho();
 
     virtual string getNome() const = 0;
@@ -31,6 +33,8 @@ private:
     static int idAparelho;
     int id;
     string ultimoComandoRecebido;
+
+    Zona* zona
 };
 
 

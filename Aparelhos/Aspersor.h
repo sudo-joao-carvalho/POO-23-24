@@ -10,13 +10,15 @@
 
 using namespace std;
 
+class Zona;
+
 class Aspersor: public Aparelho {
 
 private:
     bool isLigado;
 
 public:
-    Aspersor();
+    Aspersor(Zona* zona);
 
     //getters
     string getNome() const override;

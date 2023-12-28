@@ -3,11 +3,12 @@
 //
 
 #include "Aparelho.h"
+#include "../Zona.h"
 #include <sstream>
 
 int Aparelho::idAparelho = 0;
 
-Aparelho::Aparelho():id(++idAparelho), ultimoComandoRecebido(""){
+Aparelho::Aparelho(Zona* zona):id(++idAparelho), ultimoComandoRecebido(""), zona(zona){
     /*idAparelho++;
     id = idAparelho;*/
 }

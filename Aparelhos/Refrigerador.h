@@ -10,13 +10,15 @@
 
 using namespace std;
 
+class Zona;
+
 class Refrigerador: public Aparelho {
 
 private:
     bool isLigado;
 
 public:
-    Refrigerador();
+    Refrigerador(Zona* zona);
 
     //getters
     string getNome() const override;

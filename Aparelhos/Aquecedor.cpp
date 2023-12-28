@@ -3,9 +3,10 @@
 //
 
 #include "Aquecedor.h"
+#include "../Zona.h"
 #include <sstream>
 
-Aquecedor::Aquecedor() {
+Aquecedor::Aquecedor(Zona* zona): Aparelho(zona) {
     isLigado    = false;
 }
 
@@ -34,6 +35,8 @@ string Aquecedor::getAparelhoAsString() const {
 
 bool Aquecedor::liga() {
     isLigado = true;
+
+
 
     return isLigado;
 }

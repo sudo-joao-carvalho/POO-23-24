@@ -68,13 +68,13 @@ Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
     Aparelho *novoAparelho = nullptr;
 
     if (tipoDerivado == 'a') {
-        novoAparelho = new Aquecedor();
+        novoAparelho = new Aquecedor(this);
     } else if (tipoDerivado == 's') {
-        novoAparelho = new Aspersor();
+        novoAparelho = new Aspersor(this);
     } else if (tipoDerivado == 'r') {
-        novoAparelho = new Refrigerador();
+        novoAparelho = new Refrigerador(this);
     } else if (tipoDerivado == 'l') {
-        novoAparelho = new Lampada();
+        novoAparelho = new Lampada(this);
     }
     // Se tipoDerivado não for 'a', 's', 'r' ou 'l', novoAparelho permanecerá como nullptr
 
@@ -159,6 +159,16 @@ bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamen
     if(tipoEquipamento == 's'){
         for(auto it = sensores.begin(); it != sensores.end();){
             if ((*it)->getId() == idEquipamento) {
+
+                //Nao deixa remover sensores que estao associados a regras
+                for(Processador* p: processadores){
+                    for(Regra* r: p->getRegras()){
+                        if(r->obtemSensor()->getId() == idEquipamento){
+                            return false;
+                        }
+                    }
+                }
+
                 delete *it; // Liberta a memória alocada
                 sensores.erase(it); // Remove o elemento do vetor
                 return true;

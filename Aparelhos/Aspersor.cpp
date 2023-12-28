@@ -3,9 +3,10 @@
 //
 
 #include "Aspersor.h"
+#include "../Zona.h"
 #include <sstream>
 
-Aspersor::Aspersor() {
+Aspersor::Aspersor(Zona* zona): Aparelho(zona) {
     isLigado    = false;
 }
 

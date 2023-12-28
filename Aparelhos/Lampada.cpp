@@ -3,9 +3,10 @@
 //
 
 #include "Lampada.h"
+#include "../Zona.h"
 #include <sstream>
 
-Lampada::Lampada() {
+Lampada::Lampada(Zona* zona): Aparelho(zona) {
     isLigado    = false;
 }
 

@@ -50,6 +50,7 @@ public:
     string getNome() const;
 
     vector<Aparelho*> getAparelhosAssociados();
+    vector<Regra*> getRegras();
 
     void avaliaRegras();
 

@@ -5,7 +5,7 @@
 #include "Refrigerador.h"
 #include <sstream>
 
-Refrigerador::Refrigerador() {
+Refrigerador::Refrigerador(Zona* zona): Aparelho(zona) {
     isLigado    = false;
 }
 

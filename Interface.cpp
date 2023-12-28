@@ -81,41 +81,55 @@ void Interface::printaHabitacao() {
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 2) << set_color(0) << "A: ";
 
                         // printar aparelhos
-                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().empty())
-                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size() > 7){
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().empty()) {
+                            if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size() > 7) {
                                 windowHabitacao << "#";
-                            }else{
-                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos().size(); a++){
-                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] != nullptr)
-                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a]->getNome();
+                            } else {
+                                for (int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                      i)->getAparelhos().size(); a++) {
+                                    if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getAparelhos()[a] !=
+                                        nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                             i)->getAparelhos()[a]->getNome();
                                 }
                             }
+                        }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 3) << set_color(0) << "S: ";
 
                         //printar sensores
-                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().empty())
-                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size() > 7){
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().empty()) {
+                            if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size() > 7) {
                                 windowHabitacao << "#";
-                            }else{
-                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores().size(); a++){
-                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] != nullptr)
-                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a]->getNome();
+                            } else {
+                                for (int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                      i)->getSensores().size(); a++) {
+                                    if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getSensores()[a] !=
+                                        nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                             i)->getSensores()[a]->getNome();
                                 }
                             }
+                        }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 4) << set_color(0) << "P: ";
 
                         //printa processadores
-                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().empty())
-                            if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size() > 7){
+                        if(!gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().empty()) {
+                            if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size() >
+                                7) {
                                 windowHabitacao << "#";
-                            }else{
-                                for(int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores().size(); a++){
-                                    if(gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a] != nullptr)
-                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j, i)->getProcessadores()[a]->getNome();
+                            } else {
+                                for (int a = 0; a < gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                      i)->getProcessadores().size(); a++) {
+                                    if (gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                          i)->getProcessadores()[a] !=
+                                        nullptr)
+                                        windowHabitacao << gestorHabitacao->getHabitacao()->getZonaByPosicao(j,
+                                                                                                             i)->getProcessadores()[a]->getNome();
                                 }
                             }
+                        }
 
                         windowHabitacao << move_to(j + incrementoX + 1, i + incrementoY + 5) << set_color(2) << "( " << i + 1 << ", " << j + 1 << " )";
                     }

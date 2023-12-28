@@ -20,6 +20,7 @@ private:
 public:
 
     Aquecedor(/*Zona* zona*/);
+    ~Aquecedor() = default;
 
     //getters
     string getNome() const override;

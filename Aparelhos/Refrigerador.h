@@ -20,6 +20,7 @@ private:
 
 public:
     Refrigerador(/*Zona* zona*/);
+    ~Refrigerador() = default;
 
     //getters
     string getNome() const override;

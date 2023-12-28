@@ -20,6 +20,7 @@ private:
 
 public:
     Aspersor(/*Zona* zona*/);
+    ~Aspersor() = default;
 
     //getters
     string getNome() const override;

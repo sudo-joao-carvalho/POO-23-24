@@ -20,6 +20,7 @@ private:
 
 public:
     Lampada(/*Zona* zona*/);
+    ~Lampada() = default;
 
     //getters
     string getNome() const override;

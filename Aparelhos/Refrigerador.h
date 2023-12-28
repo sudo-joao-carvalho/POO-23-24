@@ -16,6 +16,7 @@ class Refrigerador: public Aparelho {
 
 private:
     bool isLigado;
+    int contador;
 
 public:
     Refrigerador(Zona* zona);

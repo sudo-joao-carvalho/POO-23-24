@@ -16,6 +16,7 @@ class Lampada: public Aparelho {
 
 private:
     bool isLigado;
+    int contador;
 
 public:
     Lampada(Zona* zona);

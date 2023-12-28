@@ -471,7 +471,7 @@ void Interface::comandoPmod(istringstream &iss) {
     iss >> idZona;
     string nome;
     iss >> nome;
-    int valor;
+    double valor;
     iss >> valor;
 
     if(iss.fail()){

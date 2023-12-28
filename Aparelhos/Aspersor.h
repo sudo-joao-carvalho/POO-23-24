@@ -16,6 +16,7 @@ class Aspersor: public Aparelho {
 
 private:
     bool isLigado;
+    int contador;
 
 public:
     Aspersor(Zona* zona);

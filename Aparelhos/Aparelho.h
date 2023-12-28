@@ -20,6 +20,7 @@ public:
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;
+    //TODO meter estas funcoes a retornar strings
     virtual bool liga() = 0; // TODO implementar em cada classe derivada
     virtual bool desliga() = 0; // TODO implementar em cada classe derivada
 

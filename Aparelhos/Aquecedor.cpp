@@ -7,7 +7,6 @@
 #include <sstream>
 
 Aquecedor::Aquecedor(Zona* zona): Aparelho(zona), isLigado(false), contador(0) {
-    isLigado    = false;
 }
 
 //getters

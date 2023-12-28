@@ -286,7 +286,7 @@ int Zona::obtemValorPropriedade(const string &key) {
     return -274; //valor para quando da erro
 }
 
-bool Zona::alteraPropriedade(const string& key, const int& value, const char& operacao){
+bool Zona::alteraPropriedade(const string& key, const double& value, const char& operacao){
 
     string keyLower = key;
     transform(keyLower.begin(), keyLower.end(), keyLower.begin(), ::tolower);

@@ -5,14 +5,14 @@
 #include "RegraFORA.h"
 #include <sstream>
 
-RegraFORA::RegraFORA(Sensor* sensor, const int &num1, const int &num2):Regra(sensor, num1, num2) {}
+RegraFORA::RegraFORA(Sensor* sensor, const double &num1, const double &num2):Regra(sensor, num1, num2) {}
 
 Regra* RegraFORA::duplica() const {
     return new RegraFORA(*this);
 }
 
 bool RegraFORA::avaliaMedicoes() const {
-    int leitura = obtemSensor()->fazLeitura();
+    double leitura = obtemSensor()->fazLeitura();
 
     if(leitura < getNum1() && leitura > getNum2())
         return true;

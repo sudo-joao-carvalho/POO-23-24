@@ -48,7 +48,7 @@ public:
 
     int mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando);
     bool removeRegraDoProcessadorDaZona(const int& idZona, const int& idProcRegra, const int& idRegra);
-    int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params);
+    int criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<double> params);
 
     //propriedades
     bool alteraPropriedade(const int& idZona, const string& key, const double& value, const char& operacao);

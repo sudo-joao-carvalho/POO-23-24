@@ -5,6 +5,7 @@
 #include "Processador.h"
 #include <sstream>
 #include <algorithm>
+#include <iostream>
 
 int Processador::idProcessador = 0;
 
@@ -81,22 +82,22 @@ string Processador::getRegrasAsString() const {
     return oss.str();
 }
 
-int Processador::criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params) {
+int Processador::criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<double> params) {
 
     Regra* novaRegra = nullptr;
 
     if(tipoRegra == "igual_a"){
-        novaRegra = new RegraIGUAL_A(sensor, params[0]);
+        novaRegra = new RegraIGUAL_A(sensor, params[0], 0.0);
         regras.push_back(novaRegra);
         return novaRegra->getId();
     }
     if(tipoRegra == "maior_que"){
-        novaRegra = new RegraMAIOR_QUE(sensor, params[0]);
+        novaRegra = new RegraMAIOR_QUE(sensor, params[0], 0.0);
         regras.push_back(novaRegra);
         return novaRegra->getId();
     }
     if(tipoRegra == "menor_que"){
-        novaRegra = new RegraMENOR_QUE(sensor, params[0]);
+        novaRegra = new RegraMENOR_QUE(sensor, params[0], 0.0);
         regras.push_back(novaRegra);
         return novaRegra->getId();
     }
@@ -160,6 +161,7 @@ void Processador::avaliaRegras(){
 
     for(Regra* r: regras){
         if(!r->avaliaMedicoes()){
+            cout << "deu falso" << endl;
             return;
         }
     }

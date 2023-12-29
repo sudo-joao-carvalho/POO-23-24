@@ -33,7 +33,6 @@ string Aparelho::getAparelhoAsString() const {
 
 void Aparelho::setUltimoComandoRecebido(const string& comando, Zona* zona){
     ultimoComandoRecebido = comando;
-
     if(ultimoComandoRecebido == "liga"){
         liga(zona);
     }else if(ultimoComandoRecebido == "desliga"){

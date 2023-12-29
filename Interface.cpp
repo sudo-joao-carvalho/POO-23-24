@@ -575,7 +575,7 @@ void Interface::comandoRnova(istringstream &iss) {
 
     int idZona, idProcRegra, idSensor;
     string tipoRegra;
-    vector<int> params;
+    vector<double> params;
 
     iss >> idZona >> idProcRegra >> tipoRegra >> idSensor;
 
@@ -589,12 +589,12 @@ void Interface::comandoRnova(istringstream &iss) {
         return;
     }
 
-    int aux;
+    double aux;
     while(iss >> aux){
         params.push_back(aux);
     }
 
-    windowLogs << params[0] << " " << params[1];
+    //windowLogs << params[0] << " " << params[1];
 
     int idRegraCriada = gestorHabitacao->getHabitacao()->criaNovaRegraNoProcessadorDaZona(idZona, idProcRegra, tipoRegra, idSensor, params);
 
@@ -825,5 +825,5 @@ void Interface::comandoExec(istringstream &iss) {
 void Interface::comandoSair() {
     windowLogs.clear();
     windowLogs << "Desligando Sistema..." << move_to(0, 2);
-    sleep(3); //espera 3 segundos antes de encerrar o sistema
+    //sleep(3); //espera 3 segundos antes de encerrar o sistema
 }

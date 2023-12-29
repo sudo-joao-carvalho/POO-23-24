@@ -30,7 +30,7 @@ public:
     void adicionaRegra(Regra* regra);
     bool eliminaRegra(const int& idRegra);
 
-    int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<int> params);
+    int criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<double> params);
 
     void adicionaAparelhoAssociado(Aparelho* novoAparelhoAssociado);
     void removeAparelhoAssociado(Aparelho* aparelhoParaRemover);

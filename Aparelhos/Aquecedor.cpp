@@ -23,10 +23,12 @@ string Aquecedor::getAparelhoAsString() const {
 
     ostringstream oss;
 
+    string estado = isLigado ? "ligado" : "desligado";
+
     oss << Aparelho::getAparelhoAsString() << endl
         << "Nome: " << getNome() << endl
         << "Abreviatura: " << getAbreviacao() << endl
-        << "Estado: " << isLigado << endl;
+        << "Estado: " << estado << endl;
 
     return oss.str();
 
@@ -34,7 +36,6 @@ string Aquecedor::getAparelhoAsString() const {
 
 bool Aquecedor::liga(Zona* zona) {
     isLigado = true;
-
     /*
      * Adiciona um grau celsius à temperatura da zona por cada 3 instantes até ao máximo de 50 graus
      */

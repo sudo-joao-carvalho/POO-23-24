@@ -24,9 +24,9 @@ string SensorTemperatura::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorTemperatura::fazLeitura() {
-    int valor = getZonaAssociada()->obtemValorPropriedade("Temperatura");
+double SensorTemperatura::fazLeitura() {
+    double valor = getZonaAssociada()->obtemValorPropriedade("Temperatura");
 
     setValorUltimaLeitura(valor);
-    return 0; //retorna o valor da leitura
+    return valor; //retorna o valor da leitura
 }

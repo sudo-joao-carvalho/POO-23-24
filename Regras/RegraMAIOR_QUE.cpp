@@ -5,14 +5,14 @@
 #include "RegraMAIOR_QUE.h"
 #include <sstream>
 
-RegraMAIOR_QUE::RegraMAIOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
+RegraMAIOR_QUE::RegraMAIOR_QUE(Sensor* sensor, const double &num1, const double &num2):Regra(sensor, num1, num2) {}
 
 Regra* RegraMAIOR_QUE::duplica() const {
     return new RegraMAIOR_QUE(*this);
 }
 
 bool RegraMAIOR_QUE::avaliaMedicoes() const {
-    int leitura =  obtemSensor()->fazLeitura();
+    double leitura =  obtemSensor()->fazLeitura();
 
     if(leitura > getNum1())
         return true;

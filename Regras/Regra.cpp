@@ -10,7 +10,7 @@
 
 int Regra::idS = 0;
 
-Regra::Regra(Sensor* sensor, const int& num1, const int& num2 = 0):sensor(sensor), id(++idS) {}
+Regra::Regra(Sensor* sensor, const double& num1, const double& num2):sensor(sensor), id(++idS), num1(num1), num2(num2) {}
 
 Sensor* Regra::obtemSensor() const {return sensor;}
 
@@ -27,18 +27,18 @@ int Regra::getId() const {
     return id;
 }
 
-int Regra::getNum1() const {
+double Regra::getNum1() const {
     return num1;
 }
 
-void Regra::setNum1(int num1) {
-    Regra::num1 = num1;
+void Regra::setNum1(const double& num1) {
+    this->num1 = num1;
 }
 
-int Regra::getNum2() const {
+double Regra::getNum2() const {
     return num2;
 }
 
-void Regra::setNum2(int num2) {
-    Regra::num2 = num2;
+void Regra::setNum2(const double& num2) {
+    this->num2 = num2;
 }

@@ -274,7 +274,7 @@ bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
 //tratamento de propriedades da zona
 void Zona::inserePropriedade(const string &key, const int &value) { propriedades[key] = value; }
 
-int Zona::obtemValorPropriedade(const string &key) {
+double Zona::obtemValorPropriedade(const string &key) {
 
     for(map<string, double>::iterator it = propriedades.begin(); it != propriedades.end();){
         if(it->first == key)
@@ -396,7 +396,7 @@ string Zona::listaPropriedades() const {
 }
 
 int Zona::criaNovaRegraNoProcessador(const int &idProcRegra, const string &tipoRegra, const int &idSensor,
-                                     vector<int> params) {
+                                     vector<double> params) {
 
     Sensor* aux = nullptr;
 

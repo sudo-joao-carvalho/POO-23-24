@@ -31,6 +31,7 @@ psalva 2 2 save2
 plista
 zprops 1
 avanca 3
+zcomp 1
 zprops 1
 avanca 3
 zprops 1

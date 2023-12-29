@@ -23,10 +23,12 @@ string Aspersor::getAparelhoAsString() const {
 
     ostringstream oss;
 
+    string estado = isLigado ? "ligado" : "desligado";
+
     oss << Aparelho::getAparelhoAsString() << endl
         << "Nome: " << getNome() << endl
         << "Abreviatura: " << getAbreviacao() << endl
-        << "Estado: " << isLigado << endl;
+        << "Estado: " << estado << endl;
 
     return oss.str();
 

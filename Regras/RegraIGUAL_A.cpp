@@ -4,8 +4,9 @@
 
 #include "RegraIGUAL_A.h"
 #include <sstream>
+#include <iostream>
 
-RegraIGUAL_A::RegraIGUAL_A(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
+RegraIGUAL_A::RegraIGUAL_A(Sensor* sensor, const double &num1, const double &num2):Regra(sensor, num1, num2) {}
 
 Regra* RegraIGUAL_A::duplica() const {
     return new RegraIGUAL_A(*this);
@@ -13,10 +14,11 @@ Regra* RegraIGUAL_A::duplica() const {
 
 bool RegraIGUAL_A::avaliaMedicoes() const {
 
-    int leitura = obtemSensor()->fazLeitura();
+    double leitura = obtemSensor()->fazLeitura();
 
-    if(leitura == getNum1())
+    if(leitura == getNum1()){
         return true;
+    }
     else return false;
 }
 

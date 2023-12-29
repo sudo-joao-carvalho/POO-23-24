@@ -23,7 +23,7 @@ public:
     string getSensorAsString() const override;
 
     //Tipo getTipo() const override;
-    int fazLeitura() override;
+    double fazLeitura() override;
 
 };
 

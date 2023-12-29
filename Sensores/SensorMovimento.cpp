@@ -24,9 +24,9 @@ string SensorMovimento::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorMovimento::fazLeitura() {
-    int valor = getZonaAssociada()->obtemValorPropriedade("Movimento");
+double SensorMovimento::fazLeitura() {
+    double valor = getZonaAssociada()->obtemValorPropriedade("Movimento");
 
     setValorUltimaLeitura(valor);
-    return 0; //retorna o valor da leitura
+    return valor; //retorna o valor da leitura
 }

@@ -24,9 +24,9 @@ string SensorHumidade::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorHumidade::fazLeitura() {
-    int valor = getZonaAssociada()->obtemValorPropriedade("Humidade");
+double SensorHumidade::fazLeitura() {
+    double valor = getZonaAssociada()->obtemValorPropriedade("Humidade");
 
     setValorUltimaLeitura(valor);
-    return 0; //retorna o valor da leitura
+    return valor; //retorna o valor da leitura
 }

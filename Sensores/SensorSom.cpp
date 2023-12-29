@@ -24,9 +24,9 @@ string SensorSom::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorSom::fazLeitura() {
-    int valor = getZonaAssociada()->obtemValorPropriedade("Som");
+double SensorSom::fazLeitura() {
+    double valor = getZonaAssociada()->obtemValorPropriedade("Som");
 
     setValorUltimaLeitura(valor);
-    return 0; //retorna o valor da leitura
+    return valor; //retorna o valor da leitura
 }

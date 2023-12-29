@@ -5,14 +5,14 @@
 #include "RegraMENOR_QUE.h"
 #include <sstream>
 
-RegraMENOR_QUE::RegraMENOR_QUE(Sensor* sensor, const int &num1):Regra(sensor, num1, 0) {}
+RegraMENOR_QUE::RegraMENOR_QUE(Sensor* sensor, const double &num1, const double &num2):Regra(sensor, num1, num2) {}
 
 Regra* RegraMENOR_QUE::duplica() const {
     return new RegraMENOR_QUE(*this);
 }
 
 bool RegraMENOR_QUE::avaliaMedicoes() const {
-    int leitura =  obtemSensor()->fazLeitura();
+    double leitura =  obtemSensor()->fazLeitura();
 
     if(leitura < getNum1())
         return true;

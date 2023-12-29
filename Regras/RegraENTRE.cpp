@@ -4,15 +4,19 @@
 
 #include "RegraENTRE.h"
 #include <sstream>
+#include <iostream>
 
-RegraENTRE::RegraENTRE(Sensor* sensor, const int &num1, const int &num2): Regra(sensor, num1, num2) {}
+RegraENTRE::RegraENTRE(Sensor* sensor, const double &num1, const double &num2): Regra(sensor, num1, num2) {
+}
 
 Regra* RegraENTRE::duplica() const {
     return new RegraENTRE(*this);
 }
 
 bool RegraENTRE::avaliaMedicoes() const {
-    int leitura = obtemSensor()->fazLeitura();
+    double leitura = obtemSensor()->fazLeitura();
+
+    cout << getNum1() << " " << getNum2() << endl;
 
     if(leitura > getNum1() && leitura < getNum2())
         return true;

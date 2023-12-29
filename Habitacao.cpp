@@ -312,7 +312,7 @@ string Habitacao::listaRegrasNoProcessador(const int& idZona, const int& idProcR
     return processadorAux->getRegrasAsString();
 }
 
-int Habitacao::criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<int> params) {
+int Habitacao::criaNovaRegraNoProcessadorDaZona(const int& idZona , const int& idProcRegra, const string& tipoRegra, const int& idSensor, vector<double> params) {
     for(Zona* z: zonas){
         if(z->getId() == idZona)
             return z->criaNovaRegraNoProcessador(idProcRegra, tipoRegra, idSensor, params);

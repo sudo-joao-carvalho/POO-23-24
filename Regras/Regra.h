@@ -12,7 +12,7 @@ using namespace std;
 class Regra {
 
 public:
-    Regra(Sensor* sensor, const int& num1, const int& num2);
+    Regra(Sensor* sensor, const double& num1, const double& num2);
     virtual ~Regra() = default;
 
     virtual Regra* duplica() const = 0;
@@ -22,15 +22,15 @@ public:
     Sensor* obtemSensor() const;
     virtual string getRegraAsString() const;
     int getId() const;
-    int getNum1() const;
-    void setNum1(int num1);
-    int getNum2() const;
-    void setNum2(int num2);
+    double getNum1() const;
+    void setNum1(const double& num1);
+    double getNum2() const;
+    void setNum2(const double& num2);
 
 private:
     Sensor* sensor;
-    int num1;
-    int num2;
+    double num1;
+    double num2;
 
     int id;
     static int idS;

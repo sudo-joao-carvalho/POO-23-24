@@ -29,7 +29,7 @@ string Sensor::getSensorAsString() const {
     return oss.str();
 }
 
-int Sensor::getValorUltimaLeitura() const{ return valorUltimaLeitura; }
-void Sensor::setValorUltimaLeitura(const int &leitura) { this->valorUltimaLeitura = leitura; }
+double Sensor::getValorUltimaLeitura() const{ return valorUltimaLeitura; }
+void Sensor::setValorUltimaLeitura(const double &leitura) { this->valorUltimaLeitura = leitura; }
 
 Zona* Sensor::getZonaAssociada() { return zona; }

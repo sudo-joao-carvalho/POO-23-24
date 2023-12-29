@@ -21,12 +21,12 @@ public:
     virtual char getAbreviacao() const = 0;
     int getId() const;
 
-    virtual int fazLeitura() = 0;
+    virtual double fazLeitura() = 0;
 
     virtual string getSensorAsString() const;
 
-    int getValorUltimaLeitura() const;
-    void setValorUltimaLeitura(const int& leitura);
+    double getValorUltimaLeitura() const;
+    void setValorUltimaLeitura(const double& leitura);
 
     Zona* getZonaAssociada();
 
@@ -36,7 +36,7 @@ private:
 
     Zona* zona;
 
-    int valorUltimaLeitura;
+    double valorUltimaLeitura;
 };
 
 

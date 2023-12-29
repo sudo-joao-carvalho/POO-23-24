@@ -12,7 +12,7 @@ using namespace std;
 class RegraIGUAL_A: public Regra{
 
 public:
-    RegraIGUAL_A(Sensor* sensor, const int &num1);
+    RegraIGUAL_A(Sensor* sensor, const double &num1, const double &num2);
 
     Regra* duplica() const override;
 

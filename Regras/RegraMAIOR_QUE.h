@@ -12,7 +12,7 @@ using namespace std;
 class RegraMAIOR_QUE: public Regra{
 
 public:
-    RegraMAIOR_QUE(Sensor* sensor, const int &num1);
+    RegraMAIOR_QUE(Sensor* sensor, const double &num1, const double &num2);
 
     Regra* duplica() const override;
 

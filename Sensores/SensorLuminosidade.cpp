@@ -24,9 +24,9 @@ string SensorLuminosidade::getSensorAsString() const {
     return oss.str();
 }
 
-int SensorLuminosidade::fazLeitura() {
-    int valor = getZonaAssociada()->obtemValorPropriedade("Luminosidade");
+double SensorLuminosidade::fazLeitura() {
+    double valor = getZonaAssociada()->obtemValorPropriedade("Luminosidade");
 
     setValorUltimaLeitura(valor);
-    return 0; //retorna o valor da leitura
+    return valor; //retorna o valor da leitura
 }

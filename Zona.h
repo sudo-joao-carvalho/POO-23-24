@@ -67,7 +67,7 @@ public:
 
     //tratamento de propriedades da zona
     void inserePropriedade(const string& key, const int& value);
-    int obtemValorPropriedade(const string& key);
+    double obtemValorPropriedade(const string& key);
     bool alteraPropriedade(const string& key, const double& value, const char& operacao);
 
     //getters
@@ -86,7 +86,7 @@ public:
 
     int
     criaNovaRegraNoProcessador(const int &idProcRegra, const string &tipoRegra, const int &idSensor,
-                               vector<int> params);
+                               vector<double> params);
 };
 
 

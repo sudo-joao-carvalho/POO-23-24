@@ -13,7 +13,7 @@ using namespace std;
 class RegraENTRE: public Regra{
 
 public:
-    RegraENTRE(Sensor* sensor, const int &num1, const int &num2);
+    RegraENTRE(Sensor* sensor, const double &num1, const double &num2);
 
     Regra* duplica() const override;
 

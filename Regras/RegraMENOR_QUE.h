@@ -13,7 +13,7 @@ using namespace std;
 class RegraMENOR_QUE: public Regra{
 
 public:
-    RegraMENOR_QUE(Sensor* sensor, const int &num1);
+    RegraMENOR_QUE(Sensor* sensor, const double &num1, const double &num2);
 
     Regra* duplica() const override;
 

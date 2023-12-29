@@ -799,9 +799,14 @@ void Interface::comandoExec(istringstream &iss) {
             string primeiro;
             while(getline(ficheiro, comando)){
                 sleep(1);
+                if(gestorHabitacao->getHabitacao() == nullptr && comando.find("hnova") == std::string::npos && comando.find("exec") == std::string::npos){
+                    windowLogs << move_to(0, 0) << set_color(1) << "[ ERRO ] " << set_color(0) <<  "Hnova precisa de ser executado para criar uma habitacao" << move_to(0, 2);
+                    break;
+                }
                 comandos(comando);
                 if(gestorHabitacao->getHabitacao() != nullptr)
                     printaHabitacao();
+
             }
         }
     }else{

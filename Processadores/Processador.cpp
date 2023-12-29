@@ -86,7 +86,7 @@ int Processador::criaNovaRegra(const string &tipoRegra, Sensor* sensor, vector<i
     Regra* novaRegra = nullptr;
 
     if(tipoRegra == "igual_a"){
-         novaRegra = new RegraIGUAL_A(sensor, params[0]);
+        novaRegra = new RegraIGUAL_A(sensor, params[0]);
         regras.push_back(novaRegra);
         return novaRegra->getId();
     }

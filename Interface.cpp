@@ -328,6 +328,8 @@ void Interface::comandoAvanca(istringstream &iss) {
         sleep(1);
         gestorHabitacao->getHabitacao()->avancaTempo();
         windowInstante << move_to(0, 0) << set_color(0) << "Instantes: " << gestorHabitacao->getTempoDaHabitacao() << move_to(0, 1) << "# -> numero de componentes superior ao suportado pela grelha, zcomp <idZona> para detalhes";
+        if(gestorHabitacao->getHabitacao() != nullptr)
+            printaHabitacao();
     }
 
 }
@@ -563,7 +565,7 @@ void Interface::comandoCrem(istringstream &iss) {
         return;
     }
 
-    if(gestorHabitacao->getHabitacao()->removeEquipamentoByID(idZona, equipamento, idComponente)) //TODO devia receber o objeto removido para dizer qual o id e a zona onde ele estava
+    if(gestorHabitacao->getHabitacao()->removeEquipamentoByID(idZona, equipamento, idComponente))
         windowLogs << set_color(11) << "[ CREM ] " << set_color(0) << "Equipamento removido com sucesso" << move_to(0, 2);
     else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Equipamento nao foi removido com sucesso" << move_to(0, 2);
 }
@@ -592,6 +594,8 @@ void Interface::comandoRnova(istringstream &iss) {
         params.push_back(aux);
     }
 
+    windowLogs << params[0] << " " << params[1];
+
     int idRegraCriada = gestorHabitacao->getHabitacao()->criaNovaRegraNoProcessadorDaZona(idZona, idProcRegra, tipoRegra, idSensor, params);
 
     if(idRegraCriada == -1){
@@ -599,7 +603,7 @@ void Interface::comandoRnova(istringstream &iss) {
     }else if(idRegraCriada == -2){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Id do Sensor invalido" << move_to(0, 2);
     }else{
-        windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << " Comando executado com sucesso" << move_to(0, 2);
+        windowLogs << set_color(11) << "[ RNOVA ]" << set_color(0) << " Regra do tipo " << tipoRegra << " com id " << idRegraCriada << " foi criada com sucesso" << move_to(0, 2);
     }
 
 }

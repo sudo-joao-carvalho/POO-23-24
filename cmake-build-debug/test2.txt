@@ -1,5 +1,4 @@
 hnova 2 2
-hrem
 znova 1 1
 znova 1 2
 znova 2 1

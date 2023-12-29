@@ -4,9 +4,17 @@ cnovo 1 s f
 cnovo 1 p liga
 cnovo 1 a a
 cnovo 1 a s
-rnova 1 1 igual_a 1 20.0
+rnova 1 1 entre 1 0.0 20.0
 asoc 1 1 1
 asoc 1 1 2
 zprops 1
 avanca 3
-zcomp 1
+zprops 1
+avanca 3
+zprops 1
+pmuda 1 1 desliga
+avanca 3
+zprops 1
+pmuda 1 1 liga
+avanca 3
+zprops 1

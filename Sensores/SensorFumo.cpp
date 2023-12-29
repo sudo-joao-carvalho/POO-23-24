@@ -26,7 +26,6 @@ string SensorFumo::getSensorAsString() const {
 
 double SensorFumo::fazLeitura() {
     double valor = getZonaAssociada()->obtemValorPropriedade("Fumo");
-    //cout << "\tvalor: " << valor << endl;
     setValorUltimaLeitura(valor);
     return valor; //retorna o valor da leitura
 }

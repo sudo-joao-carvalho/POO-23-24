@@ -16,9 +16,7 @@ Regra* RegraENTRE::duplica() const {
 bool RegraENTRE::avaliaMedicoes() const {
     double leitura = obtemSensor()->fazLeitura();
 
-    cout << getNum1() << " " << getNum2() << endl;
-
-    if(leitura > getNum1() && leitura < getNum2())
+    if(leitura >= getNum1() && leitura <= getNum2())
         return true;
     else return false;
 }

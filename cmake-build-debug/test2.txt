@@ -17,9 +17,6 @@ cnovo 2 a s
 cnovo 3 a r
 cnovo 4 a l
 rnova 1 1 igual_a 1 20
-rnova 2 2 maior_que 2 20
-rnova 3 3 menor_que 3 20
-rnova 4 4 igual_a 4 20
 asoc 1 1 1
 asoc 1 1 2
 asoc 2 2 3
@@ -36,6 +33,8 @@ zprops 1
 avanca 3
 zprops 1
 pmuda 1 1 desliga
+prox
+prox
 prox
 zprops 1
 pmuda 1 1 liga

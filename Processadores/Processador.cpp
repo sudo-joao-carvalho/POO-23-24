@@ -161,7 +161,6 @@ void Processador::avaliaRegras(){
 
     for(Regra* r: regras){
         if(!r->avaliaMedicoes()){
-            cout << "deu falso" << endl;
             return;
         }
     }

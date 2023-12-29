@@ -283,7 +283,7 @@ double Zona::obtemValorPropriedade(const string &key) {
             ++it;
     }
 
-    return -274; //valor para quando da erro
+    return -274.0; //valor para quando da erro
 }
 
 bool Zona::alteraPropriedade(const string& key, const double& value, const char& operacao){

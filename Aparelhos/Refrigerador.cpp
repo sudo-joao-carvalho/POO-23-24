@@ -42,14 +42,20 @@ bool Refrigerador::liga(Zona* zona) {
      * Remove um grau celsius à temperatura da zona a cada 3 instantes ligado
      */
     if(contador % 3 == 0){
-        zona->alteraPropriedade("Temperatura", 1, '-');
+        double valorAntigo = zona->obtemValorPropriedade("Temperatura");
+        zona->alteraPropriedade("temperatura", 1, '-');
+
+        double novoValor = zona->obtemValorPropriedade("Temperatura");
+        if(novoValor < -273.0){
+            zona->alteraPropriedade("temperatura", valorAntigo, 'n');
+        }
     }
 
     /*
      * Adiciona 20 db de ruído no primeiro instante de ligado
      */
     if(contador == 1){
-        zona->alteraPropriedade("Som", 20, '+');
+        zona->alteraPropriedade("som", 20, '+');
     }
 
     return isLigado;
@@ -61,8 +67,16 @@ bool Refrigerador::desliga(Zona* zona) {
     /*
      * Remove 20 db de ruído no primeiro instante
      */
-    if(contador != 0)
+    if(contador != 0){
+        double valorAntigo = zona->obtemValorPropriedade("Som");
         zona->alteraPropriedade("som", 20, '-');
+
+        double novoValor = zona->obtemValorPropriedade("Som");
+        if(novoValor < 0){
+            zona->alteraPropriedade("som", valorAntigo, 'n');
+        }
+    }
+
 
     contador = 0;
 

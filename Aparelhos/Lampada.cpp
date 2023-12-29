@@ -53,8 +53,16 @@ bool Lampada::desliga(Zona* zona) {
 /*
      * Remove 20 db de ruído no primeiro instante
      */
-    if(contador != 0)
+    if(contador != 0){
+        double valorAntigo = zona->obtemValorPropriedade("Luz");
         zona->alteraPropriedade("luz", 900, '-');
+
+        double novoValor = zona->obtemValorPropriedade("Luz");
+        if(novoValor < 0){
+            zona->alteraPropriedade("luz", valorAntigo, 'n');
+        }
+    }
+
 
     contador = 0;
 

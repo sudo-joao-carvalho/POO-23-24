@@ -48,8 +48,15 @@ bool Aspersor::liga(Zona* zona) {
     if(contador == 1){
         zona->alteraPropriedade("vibracao", 100, '+');
 
-        if(zona->obtemValorPropriedade("Humidade") < 75){
+        double valorAntigo = zona->obtemValorPropriedade("Humidade");
+
+        if(valorAntigo < 75){
             zona->alteraPropriedade("humidade", 0.5 * zona->obtemValorPropriedade("Humidade"), '+');
+
+            double novoValor = zona->obtemValorPropriedade("Humidade");
+            if(novoValor >= 100){ //verifica se vai ser possivel adicionar de modo a nao passar do limite superior
+                zona->alteraPropriedade("humidade", valorAntigo, 'n'); //volta a meter o valor anterior na propriedade
+            }
         }
 
     }

@@ -60,10 +60,13 @@ bool Aquecedor::desliga(Zona* zona) {
     /*
      * Remove 5 db de ruído no primeiro instante
      */
-    if(contador != 0)
-        zona->alteraPropriedade("som", 5, '-');
 
-    contador = 0;
+    if(zona->obtemValorPropriedade("Som") >= 5){ //so vai permitir remover o som se for >= 5 para nao passar do minimo de som
+        if(contador != 0)
+            zona->alteraPropriedade("som", 5, '-');
+
+        contador = 0;
+    }
 
     return isLigado;
 }

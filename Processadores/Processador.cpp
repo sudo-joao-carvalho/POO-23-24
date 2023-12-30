@@ -32,6 +32,12 @@ Processador& Processador::operator=(const Processador &orig) {
         return *this;
     }
 
+    //É preciso deletar as regras que ja existiam no this
+    for(Regra* r: regras){
+        delete r;
+    }
+    regras.clear();
+
     //Faz uma copia de todas as regras que o processador tem e adiciona-as ao vetor de regras do novo processador
     for(Regra* r: orig.regras){
         Regra* regraDuplicada = r->duplica();

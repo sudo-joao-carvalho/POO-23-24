@@ -750,7 +750,7 @@ void Interface::comandoPsalva(istringstream &iss) {
     }
 
     if(gestorHabitacao->getHabitacao()->salvaProcessadorDaZona(idZona, idProcRegra, nome)){
-        windowLogs << set_color(11) << "[ PSALVA ]" << set_color(0) << " Processador de regras salvo com sucesso" << move_to(0, contador++);
+        windowLogs << set_color(11) << "[ PSALVA ]" << set_color(0) << " Processador de regras salvo com sucesso na gravacao: " << nome << move_to(0, contador++);
     }else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << " Nao foi possivel salvar o processador de regras" << move_to(0, contador++);
 
 }
@@ -787,8 +787,9 @@ void Interface::comandoPrem(istringstream &iss) {
         return;
     }
 
-    gestorHabitacao->getHabitacao()->removeGravacaoProcessador(nome);
-    windowLogs << set_color(11) << "[ PREM ] " << set_color(0) << "Processador guardado foi removido com sucesso" << move_to(0, contador++);
+    if(gestorHabitacao->getHabitacao()->removeGravacaoProcessador(nome))
+        windowLogs << set_color(11) << "[ PREM ] " << set_color(0) << "Gravacao com o nome: " << nome << " removida com sucesso" << move_to(0, contador++);
+    else windowLogs << set_color(11) << "[ ERRO ] " << set_color(0) << "Nao foi possivel remover a gravacao " << nome << move_to(0, contador++);
 
 }
 

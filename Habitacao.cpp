@@ -144,7 +144,31 @@ bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra
 }
 
 bool Habitacao::removeGravacaoProcessador(const string &nome) {
-    gravacoesProcessadores.erase(nome); //remove o elemento dado a key
+
+    for(map<string, Processador*>::iterator it = gravacoesProcessadores.begin(); it != gravacoesProcessadores.end();){
+        if(it->first == nome){
+            delete it->second;
+            gravacoesProcessadores.erase(nome);
+            return true;
+        }else{
+            ++it;
+        }
+    }
+
+    /*if(procAElimimar != nullptr){
+        for(Zona* z: zonas){
+            for(Processador* p: z->getProcessadores()){
+                if(p->getNome() == procAElimimar->getNome()){
+                    z->removeEquipamento('p', procAElimimar->getId());
+                }
+            }
+        }
+
+        gravacoesProcessadores.erase(nome); //remove o elemento dado a key
+        return true;
+    }*/
+
+    return false;
 }
 
 string Habitacao::listaGravacoes() const {

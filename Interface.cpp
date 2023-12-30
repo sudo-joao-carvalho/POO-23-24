@@ -768,7 +768,9 @@ void Interface::comandoPrepoe(istringstream &iss) {
     }
 
     // TODO fazer o que o comando pede
-    windowLogs << "Comando PREPOE em execucao" << move_to(0, contador++);
+    if(gestorHabitacao->getHabitacao()->repoeProcessadorNaZona(nome))
+        windowLogs << set_color(11) << "[ PREPOE ]" << set_color(0) << " Processador guardado no save " << nome << " reposto na zona" << move_to(0, contador++);
+    else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao foi possivel repor o processador" << move_to(0, contador++);
 }
 
 void Interface::comandoPrem(istringstream &iss) {

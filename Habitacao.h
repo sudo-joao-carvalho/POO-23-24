@@ -37,6 +37,7 @@ public:
     bool desassociaProcessadorDaZonaAparelho(const int& idZona, const int& idProcRegras, const int& idAparelho);
     bool verificaSeGravacaoExiste(const string& nome);
     bool salvaProcessadorDaZona(const int& idZona, const int& idProcRegra, const string& nome);
+    bool repoeProcessadorNaZona(const string& nome);
     bool removeGravacaoProcessador(const string& nome);
 
     string listaGravacoes() const;

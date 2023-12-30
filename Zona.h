@@ -58,6 +58,7 @@ public:
     Aparelho* adicionaAparelho(const char& tipoDerivado);
     Sensor* adicionaSensor(const char& tipoDerivado);
     Processador* adicionaProcessador(const string& comando);
+    Processador* adicionaProcessador(Processador* novo);
 
     bool removeEquipamento(const char& tipoEquipamento, const int& idEquipamento);
     bool associaProcessadorAparelho(const int& idProcRegras, const int& idAparelho);

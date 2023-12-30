@@ -129,6 +129,11 @@ Processador* Zona::adicionaProcessador(const string& comando) {
     return novo;
 }
 
+Processador* Zona::adicionaProcessador(Processador* novo){
+    processadores.push_back(novo);
+    return novo;
+}
+
 bool Zona::removeEquipamento(const char &tipoEquipamento, const int &idEquipamento) {
 
     if(tipoEquipamento == 'a'){

@@ -25,8 +25,8 @@ private:
     Window windowHabitacao;
     Window windowLogs;
 
-    //conjunto de habitaçoes --> como nao existe nenhum numero default de habitaçoes a interface nao vai começar com nenhuma habitaçao no construtor
-    //depois vao sendo adicionadas com comandos tendo em conta o numero de zonas que existe
+    int contador;
+
 public:
     Interface(Terminal& terminal, GestorHabitacao* gestorHabitacao);
     ~Interface() = default;
@@ -74,6 +74,7 @@ public:
     void comandoExec(istringstream& iss); //ficheiro
     void comandoSair();
 
+    void checkWindowLogsFull();
 };
 
 

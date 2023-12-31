@@ -25,6 +25,9 @@ asoc 4 4 5
 ades 2 2 3
 psalva 1 1 save1
 psalva 2 2 save2
+prepoe save1
+asoc 1 1 1
+asoc 1 1 2
 plista
 zprops 1
 avanca 3

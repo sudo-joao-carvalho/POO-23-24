@@ -16,7 +16,7 @@ cnovo 1 a s
 cnovo 2 a s
 cnovo 3 a r
 cnovo 4 a l
-rnova 1 1 igual_a 1 20
+rnova 1 1 entre 1 0.0 30.0
 asoc 1 1 1
 asoc 1 1 2
 asoc 2 2 3
@@ -25,6 +25,9 @@ asoc 4 4 5
 ades 2 2 3
 psalva 1 1 save1
 psalva 2 2 save2
+prepoe save1
+asoc 1 1 1
+asoc 1 1 2
 plista
 zprops 1
 avanca 3

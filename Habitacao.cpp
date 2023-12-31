@@ -143,6 +143,7 @@ bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra
     return false;
 }
 
+//nao esta a adicionar quando a zona ja foi removida -> BEM
 bool Habitacao::repoeProcessadorNaZona(const string& nome){
 
     map<string, Processador*>::iterator itG = gravacoesProcessadores.find(nome);
@@ -151,52 +152,19 @@ bool Habitacao::repoeProcessadorNaZona(const string& nome){
 
         for(Zona* z: zonas){
             if(itG->second->getZona()->getId() != z->getId()){ //se esta zona existe o save nao vai voltar a poder ser usado entao pode dar delete a este save
-                delete itG->second; //da delete ao processador naquela zona de memoria
+                //delete itG->second; //da delete ao processador naquela zona de memoria
                 gravacoesProcessadores.erase(nome); //apaga do map
                 return false;
             }
 
-            vector<Processador*> pAux = z->getProcessadores();
-
             //se a zona ainda existir tem que percorrer o vetor de processadores e apagar o que tem o mesmo id e mete lo no vector
-            for(vector<Processador*>::iterator itP = pAux.begin(); itP != pAux.end();){
-                if(itG->second->getId() == (*itP)->getId()){
-                    //apaga o anterior
-                    delete *itP;
-                    pAux.erase(itP);
-
-                    //insere o novo
-                    z->adicionaProcessador(itG->second);
-                    return true;
-                }else{
-                    ++itP;
-                }
-            }
+            z->removeEquipamento('p', itG->second->getId());
+            z->adicionaProcessador(itG->second);
+            return true;
 
         }
 
     }
-    /*for(map<string, Processador*>::iterator it = gravacoesProcessadores.begin(); it != gravacoesProcessadores.end();){
-
-    }*/
-
-    /*for(Zona* zona: zonas){
-        if(zona->getId() == idZona){
-            Processador* aux = nullptr;
-
-            for(Processador* p: zona->getProcessadores()){
-                if(p->getId() == idProcRegra){
-                    aux = p;
-                }
-            }
-
-            if(aux == nullptr) return false;
-
-            Processador* novoProcessador = new Processador(*aux);
-            gravacoesProcessadores.insert(pair<string, Processador*>(nome, novoProcessador));
-            return true;
-        }
-    }*/
 
     return false;
 }

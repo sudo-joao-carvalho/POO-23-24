@@ -32,6 +32,7 @@ string Aparelho::getAparelhoAsString() const {
 }
 
 void Aparelho::setUltimoComandoRecebido(const string& comando, Zona* zona){
+    cout << "Zona id:" << zona->getId() << endl;
     ultimoComandoRecebido = comando;
     if(ultimoComandoRecebido == "liga"){
         liga(zona);

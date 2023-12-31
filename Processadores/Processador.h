@@ -19,6 +19,8 @@
 
 using namespace std;
 
+class Zona;
+
 class Processador {
 
 public:

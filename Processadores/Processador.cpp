@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <iostream>
 
+#include "../Zona.h"
+
 int Processador::idProcessador = 0;
 
 Processador::Processador(const string& comando/*, const int& idZona*/, Zona* zona):comandoOutput(comando)/*, idZona(idZona)*/, zona(zona) , id(++idProcessador), nome("p" + to_string(id)) {}
@@ -33,10 +35,10 @@ Processador& Processador::operator=(const Processador &orig) {
     }
 
     //É preciso deletar as regras que ja existiam no this
-    for(Regra* r: regras){
+    /*for(Regra* r: regras){
         delete r;
     }
-    regras.clear();
+    regras.clear();*/
 
     //Faz uma copia de todas as regras que o processador tem e adiciona-as ao vetor de regras do novo processador
     for(Regra* r: orig.regras){
@@ -143,6 +145,7 @@ string Processador::getProcessadorAsString() const {
     oss << endl << "ID: " << id << endl
         << "ComandoOutput: " << comandoOutput << endl
         << "Numero Regras: " << regras.size() << endl;
+        //<< "Zona associada: " << zona->getId() << endl;
 
     return oss.str();
 }
@@ -165,6 +168,8 @@ vector<Regra*> Processador::getRegras(){return regras;}
 //TODO Rever -> dar return de uma string que diz o que aconteceu
 void Processador::avaliaRegras(){
 
+    if(regras.empty()) return;
+
     for(Regra* r: regras){
         if(!r->avaliaMedicoes()){
             return;
@@ -173,10 +178,5 @@ void Processador::avaliaRegras(){
     //Envia comando
     for(Aparelho* a: aparelhosAssociados){
         a->setUltimoComandoRecebido(comandoOutput, zona);
-        /*if(a->getUltimoComandoRecebido() == "liga"){
-            a->liga(zona);
-        }else if(a->getUltimoComandoRecebido() == "desliga"){
-            a->desliga(zona);
-        }*/
     }
 }

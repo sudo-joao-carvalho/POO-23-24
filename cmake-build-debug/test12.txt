@@ -1,109 +1,34 @@
 hnova 2 2
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
-prox
-avanca 1
+znova 1 1
+znova 1 2
+znova 2 1
+znova 2 2
+cnovo 1 s f
+cnovo 2 s f
+cnovo 3 s f
+cnovo 4 s f
+cnovo 1 p liga
+cnovo 2 p liga
+cnovo 3 p liga
+cnovo 4 p liga
+cnovo 1 a a
+cnovo 1 a s
+cnovo 2 a s
+cnovo 3 a r
+cnovo 4 a l
+rnova 1 1 entre 1 0.0 30.0
+asoc 1 1 1
+asoc 1 1 2
+asoc 2 2 3
+asoc 3 3 4
+asoc 4 4 5
+ades 2 2 3
+psalva 1 1 save1
+psalva 2 2 save2
+prepoe save1
+asoc 1 1 1
+asoc 1 1 2
+plista
+zprops 1
+avanca 3
+zcomp 1

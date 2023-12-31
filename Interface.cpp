@@ -796,8 +796,8 @@ void Interface::comandoPrem(istringstream &iss) {
 }
 
 void Interface::comandoPlista() {
-      checkWindowLogsFull();
-    windowLogs << set_color(11) << "[ PLISTA ]" << set_color(0) << move(0, 2);
+    checkWindowLogsFull();
+    windowLogs << set_color(11) << "[ PLISTA ]" << set_color(0);
     windowLogs << gestorHabitacao->getHabitacao()->listaGravacoes();
 
     sleep(4);

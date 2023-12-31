@@ -151,7 +151,7 @@ bool Habitacao::repoeProcessadorNaZona(const string& nome){
 
         for(Zona* z: zonas){
             if(itG->second->getZona()->getId() != z->getId()){ //se esta zona existe o save nao vai voltar a poder ser usado entao pode dar delete a este save
-                //delete itG->second; //da delete ao processador naquela zona de memoria
+                //delete itG->second; //da delete ao processador naquela zona de memoria -> nao se pode fazer isto pq como a zona ja foi delete ia estar a dar delete a um ponteiro que ja n esta alocado, portanto apaga so a gravaçao
                 gravacoesProcessadores.erase(nome); //apaga do map
                 return false;
             }

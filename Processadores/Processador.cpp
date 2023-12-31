@@ -34,11 +34,15 @@ Processador& Processador::operator=(const Processador &orig) {
         return *this;
     }
 
-    //É preciso deletar as regras que ja existiam no this
-    /*for(Regra* r: regras){
+    /*
+     * Para o contexto do construtor por copia, isto nao seria necessario visto que o vector regras do *this nao ia ter nenhuma regra
+     * porque o objeto estava a acabar de ser criado. Mas se eu noutro sitio do programa quiser fazer proc a = proc b, ja preciso de ter este pedado de codigo
+     * pois o proc a já poderia ter regras e entao estas teriam que ser deletadas
+     */
+    for(Regra* r: regras){
         delete r;
     }
-    regras.clear();*/
+    regras.clear();
 
     //Faz uma copia de todas as regras que o processador tem e adiciona-as ao vetor de regras do novo processador
     for(Regra* r: orig.regras){

@@ -143,7 +143,6 @@ bool Habitacao::salvaProcessadorDaZona(const int& idZona, const int& idProcRegra
     return false;
 }
 
-//nao esta a adicionar quando a zona ja foi removida -> BEM
 bool Habitacao::repoeProcessadorNaZona(const string& nome){
 
     map<string, Processador*>::iterator itG = gravacoesProcessadores.find(nome);

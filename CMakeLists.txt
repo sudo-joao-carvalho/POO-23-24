@@ -18,6 +18,6 @@ add_executable(POO_23_24 main.cpp Interface.cpp Interface.h Terminal.cpp Termina
         Sensores/SensorFumo.h
         Sensores/SensorFumo.cpp
         Sensores/SensorSom.h
-        Sensores/SensorSom.cpp Processadores/Processador.cpp Processadores/Processador.h Regras/Regra.cpp Regras/Regra.h Regras/RegraIGUAL_A.cpp Regras/RegraIGUAL_A.h Regras/RegraMENOR_QUE.cpp Regras/RegraMENOR_QUE.h Regras/RegraMAIOR_QUE.cpp Regras/RegraMAIOR_QUE.h Regras/RegraENTRE.cpp Regras/RegraENTRE.h Regras/RegraFORA.cpp Regras/RegraFORA.h Aparelhos/Aquecedor.h GestorHabitacao.cpp GestorHabitacao.h Propriedades/Temperatura.cpp Propriedades/Temperatura.h Propriedades/Propriedade.cpp Propriedades/Propriedade.h Propriedades/Luz.cpp Propriedades/Luz.h Propriedades/Radicacao.cpp Propriedades/Radicacao.h Propriedades/VibracaoMovimento.cpp Propriedades/VibracaoMovimento.h Propriedades/Humidade.cpp Propriedades/Humidade.h Propriedades/Fumo.cpp Propriedades/Fumo.h Propriedades/Som.cpp Propriedades/Som.h)
+        Sensores/SensorSom.cpp Processadores/Processador.cpp Processadores/Processador.h Regras/Regra.cpp Regras/Regra.h Regras/RegraIGUAL_A.cpp Regras/RegraIGUAL_A.h Regras/RegraMENOR_QUE.cpp Regras/RegraMENOR_QUE.h Regras/RegraMAIOR_QUE.cpp Regras/RegraMAIOR_QUE.h Regras/RegraENTRE.cpp Regras/RegraENTRE.h Regras/RegraFORA.cpp Regras/RegraFORA.h Aparelhos/Aquecedor.h GestorHabitacao.cpp GestorHabitacao.h)
 
 target_link_libraries(${PROJECT_NAME} -lncurses)

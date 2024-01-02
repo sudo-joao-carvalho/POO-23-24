@@ -157,8 +157,6 @@ bool Interface::comandos(const string& comando){
     istringstream iss(comando);
     iss >> primeiro;
 
-    // TODO adaptar para as fases
-
     //tempo
     if(primeiro == "prox"){
         comandoProx();
@@ -754,13 +752,11 @@ void Interface::comandoPrepoe(istringstream &iss) {
     string nome;
     iss >> nome;
 
-    // TODO verificar se parametros existem
     if(iss.fail()){
         windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Insira os argumentos corretos: prepoe <nome>" << move_to(0, contador++);
         return;
     }
 
-    // TODO fazer o que o comando pede
     if(gestorHabitacao->getHabitacao()->repoeProcessadorNaZona(nome))
         windowLogs << set_color(11) << "[ PREPOE ]" << set_color(0) << " Processador guardado no save " << nome << " reposto na zona" << move_to(0, contador++);
     else windowLogs << set_color(1) << "[ ERRO ] " << set_color(0) << "Nao foi possivel repor o processador" << move_to(0, contador++);

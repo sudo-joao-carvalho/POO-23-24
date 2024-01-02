@@ -160,7 +160,6 @@ string Processador::getNome() const { return nome; }
 vector<Aparelho*> Processador::getAparelhosAssociados(){return aparelhosAssociados;}
 vector<Regra*> Processador::getRegras(){return regras;}
 
-//TODO Rever -> dar return de uma string que diz o que aconteceu
 void Processador::avaliaRegras(){
 
     if(regras.empty()) return;

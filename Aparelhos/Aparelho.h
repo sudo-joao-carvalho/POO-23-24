@@ -15,14 +15,13 @@ class Aparelho {
 
 public:
 
-    Aparelho(/*Zona* zona*/);
+    Aparelho();
     virtual ~Aparelho();
 
     virtual string getNome() const = 0;
     virtual char getAbreviacao() const = 0;
-    //TODO meter estas funcoes a retornar strings
-    virtual bool liga(Zona* zona) = 0; // TODO implementar em cada classe derivada
-    virtual bool desliga(Zona* zona) = 0; // TODO implementar em cada classe derivada
+    virtual bool liga(Zona* zona) = 0;
+    virtual bool desliga(Zona* zona) = 0;
 
     int getId() const;
     string getUltimoComandoRecebido() const;
@@ -30,14 +29,10 @@ public:
 
     void setUltimoComandoRecebido(const string& comando, Zona* zona);
 
-    //Zona* getZona();
-
 private:
     static int idAparelho;
     int id;
     string ultimoComandoRecebido;
-
-    //Zona* zona;
 };
 
 

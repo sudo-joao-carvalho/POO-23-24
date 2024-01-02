@@ -19,7 +19,7 @@ private:
     int contador;
 
 public:
-    Aspersor(/*Zona* zona*/);
+    Aspersor();
     ~Aspersor() = default;
 
     //getters

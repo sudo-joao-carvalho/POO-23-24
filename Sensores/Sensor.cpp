@@ -9,12 +9,9 @@
 int Sensor::idSensor = 0;
 
 Sensor::Sensor(Zona* zona):id(++idSensor), valorUltimaLeitura(-999), zona(zona) {
-    /*idSensor++;
-    id = idSensor;*/
 }
 
 Sensor::~Sensor() {
-    //idSensor = 0;
 }
 
 int Sensor::getId() const {return id;}

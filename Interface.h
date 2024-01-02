@@ -53,7 +53,7 @@ public:
     void comandoCnovo(istringstream& iss);
     void comandoCrem(istringstream& iss);
 
-    //processador de regras --> TODO verificar depois na funcao comandos se estamos nessa fase de introduzir regras
+    //processador de regras
     void comandoRnova(istringstream& iss);
     void comandoPmuda(istringstream& iss);
     void comandoRlista(istringstream& iss);

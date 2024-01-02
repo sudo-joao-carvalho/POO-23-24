@@ -21,7 +21,6 @@ public:
     char getAbreviacao() const override;
     string getSensorAsString() const override;
 
-    //Tipo getTipo() const override;
     double fazLeitura() override;
 
 };

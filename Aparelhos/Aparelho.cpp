@@ -8,13 +8,10 @@
 
 int Aparelho::idAparelho = 0;
 
-Aparelho::Aparelho(/*Zona* zona*/):id(++idAparelho), ultimoComandoRecebido("")/*, zona(zona)*/{
-    /*idAparelho++;
-    id = idAparelho;*/
+Aparelho::Aparelho():id(++idAparelho), ultimoComandoRecebido(""){
 }
 
 Aparelho::~Aparelho() {
-    //idAparelho = 0;
 }
 
 int Aparelho::getId() const {return id;}
@@ -32,7 +29,6 @@ string Aparelho::getAparelhoAsString() const {
 }
 
 void Aparelho::setUltimoComandoRecebido(const string& comando, Zona* zona){
-    cout << "Zona id:" << zona->getId() << endl;
     ultimoComandoRecebido = comando;
     if(ultimoComandoRecebido == "liga"){
         liga(zona);
@@ -40,5 +36,3 @@ void Aparelho::setUltimoComandoRecebido(const string& comando, Zona* zona){
         desliga(zona);
     }
 }
-
-//Zona* Aparelho::getZona() { return zona; }

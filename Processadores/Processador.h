@@ -24,7 +24,7 @@ class Zona;
 class Processador {
 
 public:
-    Processador(const string& comando/*, const int& idZona*/, Zona* zona);
+    Processador(const string& comando, Zona* zona);
     Processador(const Processador& orig);
     ~Processador();
     Processador& operator=(const Processador& orig);
@@ -46,9 +46,6 @@ public:
 
     string getProcessadorAsString() const;
 
-    /*int getIdZona() const;
-    void setIdZona(const int& idZona);*/
-
     Zona* getZona() const;
 
     string getNome() const;
@@ -61,7 +58,6 @@ public:
 private:
     static int idProcessador;
     int id;
-    //int idZona;
     string nome;
 
     Zona* zona;

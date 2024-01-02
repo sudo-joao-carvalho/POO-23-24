@@ -11,7 +11,7 @@
 
 int Processador::idProcessador = 0;
 
-Processador::Processador(const string& comando/*, const int& idZona*/, Zona* zona):comandoOutput(comando)/*, idZona(idZona)*/, zona(zona) , id(++idProcessador), nome("p" + to_string(id)) {}
+Processador::Processador(const string& comando, Zona* zona):comandoOutput(comando), zona(zona) , id(++idProcessador), nome("p" + to_string(id)) {}
 
 Processador::Processador(const Processador &orig):comandoOutput(orig.comandoOutput), zona(orig.zona), id(orig.id), nome("p" + to_string(id))  {
     *this = orig;
@@ -149,18 +149,9 @@ string Processador::getProcessadorAsString() const {
     oss << endl << "ID: " << id << endl
         << "ComandoOutput: " << comandoOutput << endl
         << "Numero Regras: " << regras.size() << endl;
-        //<< "Zona associada: " << zona->getId() << endl;
 
     return oss.str();
 }
-
-/*int Processador::getIdZona() const {
-    return idZona;
-}
-
-void Processador::setIdZona(const int& idZona) {
-    this->idZona = idZona;
-}*/
 
 Zona* Processador::getZona() const { return zona; }
 

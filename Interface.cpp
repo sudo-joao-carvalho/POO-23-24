@@ -50,8 +50,7 @@ void Interface::menu() {
 
         if(!comandos(linha)){
             windowLogs << set_color(1) << "[ ERRO ] Comando nao existe." << move_to(0, contador++);
-            /*cout << "Insira um comando: " << endl;
-            getline(cin, linha);*/
+
             continue;
         }
 
@@ -297,12 +296,10 @@ bool Interface::comandos(const string& comando){
 void Interface::comandoProx() {
       checkWindowLogsFull();
 
-    //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
     gestorHabitacao->getHabitacao()->avancaTempo();
     windowLogs << set_color(11) << "[ PROX ] " << set_color(0) << "Avancou um instante" << move_to(0, contador++);
     for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
         for(int i = 0; i < z->getProcessadores().size(); i++){
-            //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos -> aparelhos ligam/desligam
             z->getProcessadores()[i]->avaliaRegras();
         }
     }
@@ -314,14 +311,11 @@ void Interface::comandoAvanca(istringstream &iss) {
     int passos;
     iss >> passos;
 
-    //TODO mandar os componentes que reagem ao tempo fazer as suas acoes
-    //gestorHabitacao->getHabitacao()->avancaTempoNVezes(passos);
     windowLogs << set_color(11) << "[ AVANCA ] " << set_color(0) << "Avancou " << passos << " instantes" << move_to(0, contador++);
 
     for(int j = 0; j < passos; j++){
         for(Zona* z: gestorHabitacao->getHabitacao()->getZonas()){
             for(int i = 0; i < z->getProcessadores().size(); i++){
-                //TODO a cada instante o processador avalia as regras todas -> se forem todas verdadeiras ativa o comando configurado, ou seja, envia os comando aos aparelhos -> aparelhos ligam/desligam
                 z->getProcessadores()[i]->avaliaRegras();
             }
         }
@@ -373,7 +367,6 @@ void Interface::comandoHnova(istringstream &iss) {
 void Interface::comandoHrem() {
       checkWindowLogsFull();
 
-    // TODO adaptar o destrutor da classe habitacao para destruir tudo o que a habitaçao contem
     if (gestorHabitacao->getHabitacao() != nullptr) {
         gestorHabitacao->destroiHabitacao();
 
@@ -847,7 +840,7 @@ void Interface::comandoExec(istringstream &iss) {
 void Interface::comandoSair() {
       checkWindowLogsFull();
     windowLogs << "Desligando Sistema..." << move_to(0, contador++);
-    //sleep(3); //espera 3 segundos antes de encerrar o sistema
+    sleep(3); //espera 3 segundos antes de encerrar o sistema
 }
 
 void Interface::checkWindowLogsFull(){

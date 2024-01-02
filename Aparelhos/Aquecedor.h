@@ -19,7 +19,7 @@ private:
 
 public:
 
-    Aquecedor(/*Zona* zona*/);
+    Aquecedor();
     ~Aquecedor() = default;
 
     //getters

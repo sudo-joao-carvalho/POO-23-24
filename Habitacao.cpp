@@ -8,17 +8,12 @@ Habitacao::Habitacao(const int& nLinhas, const int& nColunas):maxLinha(nLinhas),
 }
 
 Habitacao::~Habitacao(){
-
-    //TODO Zona::idZona = 0; // é necessario dar reset a variavel static da zona pois quando é feito hrem a zona que é criada tem que ser a primeira novamente e nao ontinua com o id anterior;
-
     for(auto & zona : zonas)
         delete zona;
 
 }
 
 void Habitacao::avancaTempo() { tempo++; }
-
-//void Habitacao::avancaTempoNVezes(const int &n) { tempo += n; }
 
 void Habitacao::adicionaZona(const int& linha, const int& coluna) {
     Zona* aux = new Zona(coluna, linha);
@@ -30,7 +25,7 @@ bool Habitacao::removeZonaById(const int &id) {
     for(vector<Zona*>::iterator it = zonas.begin(); it != zonas.end();){
         if ((*it)->getId() == id) {
             delete *it; // Liberta a memória alocada
-            zonas.erase(it); // Remove o elemento do vetor //TODO perguntar ao stor pq q se isto estiver comentado da erro
+            zonas.erase(it); // Remove o elemento do vetor
             return true;
         } else {
             ++it; // Avanca para o próximo elemento
@@ -150,7 +145,7 @@ bool Habitacao::repoeProcessadorNaZona(const string& nome){
     if (itG != gravacoesProcessadores.end()) {
 
         for(Zona* z: zonas){
-            if(itG->second->getZona()->getId() != z->getId()){ //se esta zona existe o save nao vai voltar a poder ser usado entao pode dar delete a este save
+            if(itG->second->getZona()->getId() != z->getId()){ //se esta zona nao existe o save nao vai voltar a poder ser usado entao pode dar delete a este save
                 //delete itG->second; //da delete ao processador naquela zona de memoria -> nao se pode fazer isto pq como a zona ja foi delete ia estar a dar delete a um ponteiro que ja n esta alocado, portanto apaga so a gravaçao
                 gravacoesProcessadores.erase(nome); //apaga do map
                 return false;
@@ -181,19 +176,6 @@ bool Habitacao::removeGravacaoProcessador(const string &nome) {
         }
     }
 
-    /*if(procAElimimar != nullptr){
-        for(Zona* z: zonas){
-            for(Processador* p: z->getProcessadores()){
-                if(p->getNome() == procAElimimar->getNome()){
-                    z->removeEquipamento('p', procAElimimar->getId());
-                }
-            }
-        }
-
-        gravacoesProcessadores.erase(nome); //remove o elemento dado a key
-        return true;
-    }*/
-
     return false;
 }
 
@@ -205,7 +187,6 @@ string Habitacao::listaGravacoes() const {
         oss << endl << "Nome: " << it->first << endl
             << "ID Processador: " << it->second->getId() << endl
             << "ID Zona: " << it->second->getZona()->getId() << endl;
-            //<< "N aparelhos associados" << it->second->getAparelhosAssociados().size();
     }
 
     return oss.str();
@@ -237,11 +218,7 @@ bool Habitacao::removeEquipamentoByID(const int& idZona, const char& tipoEquipam
     return false;
 }
 
-//TODO verificar com o professor se esta bem
 int Habitacao::mudaComandoProcessadorNaZona(const int& idZona, const int& idProcRegra, const string& novoComando){
-
-    //TODO fazer com smart pointer weak
-
     Zona* auxZona = getZonaById(idZona);
     if(auxZona == nullptr) return -1;
     Processador* auxProc = auxZona->getProcessadorById(idProcRegra);
@@ -305,13 +282,6 @@ Zona* Habitacao::getZonaById(const int& idZona) const{
 
     return nullptr;
 }
-
-/*Aparelho* Habitacao::getAparelho(const int& posX, const int& posY, const int &indiceAparelho) const {
-    for(Zona* zona: zonas){
-        if(zona->getPosicao()[0] - 1 == posX && zona->getPosicao()[1] - 1 == posY)
-            return zona->getAparelhoAtIndex(indiceAparelho);
-    }
-}*/
 
 string Habitacao::listaZonas() const {
 

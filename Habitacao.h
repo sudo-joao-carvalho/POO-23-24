@@ -16,16 +16,15 @@ using namespace std;
 class Habitacao {
 private:
     int tempo;
-    int maxLinha, maxColuna;// é preciso receber estes valores pelo comando
+    int maxLinha, maxColuna;
     vector<Zona*> zonas;
 
-    map<string, Processador*> gravacoesProcessadores; //key = nomeGravacao, value = processador
+    map<string, Processador*> gravacoesProcessadores;
 public:
     Habitacao(const int& nLinhas, const int& nColunas);
     ~Habitacao();
 
     void avancaTempo();
-    //void avancaTempoNVezes(const int& n);
 
     void adicionaZona(const int& linha, const int& coluna);
     bool removeZonaById(const int& id);
@@ -41,7 +40,6 @@ public:
     bool removeGravacaoProcessador(const string& nome);
 
     string listaGravacoes() const;
-    //bool salvaProcessador(const int& idProcRegra, const string& nome);
 
     bool mudaComandoAparelhoNaZona(const int& idZona, const int& idAparelho, const string& comando);
 
@@ -61,7 +59,6 @@ public:
     vector <Zona*> getZonas();
     Zona* getZonaByPosicao(const int& posX, const int& posY) const;
     Zona* getZonaById(const int& idZona) const;
-    //Aparelho* getAparelho(const int& posX, const int& posY, const int& indiceAparelho) const;
     string listaZonas() const;
     string listaEquipamentoZona(const int& id) const;
     string listaPropriedadesZona(const int& id) const;

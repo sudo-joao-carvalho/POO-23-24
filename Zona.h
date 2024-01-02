@@ -40,10 +40,8 @@ private:
     int posX;
     int posY;
 
-    //TODO Propriedades
-
     vector<Aparelho*> aparelhos;
-    vector<Processador*> processadores; //TODO
+    vector<Processador*> processadores;
     vector<Sensor*> sensores;
 
     map<string, double> propriedades;
@@ -53,7 +51,6 @@ public:
     Zona() = default;
     Zona(const int& posX, const int& posY);
     ~Zona();
-    //Zona& operator=(const Zona* original);
 
     Aparelho* adicionaAparelho(const char& tipoDerivado);
     Sensor* adicionaSensor(const char& tipoDerivado);

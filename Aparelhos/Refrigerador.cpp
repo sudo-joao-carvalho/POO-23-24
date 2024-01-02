@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Refrigerador::Refrigerador(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
+Refrigerador::Refrigerador():isLigado(false), contador(0) {
 }
 
 //getters

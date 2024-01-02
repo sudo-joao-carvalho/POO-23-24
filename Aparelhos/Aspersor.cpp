@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Aspersor::Aspersor(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
+Aspersor::Aspersor(): isLigado(false), contador(0) {
 }
 
 //getters

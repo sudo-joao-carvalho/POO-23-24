@@ -19,7 +19,7 @@ private:
     int contador;
 
 public:
-    Refrigerador(/*Zona* zona*/);
+    Refrigerador();
     ~Refrigerador() = default;
 
     //getters

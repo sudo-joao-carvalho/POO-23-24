@@ -6,7 +6,7 @@
 #include "../Zona.h"
 #include <sstream>
 
-Lampada::Lampada(/*Zona* zona*/): /*Aparelho(zona),*/ isLigado(false), contador(0) {
+Lampada::Lampada():isLigado(false), contador(0) {
 }
 
 //getters

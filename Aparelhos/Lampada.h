@@ -19,7 +19,7 @@ private:
     int contador;
 
 public:
-    Lampada(/*Zona* zona*/);
+    Lampada();
     ~Lampada() = default;
 
     //getters

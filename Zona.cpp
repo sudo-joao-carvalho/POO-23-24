@@ -4,29 +4,12 @@
 
 #include "Zona.h"
 
-#include "Propriedades/Temperatura.h"
-#include "Propriedades/Luz.h"
-#include "Propriedades/Radicacao.h"
-#include "Propriedades/VibracaoMovimento.h"
-#include "Propriedades/Humidade.h"
-#include "Propriedades/Fumo.h"
-#include "Propriedades/Som.h"
-
 int Zona::idZona = 0;
 
 Zona::Zona(const int& posX, const int& posY)
             :id(++idZona),
             posX(posX),
-            posY(posY)
-            /*propriedades{
-                     {make_shared<Temperatura>()->getNome(), 0.0},
-                     {make_shared<Luz>()->getNome(), 0.0},
-                     {make_shared<Radiacao>()->getNome(), 0.0},
-                     {make_shared<VibracaoMovimento>()->getNome(), 0.0},
-                     {make_shared<Humidade>()->getNome(), 0.0},
-                     {make_shared<Fumo>()->getNome(), 0.0},
-                     {make_shared<Som>()->getNome(), 0.0}
-            }*/{
+            posY(posY){
     propriedades["Temperatura"] = 0.0;
     propriedades["Luz"] = 0.0;
     propriedades["Radiacao"] = 0.0;
@@ -49,19 +32,7 @@ Zona::~Zona(){
     for(auto & processador : processadores){
         delete processador;
     }
-    //idZona = 0;
 }
-
-/*Zona& Zona::operator=(const Zona* original) {
-
-    //Prevenir auto-atribuicao
-    if(this == original)
-        return *this;
-
-    // TODO quando existirem mais atributos na classe zona, deletar o que estiver em memoria dinamica e atribuir corretamente a nova zona
-
-    return *this;
-}*/
 
 Aparelho* Zona::adicionaAparelho(const char& tipoDerivado) {
 
@@ -241,29 +212,6 @@ bool Zona::desassociaProcessadorAparelho(const int& idProcRegras, const int& idA
 
     return false;
 }
-
-/*bool Zona::verificaSeGravacaoExiste(const string& nome){
-    if(gravacoesProcessadores.count(nome) == 1){
-        return true;
-    }else return false;
-}
-
-bool Zona::salvaProcessador(const int& idProcRegra, const string& nome){
-
-    Processador* aux = nullptr;
-
-    for(Processador* p: processadores){
-        if(p->getId() == idProcRegra){
-            aux = p;
-        }
-    }
-
-    if(aux == nullptr) return false;
-
-    Processador* novoProcessador = new Processador(*aux);
-    gravacoesProcessadores.insert(pair<string, Processador*>(nome, novoProcessador));
-    return true;
-}*/
 
 bool Zona::mudaComandoAparelho(const int& idAparelho, const string& comando){
     for(Aparelho* a: aparelhos){
